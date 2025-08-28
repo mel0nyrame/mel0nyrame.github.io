@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="高中,ctf,BugKu,CTF,BUGKU">
+    
+    <meta name="author" content="Mel0ny">
+    
+    <!-- Completely eliminate flash of wrong theme -->
+    <script>
+        (function() {
+            const THEME_KEY = "REDEFINE-THEME-STATUS";
+            const DARK = "dark", LIGHT = "light";
+            
+            // Get preferred theme
+            function getTheme() {
+                try {
+                    const saved = localStorage.getItem(THEME_KEY);
+                    if (saved) {
+                        const { isDark } = JSON.parse(saved);
+                        return isDark ? DARK : LIGHT;
+                    }
+                } catch (e) {}
+                
+                return matchMedia("(prefers-color-scheme: dark)").matches ? DARK : LIGHT;
+            }
+            
+            // Apply theme to document
+            function applyTheme(theme) {
+                const isDark = theme === DARK;
+                const root = document.documentElement;
+                
+                // Set data attribute for CSS variables
+                root.setAttribute("data-theme", theme);
+                
+                // Set classes for compatibility
+                root.classList.add(theme);
+                root.classList.remove(isDark ? LIGHT : DARK);
+                root.style.colorScheme = theme;
+            }
+            
+            // Initial application
+            const theme = getTheme();
+            applyTheme(theme);
+            
+            // Listen for system preference changes
+            matchMedia("(prefers-color-scheme: dark)").addEventListener("change", ({ matches }) => {
+                // Only update if using system preference (no localStorage entry)
+                if (!localStorage.getItem(THEME_KEY)) {
+                    applyTheme(matches ? DARK : LIGHT);
+                }
+            });
+            
+            // Set body classes once DOM is ready
+            if (document.readyState !== "loading") {
+                document.body.classList.add(theme + "-mode");
+            } else {
+                document.addEventListener("DOMContentLoaded", () => {
+                    document.body.classList.add(theme + "-mode");
+                    document.body.classList.remove((theme === DARK ? LIGHT : DARK) + "-mode");
+                });
+            }
+        })();
+    </script>
+    
+    <!-- Critical CSS to prevent flash -->
+    <style>
+        :root[data-theme="dark"] {
+            --background-color: #202124;
+            --background-color-transparent: rgba(32, 33, 36, 0.6);
+            --second-background-color: #2d2e32;
+            --third-background-color: #34353a;
+            --third-background-color-transparent: rgba(32, 33, 36, 0.6);
+            --primary-color: #0066CC;
+            --first-text-color: #ffffff;
+            --second-text-color: #eeeeee;
+            --third-text-color: #bebec6;
+            --fourth-text-color: #999999;
+            --default-text-color: #bebec6;
+            --invert-text-color: #373D3F;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --selection-color: #0066CC;
+            --shadow-color-1: rgba(255, 255, 255, 0.08);
+            --shadow-color-2: rgba(255, 255, 255, 0.05);
+        }
+        
+        :root[data-theme="light"] {
+            --background-color: #fff;
+            --background-color-transparent: rgba(255, 255, 255, 0.6);
+            --second-background-color: #f8f8f8;
+            --third-background-color: #f2f2f2;
+            --third-background-color-transparent: rgba(241, 241, 241, 0.6);
+            --primary-color: #0066CC;
+            --first-text-color: #16171a;
+            --second-text-color: #2f3037;
+            --third-text-color: #5e5e5e;
+            --fourth-text-color: #eeeeee;
+            --default-text-color: #373D3F;
+            --invert-text-color: #bebec6;
+            --border-color: rgba(0, 0, 0, 0.08);
+            --selection-color: #0066CC;
+            --shadow-color-1: rgba(0, 0, 0, 0.08);
+            --shadow-color-2: rgba(0, 0, 0, 0.05);
+        }
+        
+        body {
+            background-color: var(--background-color);
+            color: var(--default-text-color);
+        }
+        
+        /* Apply body classes as soon as DOM is ready */
+        :root[data-theme="dark"] body {
+            background-color: var(--background-color);
+            color: var(--default-text-color);
+        }
+    </style>
+    
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+        
+        
+        
+            <link rel="preconnect" href="https://registry.npmmirror.com" crossorigin>
+        
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="http://example.com/magic number.html"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+    
+    
+        
+        <meta name="description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mel0ny&#39;s records">
+<meta property="og:url" content="http://example.com/Magic%20Number.html">
+<meta property="og:site_name" content="Mel0ny&#39;s records">
+<meta property="og:description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/redefine-og.webp">
+<meta property="article:published_time" content="2025-08-26T05:42:05.593Z">
+<meta property="article:modified_time" content="2025-08-26T05:42:05.593Z">
+<meta property="article:author" content="Mel0ny">
+<meta property="article:tag" content="高中">
+<meta property="article:tag" content="ctf">
+<meta property="article:tag" content="BugKu">
+<meta property="article:tag" content="CTF">
+<meta property="article:tag" content="BUGKU">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/redefine-og.webp">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/img-mine/mel0ny-web-logo.png" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img-mine/mel0ny-web-logo.png">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/img-mine/mel0ny-web-logo.png">
+    <!--- Page Info-->
+    
+    <title>
+        
+            Mel0ny&#39;s records - WTF BRO.
+        
+    </title>
+
+    <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/fonts/Chillax/chillax.css">
+
+    <!--- Inject Part-->
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/css/build/tailwind.css">
+    
+
+    <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/fonts/GeistMono/geist-mono.css">
+    <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/fonts/Geist/geist.css">
+    <!--- Font Part-->
+    
+    
+    
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    
+    
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"example.com","root":"/","language":"zh-CN","path":"search.json"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"delete_mask":false,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":true,"list":["小登","中登","老登"]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"atom-one-light","dark":"atom-one-dark"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"pangu_js":false,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":true,"family":"Noto Sans SC","url":"https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap"},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":true},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":false,"custom_message":null},"side_tools":{"gear_rotation":true,"auto_expand":false},"open_graph":{"enable":true,"image":"/images/redefine-og.webp","description":"Hexo Theme Redefine, Redefine Your Hexo Journey."},"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"Mel0ny's records","subtitle":{"text":[],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":"trie","style":"default","links":{"github":"https://github.com/mel0nyrame","email":"2189829539@qq.com"},"qrs":{"weixin":"/img-mine/wechat.jpg","qq":"/img-mine/qq.jpg"}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":true,"type":"fixed","audios":[{"name":"どうして (为什么)(feat. 野田愛実)","artist":"高瀬統也、野田愛実","url":"\\music\\高瀬統也、野田愛実 - どうして (为什么)(feat. 野田愛実).flac","cover":"https://tcj-image-production.s3.ap-northeast-1.amazonaws.com/u85466/r868207/itdw868207.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJV4VIS2VN3X4CBGA%2F20250825%2Fap-northeast-1%2Fs3%2Faws4_request&X-Amz-Date=20250825T063359Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=695fb787f55abd2565a817d2b630ede78dd5be6cf6683d66bba8a0116311cca5","lrc":"\\music\\どうして (为什么)(feat. 野田愛実).lrc"}]},"mermaid":{"enable":false,"version":"11.4.1"}},"version":"2.8.5","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Tag":{"path":"/tags","icon":"fa-regular fa-tags"},"Categories":{"path":"/categories","icon":"fa-regular fa-folder"},"Friends":{"path":"/links","icon":"fa-solid fa-user-group"},"About":{"icon":"fa-regular fa-user","submenus":{"Me":"/about","Github":"https://github.com/mel0nyrame"}}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":"Debug the World:)","show_on_mobile":true,"links":{"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Categories":{"path":"/categories","icon":"fa-regular fa-folder"},"Tags":{"path":"/tags","cion":"fa-solid fa-tag"},"Photos":{"path":"/masonry","icon":"fa-solid fa-image"},"Bookmarks":{"path":"/bookmarks","icon":"fa-solid fa-bookmark"}}},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2025/8/24 23:35:35"};
+    window.lang_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+    window.data = {"masonry":true};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/fontawesome/fontawesome.min.css">
+    <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/fontawesome/brands.min.css">
+    <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/fontawesome/solid.min.css">
+    <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/fontawesome/regular.min.css">
+    
+        <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/fontawesome/thin.min.css">
+    
+    
+        <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/fontawesome/light.min.css">
+    
+    
+        <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/fontawesome/duotone.min.css">
+    
+    
+        <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/fontawesome/sharp-solid.min.css">
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+
+<body>
+	<div class="progress-bar-container">
+	
+
+	
+	<span class="pjax-progress-bar"></span>
+	<!--        <span class="swup-progress-icon">-->
+	<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+	<!--        </span>-->
+	
+</div>
+
+<main class="page-container" id="swup">
+
+	
+
+	<div class="main-content-container flex flex-col justify-between min-h-dvh">
+		<div class="main-content-header">
+			<header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+                <a class="logo-image h-8 w-8 sm:w-10 sm:h-10 mr-3" href="/">
+                    <img src="/img-mine/mel0ny-web-logo.png" class="w-full h-full rounded-xs">
+                </a>
+            
+            <a class="logo-title" href="/">
+                
+                Mel0ny&#39;s records
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    首页
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    归档
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/tags"
+                                        >
+                                    <i class="fa-regular fa-tags fa-fw"></i>
+                                    标签
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/categories"
+                                        >
+                                    <i class="fa-regular fa-folder fa-fw"></i>
+                                    分类
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/links"
+                                        >
+                                    <i class="fa-solid fa-user-group fa-fw"></i>
+                                    友链
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    关于
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a href="/about">
+                                                    ME
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://github.com/mel0nyrame">
+                                                    GITHUB
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                首页
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                归档
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/tags"
+                        >
+                            <span>
+                                标签
+                            </span>
+                            
+                                <i class="fa-regular fa-tags fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/categories"
+                        >
+                            <span>
+                                分类
+                            </span>
+                            
+                                <i class="fa-regular fa-folder fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/links"
+                        >
+                            <span>
+                                友链
+                            </span>
+                            
+                                <i class="fa-solid fa-user-group fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-About"
+                        >
+                            <span>
+                                关于
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-About">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/about">ME</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://github.com/mel0nyrame">GITHUB</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+
+            
+            
+                
+                    
+                    
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/tags"
+                        >
+                            <span>Tags</span>
+                            <i class=" fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/masonry"
+                        >
+                            <span>Photos</span>
+                            <i class="fa-solid fa-image fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/bookmarks"
+                        >
+                            <span>Bookmarks</span>
+                            <i class="fa-solid fa-bookmark fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">5</div>
+        <div class="label text-third-text-color text-sm">标签</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">3</div>
+        <div class="label text-third-text-color text-sm">分类</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">29</div>
+        <div class="label text-third-text-color text-sm">文章</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+		</div>
+
+		<div class="main-content-body transition-fade-up">
+			
+
+			<div class="main-content">
+				<div class="page-template-container">
+	
+
+	
+
+	<div class="page-template-content markdown-body">
+		
+		<h1></h1>
+		
+
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>Magic Number 速查表（完整版）</title>
+<style>
+  :root {
+    --bg-color: #ffffff;
+    --text-color: #222222;
+    --border-color: #d1d9e0;
+    --header-bg: #f1f3f4;
+    --code-bg: #eef;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg-color: #1e1e1e;
+      --text-color: #e0e0e0;
+      --border-color: #444;
+      --header-bg: #2c2c2c;
+      --code-bg: #2d2d40;
+    }
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    margin: 40px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+  }
+
+  h1 {
+    margin-bottom: 30px;
+  }
+
+  h2 {
+    color: #0366d6;
+    margin-top: 40px;
+  }
+
+  details {
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    margin-bottom: 12px;
+    padding: 12px 16px;
+  }
+
+  summary {
+    font-weight: 600;
+    cursor: pointer;
+    outline: none;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  th, td {
+    padding: 6px 10px;
+    text-align: left;
+    font-size: 14px;
+  }
+
+  th {
+    background-color: var(--header-bg);
+  }
+
+  code {
+    background-color: var(--code-bg);
+    padding: 2px 4px;
+    border-radius: 3px;
+  }
+</style>
+</head>
+<body>
+
+<h1>Magic Number 速查表（完整版）</h1>
+
+<!-- ================= 图像与矢量 ================= -->
+<details open>
+  <summary>🖼️ 图像与矢量</summary>
+  <table>
+    <thead><tr><th>扩展名</th><th>描述</th><th>文件头 (Hex)</th><th>文件尾 (Hex)</th></tr></thead>
+    <tbody>
+      <tr><td>JPG / JPEG</td><td>JPEG 图像 (JFIF/Exif)</td><td><code>FF D8 FF E0</code> / <code>E1</code> / <code>EE</code> / <code>DB</code></td><td><code>FF D9</code></td></tr>
+      <tr><td>PNG</td><td>PNG 图像</td><td><code>89 50 4E 47 0D 0A 1A 0A</code></td><td><code>49 45 4E 44 AE 42 60 82</code></td></tr>
+      <tr><td>GIF</td><td>GIF 图像 (87a/89a)</td><td><code>47 49 46 38 37 61</code> / <code>47 49 46 38 39 61</code></td><td><code>3B</code></td></tr>
+      <tr><td>BMP</td><td>Windows 位图</td><td><code>42 4D</code></td><td>无</td></tr>
+      <tr><td>TIFF / TIF</td><td>TIFF 图像 (小端/大端)</td><td><code>49 49 2A 00</code> / <code>4D 4D 00 2A</code></td><td>无</td></tr>
+      <tr><td>ICO</td><td>Windows 图标</td><td><code>00 00 01 00</code></td><td>无</td></tr>
+      <tr><td>CUR</td><td>Windows 光标</td><td><code>00 00 02 00</code></td><td>无</td></tr>
+      <tr><td>ANI</td><td>Windows 动画光标</td><td><code>52 49 46 46 .... 41 43 4F 4E</code> ("RIFF....ACON")</td><td>无</td></tr>
+      <tr><td>WEBP</td><td>Google WebP 图像</td><td><code>52 49 46 46</code> ("RIFF") 内含 "WEBP"</td><td>无</td></tr>
+      <tr><td>PSD / PSB</td><td>Photoshop 文档</td><td><code>38 42 50 53</code> ("8BPS")</td><td>无</td></tr>
+      <tr><td>AI</td><td>Adobe Illustrator</td><td><code>25 50 44 46</code> ("PDF") 或 <code>%!PS</code></td><td>无</td></tr>
+      <tr><td>SVG</td><td>矢量图 (XML 文本)</td><td>无固定头，常以 <code>&lt;svg</code> 开头</td><td>无</td></tr>
+      <tr><td>TGA</td><td>TARGA 图像</td><td>常见 <code>00 00 02</code> (无压缩真彩色)</td><td>无</td></tr>
+      <tr><td>PCX</td><td>PCX 图像</td><td><code>0A</code></td><td>无</td></tr>
+    </tbody>
+  </table>
+</details>
+
+<!-- ================= 可执行 / 库 / 安装包 ================= -->
+<details>
+  <summary>⚙️ 可执行 / 库 / 安装包</summary>
+  <table>
+    <thead><tr><th>扩展名</th><th>描述</th><th>文件头 (Hex)</th><th>文件尾 (Hex)</th></tr></thead>
+    <tbody>
+      <tr><td>EXE / DLL / SYS</td><td>Windows 可执行/驱动</td><td><code>4D 5A</code> ("MZ")</td><td>无</td></tr>
+      <tr><td>MSI</td><td>Windows Installer</td><td><code>D0 CF 11 E0 A1 B1 1A E1</code></td><td>无</td></tr>
+      <tr><td>CAB</td><td>Windows Cabinet 压缩包</td><td><code>4D 53 43 46</code> ("MSCF")</td><td>无</td></tr>
+      <tr><td>LNK</td><td>Windows 快捷方式</td><td><code>4C 00 00 00</code></td><td>无</td></tr>
+      <tr><td>ELF</td><td>Linux/Unix 可执行文件</td><td><code>7F 45 4C 46</code> ("ELF")</td><td>无</td></tr>
+      <tr><td>MACH-O</td><td>macOS 可执行文件</td><td><code>FE ED FA CE</code> (32位) / <code>FE ED FA CF</code> (64位) / <code>CE FA ED FE</code> (反序)</td><td>无</td></tr>
+      <tr><td>DMG</td><td>macOS 磁盘镜像</td><td><code>6B 6F 6C 79</code> ("koly"，文件尾前 512 字节)</td><td>特殊位置标识</td></tr>
+      <tr><td>APK / IPA / JAR / WAR / EAR</td><td>各类 ZIP 容器</td><td><code>50 4B 03 04</code></td><td>无</td></tr>
+      <tr><td>CLASS</td><td>Java 字节码</td><td><code>CA FE BA BE</code></td><td>无</td></tr>
+    </tbody>
+  </table>
+</details>
+
+<!-- ================= 压缩与归档 ================= -->
+<details>
+  <summary>🗜️ 压缩与归档</summary>
+  <table>
+    <thead><tr><th>扩展名</th><th>描述</th><th>文件头 (Hex)</th><th>文件尾 (Hex)</th></tr></thead>
+    <tbody>
+      <tr><td>ZIP</td><td>ZIP 压缩文件</td><td><code>50 4B 03 04</code></td><td><code>50 4B 05 06</code> (end-of-central-dir)</td></tr>
+      <tr><td>RAR (v1.5+)</td><td>RAR 压缩文件</td><td><code>52 61 72 21 1A 07 00</code></td><td>无</td></tr>
+      <tr><td>RAR (v5)</td><td>RAR 压缩文件</td><td><code>52 61 72 21 1A 07 01 00</code></td><td>无</td></tr>
+      <tr><td>7Z</td><td>7-Zip 压缩文件</td><td><code>37 7A BC AF 27 1C</code></td><td>无</td></tr>
+      <tr><td>GZ</td><td>Gzip 压缩文件</td><td><code>1F 8B</code></td><td>无</td></tr>
+      <tr><td>BZ2</td><td>bzip2 压缩文件</td><td><code>42 5A 68</code></td><td>无</td></tr>
+      <tr><td>XZ</td><td>XZ 压缩文件</td><td><code>FD 37 7A 58 5A 00</code></td><td>无</td></tr>
+      <tr><td>TAR</td><td>Unix tar 打包文件</td><td>无固定头 (部分实现检测 "ustar")</td><td>无</td></tr>
+      <tr><td>Z</td><td>Unix compress 文件</td><td><code>1F 9D</code> / <code>1F A0</code></td><td>无</td></tr>
+      <tr><td>LZH / LHA</td><td>LZH/LHA 压缩包</td><td><code>2D 6C 68</code></td><td>无</td></tr>
+      <tr><td>ARJ</td><td>ARJ 压缩包</td><td><code>60 EA</code></td><td>无</td></tr>
+      <tr><td>PKG (macOS)</td><td>macOS 安装包 (XAR 容器)</td><td><code>78 61 72 21</code> ("xar!")</td><td>无</td></tr>
+      <tr><td>DEB</td><td>Debian 软件包</td><td><code>21 3C 61 72 63 68 3E</code> ("!<arch>")</td><td>无</td></tr>
+      <tr><td>RPM</td><td>RedHat Package Manager</td><td><code>ED AB EE DB</code></td><td>无</td></tr>
+    </tbody>
+  </table>
+</details>
+
+<!-- ================= 音频 ================= -->
+<details>
+  <summary>🎧 音频</summary>
+  <table>
+    <thead><tr><th>扩展名</th><th>描述</th><th>文件头 (Hex)</th><th>文件尾 (Hex)</th></tr></thead>
+    <tbody>
+      <tr><td>WAV</td><td>WAV 音频 (RIFF)</td><td><code>52 49 46 46 .... 57 41 56 45</code> ("RIFF....WAVE")</td><td>无</td></tr>
+      <tr><td>AIFF / AIFC</td><td>AIFF 音频 (IFF 容器)</td><td><code>46 4F 52 4D .... 41 49 46 46</code> ("FORM....AIFF")</td><td>无</td></tr>
+      <tr><td>MP3</td><td>MPEG 音频</td><td><code>FF FB</code> / <code>FF F3</code> / <code>FF F2</code> (帧头) 或 <code>49 44 33</code> ("ID3")</td><td>无</td></tr>
+      <tr><td>AAC</td><td>AAC 音频 (ADTS)</td><td><code>FF F1</code> / <code>FF F9</code></td><td>无</td></tr>
+      <tr><td>FLAC</td><td>FLAC 无损音频</td><td><code>66 4C 61 43</code> ("fLaC")</td><td>无</td></tr>
+      <tr><td>OGG / OGA / OGV</td><td>Ogg 容器 (Vorbis / Opus / 视频)</td><td><code>4F 67 67 53</code> ("OggS")</td><td>无</td></tr>
+      <tr><td>OPUS</td><td>Ogg Opus 音频</td><td><code>4F 67 67 53</code> ("OggS") 内含 "OpusHead"</td><td>无</td></tr>
+      <tr><td>MID / MIDI / KAR</td><td>MIDI 音乐/卡拉 OK</td><td><code>4D 54 68 64</code> ("MThd")</td><td>无</td></tr>
+      <tr><td>MOD</td><td>Amiga / Tracker 模块音乐</td><td>ASCII "M.K." / "FLT4" / "FLT8"</td><td>无</td></tr>
+      <tr><td>XM</td><td>FastTracker 2 模块音乐</td><td>ASCII "Extended Module: "</td><td>无</td></tr>
+      <tr><td>S3M</td><td>ScreamTracker 3 模块音乐</td><td>偏移 25 字节 ASCII "SCRM"</td><td>无</td></tr>
+      <tr><td>IT</td><td>Impulse Tracker 模块音乐</td><td>ASCII "IMPM"</td><td>无</td></tr>
+      <tr><td>NSF</td><td>NES 音乐文件</td><td><code>4E 45 53 4D</code> ("NESM")</td><td>无</td></tr>
+      <tr><td>GYM</td><td>Sega Genesis 音乐</td><td><code>47 59 4D</code> ("GYM")</td><td>无</td></tr>
+      <tr><td>SPC</td><td>SNES 音乐文件</td><td><code>53 50 43 46</code> ("SPC")</td><td>无</td></tr>
+    </tbody>
+  </table>
+</details>
+
+<!-- ================= 视频 ================= -->
+<details>
+  <summary>🎬 视频</summary>
+  <table>
+    <thead><tr><th>扩展名</th><th>描述</th><th>文件头 (Hex)</th><th>文件尾 (Hex)</th></tr></thead>
+    <tbody>
+      <tr><td>MP4 / M4V</td><td>MPEG-4 视频</td><td><code>00 00 00 ?? 66 74 79 70</code> ("ftyp")</td><td>无</td></tr>
+      <tr><td>MOV</td><td>QuickTime 视频</td><td><code>00 00 00 ?? 66 74 79 70</code> ("ftypqt")</td><td>无</td></tr>
+      <tr><td>MKV / WEBM</td><td>Matroska / WebM 视频</td><td><code>1A 45 DF A3</code></td><td>无</td></tr>
+      <tr><td>AVI</td><td>AVI 视频 (RIFF)</td><td><code>52 49 46 46 .... 41 56 49 20</code> ("RIFF....AVI ")</td><td>无</td></tr>
+      <tr><td>FLV</td><td>Flash Video</td><td><code>46 4C 56</code> ("FLV")</td><td>无</td></tr>
+      <tr><td>3GP / 3G2</td><td>3GPP/3GPP2 视频</td><td><code>00 00 00 ?? 66 74 79 70</code> ("ftyp3g")</td><td>无</td></tr>
+      <tr><td>RM / RMVB</td><td>RealMedia 视频</td><td><code>2E 52 4D 46</code> (" .RMF")</td><td>无</td></tr>
+      <tr><td>SWF</td><td>Shockwave Flash</td><td><code>43 57 53</code> ("CWS") / <code>46 57 53</code> ("FWS")</td><td>无</td></tr>
+      <tr><td>ASF / WMV / WMA</td><td>Windows Media 容器</td><td><code>30 26 B2 75 8E 66 CF 11 A6 D9 00 AA 00 62 CE 6C</code></td><td>无</td></tr>
+      <tr><td>MPG / MPEG</td><td>MPEG 视频</td><td><code>00 00 01 BA</code> / <code>00 00 01 B3</code></td><td>无</td></tr>
+      <tr><td>TS / M2TS</td><td>MPEG-TS 流媒体</td><td><code>47</code> (每个 188 字节包起始)</td><td>无</td></tr>
+    </tbody>
+  </table>
+</details>
+
+<!-- ================= 数据库 / 虚拟磁盘 / 字体 / 加密容器 ================= -->
+<details>
+  <summary>🗃️ 数据库 / 虚拟磁盘 / 字体 / 加密容器</summary>
+  <table>
+    <thead><tr><th>扩展名</th><th>描述</th><th>文件头 (Hex)</th><th>文件尾 (Hex)</th></tr></thead>
+    <tbody>
+      <tr><td>MDB</td><td>Microsoft Access 数据库 (Jet)</td><td><code>53 74 61 6E 64 61 72 64 20 4A 65 74 20 44 42</code></td><td>无</td></tr>
+      <tr><td>ACCDB</td><td>Microsoft Access 2007+</td><td><code>50 4B 03 04</code></td><td>无</td></tr>
+      <tr><td>DBF</td><td>dBASE 数据库文件</td><td><code>03</code> / <code>83</code> / <code>8B</code> / <code>F5</code></td><td>无</td></tr>
+      <tr><td>SQLITE / DB</td><td>SQLite 数据库文件</td><td><code>53 51 4C 69 74 65 20 66 6F 72 6D 61 74 20 33 00</code> ("SQLite 3")</td><td>无</td></tr>
+      <tr><td>DTA</td><td>Stata 数据文件</td><td><code>7B 21 53 54 41</code></td><td>无</td></tr>
+      <tr><td>SAV</td><td>SPSS 保存文件</td><td>$FL2 / $FL3 / $FL4</td><td>无</td></tr>
+      <tr><td>POR</td><td>SPSS 便携文件</td><td>ASCII 文本型，以 SPSSPORT 开头</td><td>无</td></tr>
+      <tr><td>VMDK</td><td>VMware 虚拟磁盘</td><td><code>4B 44 4D 56</code> ("KDMV")</td><td>无</td></tr>
+      <tr><td>VDI</td><td>VirtualBox 虚拟磁盘</td><td>ASCII: <<< Oracle VM VirtualBox Disk Image >>></td><td>无</td></tr>
+      <tr><td>VHD</td><td>Microsoft 虚拟硬盘</td><td><code>63 6F 6E 6E 65 63 74 69 78</code> ("connectix")</td><td>无</td></tr>
+      <tr><td>VHDX</td><td>Microsoft 虚拟硬盘 (Win8+)</td><td><code>76 68 64 78 66 69 6C 65</code> ("vhdxfile")</td><td>无</td></tr>
+      <tr><td>QCOW2</td><td>QEMU 虚拟机磁盘</td><td><code>51 46 49 FB</code></td><td>无</td></tr>
+      <tr><td>ISO</td><td>光盘镜像</td><td><code>43 44 30 30 31</code> ("CD001")</td><td>无</td></tr>
+      <tr><td>TTF</td><td>TrueType 字体</td><td><code>00 01 00 00</code> 或 <code>4F 54 54 4F</code> ("OTTO")</td><td>无</td></tr>
+      <tr><td>OTF</td><td>OpenType 字体</td><td><code>4F 54 54 4F</code> ("OTTO")</td><td>无</td></tr>
+      <tr><td>WOFF</td><td>Web Open Font Format</td><td><code>77 4F 46 46</code> ("wOFF")</td><td>无</td></tr>
+      <tr><td>WOFF2</td><td>Web Open Font Format 2</td><td><code>77 4F 46 32</code> ("wOF2")</td><td>无</td></tr>
+      <tr><td>TC / TCR</td><td>TrueCrypt / VeraCrypt 加密容器</td><td><code>84 43 56 42 42 4F 4F 4D</code> ("TC Volume Header")</td><td>无</td></tr>
+      <tr><td>LUKS</td><td>Linux 加密磁盘</td><td><code>4C 55 4B 53 BA BE</code></td><td>无</td></tr>
+    </tbody>
+  </table>
+</details>
+
+<!-- ================= 文档 / 邮件 / 其它 ================= -->
+<details>
+  <summary>📄 文档 / 邮件 / 其它</summary>
+  <table>
+    <thead><tr><th>扩展名</th><th>描述</th><th>文件头 (Hex)</th><th>文件尾 (Hex)</th></tr></thead>
+    <tbody>
+      <tr><td>TXT / LOG / CSS / JS / PY / JAVA</td><td>纯文本类</td><td>无固定头，可能有 UTF-8 BOM (<code>EF BB BF</code>)</td><td>无</td></tr>
+      <tr><td>HTML / HTM</td><td>网页文件</td><td>无固定头，常以 <code>&lt;</code> 或 <code>&lt;!DOCTYPE</code> 开头</td><td>无</td></tr>
+      <tr><td>WPD</td><td>WordPerfect 文档</td><td><code>FF 57 50 43</code></td><td>无</td></tr>
+      <tr><td>WPT</td><td>WordPerfect 模板</td><td><code>FF 57 50 54</code></td><td>无</td></tr>
+      <tr><td>LWP</td><td>Lotus Word Pro 文档</td><td><code>00 01 00 00</code></td><td>无</td></tr>
+      <tr><td>WK1 / WK3 / WK4</td><td>Lotus 1-2-3 工作表</td><td><code>00 00 01 00</code> / <code>00 00 02 00</code> / <code>00 00 03 00</code></td><td>无</td></tr>
+      <tr><td>DIF</td><td>Lotus 1-2-3 数据交换文件</td><td>ASCII 文本型，以 TABLE 开头</td><td>无</td></tr>
+      <tr><td>MAT</td><td>MATLAB 数据文件</td><td><code>4D 41 54 4C 41 42</code> ("MATLAB")</td><td>无</td></tr>
+      <tr><td>SLK</td><td>Symbolic Link 文件 (Excel)</td><td><code>49 44 3B 50</code></td><td>无</td></tr>
+      <tr><td>HLP</td><td>Windows Help 文件</td><td><code>3F 5F 03 00</code></td><td>无</td></tr>
+      <tr><td>CHM</td><td>Windows HTML Help</td><td><code>49 54 53 46 03 00 00 00 60 00 00 00</code></td><td>无</td></tr>
+      <tr><td>PST</td><td>Outlook 邮箱数据文件</td><td><code>21 42 44 4E</code> ("!BDN")</td><td>无</td></tr>
+      <tr><td>EML / MBOX</td><td>邮件存档</td><td>ASCII 文本型，以 "From " 开头</td><td>无</td></tr>
+      <tr><td>MSG / OST</td><td>Outlook 消息/离线邮箱</td><td><code>D0 CF 11 E0 A1 B1 1A E1</code></td><td>无</td></tr>
+      <tr><td>PCAP (LE)</td><td>抓包文件 (小端)</td><td><code>D4 C3 B2 A1</code></td><td>无</td></tr>
+      <tr><td>PCAP (BE)</td><td>抓包文件 (大端)</td><td><code>A1 B2 C3 D4</code></td><td>无</td></tr>
+      <tr><td>PCAPNG</td><td>新抓包文件格式</td><td><code>0A 0D 0D 0A</code></td><td>无</td></tr>
+      <tr><td>DMS</td><td>Amiga 压缩磁盘映像</td><td><code>44 4D 53 20</code> ("DMS ")</td><td>无</td></tr>
+      <tr><td>ADL</td><td>Amiga Disk Library 文件</td><td><code>41 44 4C</code></td><td>无</td></tr>
+      <tr><td>SID</td><td>Commodore 64 音乐文件</td><td><code>53 49 44 00</code> ("SID")</td><td>无</td></tr>
+      <tr><td>TZX</td><td>ZX Spectrum 磁带文件</td><td><code>5A 58 54 61 70</code> ("ZXTap")</td><td>无</td></tr>
+      <tr><td>PAK</td><td>游戏数据包</td><td><code>50 41 4B</code></td><td>无</td></tr>
+      <tr><td>WAD</td><td>Doom / Quake 游戏资源包</td><td><code>57 41 44 44</code> / <code>50 41 43 4B</code></td><td>无</td></tr>
+      <tr><td>BSP</td><td>Quake / Source 游戏地图</td><td><code>1A 02 00 00</code> (Quake)</td><td>无</td></tr>
+      <tr><td>PK3</td><td>Quake III 游戏资源包</td><td><code>50 4B 03 04</code> (ZIP 容器)</td><td>无</td></tr>
+    </tbody>
+  </table>
+</details>
+
+</body>
+</html>
+	</div>
+
+	<div class="page-template-comments">
+		
+	</div>
+</div>
+
+<div class="paginator">
+	
+</div>
+  
+			</div>
+
+			
+		</div>
+
+		<div class="main-content-footer">
+			<footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2025</span>
+              -
+            
+            2025&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        共撰写了 29 篇文章
+                    </span>
+                    
+                        <span>
+                            共 7.1k 字
+                        </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">访问人数</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">总访问量</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
+            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.8.5</a></span>
+        </div>
+        
+        
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+		</div>
+	</div>
+
+	
+
+	<div class="right-side-tools-container">
+		<div class="side-tools-container">
+	<ul class="hidden-tools-list">
+		<li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-plus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-minus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+			<i class="fa-regular fa-moon"></i>
+		</li>
+
+		<!-- rss -->
+		
+
+		
+
+		<li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+			<i class="fa-regular fa-arrow-down"></i>
+		</li>
+	</ul>
+
+	<ul class="visible-tools-list">
+		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+			<i class="fa-regular fa-cog fa-spin"></i>
+		</li>
+		
+		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+			<i class="arrow-up fas fa-arrow-up"></i>
+			<span class="percent"></span>
+		</li>
+		
+		
+	</ul>
+</div>
+	</div>
+
+	<div class="image-viewer-container">
+	<img src="">
+</div>
+
+	
+	<div class="search-pop-overlay">
+	<div class="popup search-popup">
+		<div class="search-header">
+			<span class="search-input-field-pre">
+				<i class="fa-solid fa-keyboard"></i>
+			</span>
+			<div class="search-input-container">
+				<input autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="站内搜索您需要的内容..." spellcheck="false" type="search" class="search-input">
+			</div>
+			<span class="popup-btn-close">
+				<i class="fa-solid fa-times"></i>
+			</span>
+		</div>
+		<div id="search-result">
+			<div id="no-result">
+				<i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+			</div>
+		</div>
+	</div>
+</div>
+	
+
+</main>
+
+
+<script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/libs/Swup.min.js" ></script><script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/libs/SwupSlideTheme.min.js" ></script><script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/libs/SwupScriptsPlugin.min.js" ></script><script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/libs/SwupProgressPlugin.min.js" ></script><script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/libs/SwupScrollPlugin.min.js" ></script><script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/libs/SwupPreloadPlugin.min.js" ></script>
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+	<script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/tools/imageViewer.js" ></script><script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/utils.js" ></script><script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/main.js" ></script><script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/layouts/navbarShrink.js" ></script><script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/tools/scrollTopBottom.js" ></script><script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/tools/lightDarkSwitch.js" ></script><script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/layouts/categoryList.js" ></script>
+
+
+    <script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/tools/localSearch.js" ></script>
+
+
+
+    <script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/tools/codeBlock.js" ></script>
+
+
+
+    <script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/layouts/lazyload.js" ></script>
+
+
+
+    <script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/tools/runtime.js" ></script>
+    <script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/libs/odometer.min.js" ></script>
+    <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/assets/odometer-theme-minimal.css">
+
+
+
+  <script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/libs/Typed.min.js" ></script>
+  <script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/plugins/typed.js" ></script>
+
+
+
+
+
+    <script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/libs/minimasonry.min.js" ></script>
+    <script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/plugins/masonry.js" ></script>
+
+
+
+    <script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/libs/anime.min.js" ></script>
+
+
+
+
+    <script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/tools/tocToggle.js" data-swup-reload-script></script><script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/layouts/toc.js" data-swup-reload-script></script><script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/plugins/tabs.js" data-swup-reload-script></script>
+
+
+<script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/libs/moment-with-locales.min.js" data-swup-reload-script></script>
+<script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/layouts/essays.js" data-swup-reload-script></script>
+
+
+
+
+    <script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/layouts/bookmarkNav.js" ></script>
+
+	
+	<div id="aplayer"></div>
+<script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/libs/APlayer.min.js" ></script>
+<script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/plugins/aplayer.js" ></script>
+
+	
+</body>
+
+</html>
