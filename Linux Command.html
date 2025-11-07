@@ -1,0 +1,1534 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="高中,ctf,BugKu,CTF,BUGKU">
+    
+    <meta name="author" content="Mel0ny">
+    
+    <!-- Completely eliminate flash of wrong theme -->
+    <script>
+        (function() {
+            const THEME_KEY = "REDEFINE-THEME-STATUS";
+            const DARK = "dark", LIGHT = "light";
+            
+            // Get preferred theme
+            function getTheme() {
+                try {
+                    const saved = localStorage.getItem(THEME_KEY);
+                    if (saved) {
+                        const { isDark } = JSON.parse(saved);
+                        return isDark ? DARK : LIGHT;
+                    }
+                } catch (e) {}
+                
+                return matchMedia("(prefers-color-scheme: dark)").matches ? DARK : LIGHT;
+            }
+            
+            // Apply theme to document
+            function applyTheme(theme) {
+                const isDark = theme === DARK;
+                const root = document.documentElement;
+                
+                // Set data attribute for CSS variables
+                root.setAttribute("data-theme", theme);
+                
+                // Set classes for compatibility
+                root.classList.add(theme);
+                root.classList.remove(isDark ? LIGHT : DARK);
+                root.style.colorScheme = theme;
+            }
+            
+            // Initial application
+            const theme = getTheme();
+            applyTheme(theme);
+            
+            // Listen for system preference changes
+            matchMedia("(prefers-color-scheme: dark)").addEventListener("change", ({ matches }) => {
+                // Only update if using system preference (no localStorage entry)
+                if (!localStorage.getItem(THEME_KEY)) {
+                    applyTheme(matches ? DARK : LIGHT);
+                }
+            });
+            
+            // Set body classes once DOM is ready
+            if (document.readyState !== "loading") {
+                document.body.classList.add(theme + "-mode");
+            } else {
+                document.addEventListener("DOMContentLoaded", () => {
+                    document.body.classList.add(theme + "-mode");
+                    document.body.classList.remove((theme === DARK ? LIGHT : DARK) + "-mode");
+                });
+            }
+        })();
+    </script>
+    
+    <!-- Critical CSS to prevent flash -->
+    <style>
+        :root[data-theme="dark"] {
+            --background-color: #202124;
+            --background-color-transparent: rgba(32, 33, 36, 0.6);
+            --second-background-color: #2d2e32;
+            --third-background-color: #34353a;
+            --third-background-color-transparent: rgba(32, 33, 36, 0.6);
+            --primary-color: #0066CC;
+            --first-text-color: #ffffff;
+            --second-text-color: #eeeeee;
+            --third-text-color: #bebec6;
+            --fourth-text-color: #999999;
+            --default-text-color: #bebec6;
+            --invert-text-color: #373D3F;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --selection-color: #0066CC;
+            --shadow-color-1: rgba(255, 255, 255, 0.08);
+            --shadow-color-2: rgba(255, 255, 255, 0.05);
+        }
+        
+        :root[data-theme="light"] {
+            --background-color: #fff;
+            --background-color-transparent: rgba(255, 255, 255, 0.6);
+            --second-background-color: #f8f8f8;
+            --third-background-color: #f2f2f2;
+            --third-background-color-transparent: rgba(241, 241, 241, 0.6);
+            --primary-color: #0066CC;
+            --first-text-color: #16171a;
+            --second-text-color: #2f3037;
+            --third-text-color: #5e5e5e;
+            --fourth-text-color: #eeeeee;
+            --default-text-color: #373D3F;
+            --invert-text-color: #bebec6;
+            --border-color: rgba(0, 0, 0, 0.08);
+            --selection-color: #0066CC;
+            --shadow-color-1: rgba(0, 0, 0, 0.08);
+            --shadow-color-2: rgba(0, 0, 0, 0.05);
+        }
+        
+        body {
+            background-color: var(--background-color);
+            color: var(--default-text-color);
+        }
+        
+        /* Apply body classes as soon as DOM is ready */
+        :root[data-theme="dark"] body {
+            background-color: var(--background-color);
+            color: var(--default-text-color);
+        }
+    </style>
+    
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+        
+        
+        
+            <link rel="preconnect" href="https://registry.npmmirror.com" crossorigin>
+        
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="http://mel0nyrame.github.io/linux command.html"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+    
+    
+        
+        <meta name="description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mel0ny&#39;s records">
+<meta property="og:url" content="http://mel0nyrame.github.io/Linux%20Command.html">
+<meta property="og:site_name" content="Mel0ny&#39;s records">
+<meta property="og:description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://mel0nyrame.github.io/images/redefine-og.webp">
+<meta property="article:published_time" content="2025-08-31T17:34:47.033Z">
+<meta property="article:modified_time" content="2025-08-31T17:30:19.731Z">
+<meta property="article:author" content="Mel0ny">
+<meta property="article:tag" content="高中">
+<meta property="article:tag" content="ctf">
+<meta property="article:tag" content="BugKu">
+<meta property="article:tag" content="CTF">
+<meta property="article:tag" content="BUGKU">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://mel0nyrame.github.io/images/redefine-og.webp">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/img-mine/mel0ny-web-logo.png" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img-mine/mel0ny-web-logo.png">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/img-mine/mel0ny-web-logo.png">
+    <!--- Page Info-->
+    
+    <title>
+        
+            Mel0ny&#39;s records - WTF BRO.
+        
+    </title>
+
+    <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/fonts/Chillax/chillax.css">
+
+    <!--- Inject Part-->
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/css/build/tailwind.css">
+    
+
+    <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/fonts/GeistMono/geist-mono.css">
+    <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/fonts/Geist/geist.css">
+    <!--- Font Part-->
+    
+    
+    
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    
+    
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"mel0nyrame.github.io","root":"/","language":"zh-CN","path":"search.json"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"delete_mask":false,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":true,"list":["小登","中登","老登"]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"atom-one-light","dark":"atom-one-dark"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"pangu_js":false,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":true,"family":"Noto Sans SC","url":"https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap"},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":true},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":false,"custom_message":null},"side_tools":{"gear_rotation":true,"auto_expand":false},"open_graph":{"enable":true,"image":"/images/redefine-og.webp","description":"Hexo Theme Redefine, Redefine Your Hexo Journey."},"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"Mel0ny's records","subtitle":{"text":[],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":"trie","style":"default","links":{"github":"https://github.com/mel0nyrame","email":"2189829539@qq.com"},"qrs":{"weixin":"/img-mine/wechat.jpg","qq":"/img-mine/qq.jpg"}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":true,"type":"fixed","audios":[{"name":"どうして (为什么)(feat. 野田愛実)","artist":"高瀬統也、野田愛実","url":"\\music\\高瀬統也、野田愛実 - どうして (为什么)(feat. 野田愛実).flac","cover":"https://i.kfs.io/album/global/153001362,1v1/fit/500x500.jpg","lrc":"\\music\\どうして (为什么)(feat. 野田愛実).lrc"}]},"mermaid":{"enable":false,"version":"11.4.1"}},"version":"2.8.5","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Tag":{"path":"/tags","icon":"fa-regular fa-tags"},"Categories":{"path":"/categories","icon":"fa-regular fa-folder"},"Friends":{"path":"/links","icon":"fa-solid fa-user-group"},"About":{"icon":"fa-regular fa-user","submenus":{"Me":"/about","Github":"https://github.com/mel0nyrame"}}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":"Debug the World:)","show_on_mobile":true,"links":{"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Categories":{"path":"/categories","icon":"fa-regular fa-folder"},"Tags":{"path":"/tags","icon":"fa-solid fa-tag","cion":"fa-solid fa-tag"},"Photos":{"path":"/masonry","icon":"fa-solid fa-image"},"Bookmarks":{"path":"/bookmarks","icon":"fa-solid fa-bookmark"}}},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2025/8/24 23:35:35"};
+    window.lang_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+    window.data = {"masonry":true};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/fontawesome/fontawesome.min.css">
+    <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/fontawesome/brands.min.css">
+    <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/fontawesome/solid.min.css">
+    <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/fontawesome/regular.min.css">
+    
+        <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/fontawesome/thin.min.css">
+    
+    
+        <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/fontawesome/light.min.css">
+    
+    
+        <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/fontawesome/duotone.min.css">
+    
+    
+        <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/fontawesome/sharp-solid.min.css">
+    
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Mel0ny's records" type="application/atom+xml">
+</head>
+
+
+
+<body>
+	<div class="progress-bar-container">
+	
+
+	
+	<span class="pjax-progress-bar"></span>
+	<!--        <span class="swup-progress-icon">-->
+	<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+	<!--        </span>-->
+	
+</div>
+
+<main class="page-container" id="swup">
+
+	
+
+	<div class="main-content-container flex flex-col justify-between min-h-dvh">
+		<div class="main-content-header">
+			<header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+                <a class="logo-image h-8 w-8 sm:w-10 sm:h-10 mr-3" href="/">
+                    <img src="/img-mine/mel0ny-web-logo.png" class="w-full h-full rounded-xs">
+                </a>
+            
+            <a class="logo-title" href="/">
+                
+                Mel0ny&#39;s records
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    首页
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    归档
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/tags"
+                                        >
+                                    <i class="fa-regular fa-tags fa-fw"></i>
+                                    标签
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/categories"
+                                        >
+                                    <i class="fa-regular fa-folder fa-fw"></i>
+                                    分类
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/links"
+                                        >
+                                    <i class="fa-solid fa-user-group fa-fw"></i>
+                                    友链
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    关于
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a href="/about">
+                                                    ME
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://github.com/mel0nyrame">
+                                                    GITHUB
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                首页
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                归档
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/tags"
+                        >
+                            <span>
+                                标签
+                            </span>
+                            
+                                <i class="fa-regular fa-tags fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/categories"
+                        >
+                            <span>
+                                分类
+                            </span>
+                            
+                                <i class="fa-regular fa-folder fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/links"
+                        >
+                            <span>
+                                友链
+                            </span>
+                            
+                                <i class="fa-solid fa-user-group fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-About"
+                        >
+                            <span>
+                                关于
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-About">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/about">ME</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://github.com/mel0nyrame">GITHUB</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+
+            
+            
+                
+                    
+                    
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/tags"
+                        >
+                            <span>Tags</span>
+                            <i class="fa-solid fa-tag fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/masonry"
+                        >
+                            <span>Photos</span>
+                            <i class="fa-solid fa-image fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/bookmarks"
+                        >
+                            <span>Bookmarks</span>
+                            <i class="fa-solid fa-bookmark fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">11</div>
+        <div class="label text-third-text-color text-sm">标签</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">6</div>
+        <div class="label text-third-text-color text-sm">分类</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">72</div>
+        <div class="label text-third-text-color text-sm">文章</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+		</div>
+
+		<div class="main-content-body transition-fade-up">
+			
+
+			<div class="main-content">
+				<div class="page-template-container">
+	
+
+	
+
+	<div class="page-template-content markdown-body">
+		
+		<h1></h1>
+		
+
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Linux 常用命令速查表 (新手友好版)</title>
+<style>
+  :root {
+    --bg-color: #ffffff;
+    --text-color: #333333;
+    --text-secondary-color: #555555;
+    --border-color: #e0e0e0;
+    --card-bg-color: #fafafa;
+    --header-bg: #f1f3f4;
+    --code-bg: #e8eaf6;
+    --code-text-color: #1a237e;
+    --tip-bg-color: #e3f2fd;
+    --tip-border-color: #90caf9;
+    --accent-color: #4285f4;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg-color: #121212;
+      --text-color: #e0e0e0;
+      --text-secondary-color: #b0b0b0;
+      --border-color: #3a3a3a;
+      --card-bg-color: #1e1e1e;
+      --header-bg: #2c2c2c;
+      --code-bg: #282a36;
+      --code-text-color: #f8f8f2;
+      --tip-bg-color: #2c3e50;
+      --tip-border-color: #5dade2;
+      --accent-color: #669df6;
+    }
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+    margin: 0;
+    padding: 40px 20px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    overflow-x: hidden;
+    line-height: 1.7;
+  }
+  
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-align: center;
+    color: var(--accent-color);
+    animation: fadeInDown 0.8s ease-out;
+  }
+
+  /* 卡片式折叠区域 */
+  details {
+    background-color: var(--card-bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+
+  details:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    border-color: var(--accent-color);
+  }
+
+  summary {
+    font-weight: 600;
+    font-size: 1.5rem;
+    cursor: pointer;
+    outline: none;
+    padding: 20px 25px;
+  }
+
+  .details-content {
+    padding: 0 25px 20px 25px;
+    border-top: 1px solid var(--border-color);
+  }
+
+  /* 单个命令的样式 */
+  .command-entry {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px dashed var(--border-color);
+  }
+  .command-entry:first-child {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+  }
+
+  .command-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .command-header h3 {
+    margin: 0;
+    font-size: 1.3rem;
+    color: var(--text-color);
+  }
+  
+  .command-header code {
+    font-size: 1.2rem;
+  }
+
+  .command-entry p {
+    color: var(--text-secondary-color);
+    margin-bottom: 15px;
+  }
+  
+  .command-syntax {
+    background-color: var(--header-bg);
+    padding: 10px 15px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    border-left: 4px solid var(--accent-color);
+  }
+
+  /* 表格样式 */
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px 0;
+  }
+  th, td {
+    padding: 10px 12px;
+    text-align: left;
+    font-size: 14px;
+    border: 1px solid var(--border-color);
+  }
+  th {
+    background-color: var(--header-bg);
+    font-weight: 600;
+  }
+
+  /* 代码块样式 */
+  code {
+    background-color: var(--code-bg);
+    color: var(--code-text-color);
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 0.9em;
+  }
+  
+  pre {
+      background-color: var(--code-bg);
+      color: var(--code-text-color);
+      padding: 15px;
+      border-radius: 6px;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+  }
+  
+  pre code {
+      padding: 0;
+      background: none;
+      font-size: 1em;
+  }
+  
+  /* 小白提示样式 */
+  .tip {
+    background-color: var(--tip-bg-color);
+    border: 1px solid var(--tip-border-color);
+    padding: 15px;
+    border-radius: 6px;
+    margin-top: 15px;
+    font-size: 0.95em;
+  }
+  .tip strong {
+      display: inline-block;
+      margin-right: 8px;
+  }
+
+  /* 动画效果 */
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+</style>
+</head>
+<body>
+
+<div class="container">
+<h1>Linux 常用命令速查表</h1>
+
+<details open>
+  <summary>📁 文件与目录操作</summary>
+  <div class="details-content">
+  
+    <div class="command-entry">
+      <div class="command-header"><h3><code>ls</code> (list)</h3></div>
+      <p>功能：列出指定目录下的文件和子目录。</p>
+      <div class="command-syntax"><code>ls [选项] [路径...]</code></div>
+      <h4>常用选项</h4>
+      <table>
+        <tr><th>选项</th><th>说明</th></tr>
+        <tr><td><code>-l</code></td><td>使用长格式（详细信息）显示。</td></tr>
+        <tr><td><code>-a</code></td><td>显示所有文件，包括以 <code>.</code> 开头的隐藏文件。</td></tr>
+        <tr><td><code>-h</code></td><td>配合 <code>-l</code> 使用，以人类可读的格式显示文件大小 (如 K, M, G)。</td></tr>
+        <tr><td><code>-t</code></td><td>按修改时间排序，最新的在前。</td></tr>
+        <tr><td><code>-R</code></td><td>递归地列出所有子目录的内容。</td></tr>
+      </table>
+      <h4>实用示例</h4>
+      <pre><code># 以详细、易读的格式显示当前目录的所有文件
+ls -lah
+
+# 列出 /etc 目录下所有内容，并按修改时间倒序排列
+ls -lt /etc</code></pre>
+      <div class="tip"><strong>💡 小白提示：</strong>在输出中，<code>.</code> 代表当前目录，<code>..</code> 代表上一级目录。隐藏文件通常是系统的配置文件，没事不要乱动哦！</div>
+    </div>
+
+    <div class="command-entry">
+      <div class="command-header"><h3><code>cd</code> (change directory)</h3></div>
+      <p>功能：切换当前工作目录。</p>
+      <div class="command-syntax"><code>cd [目录路径]</code></div>
+      <h4>常用目标</h4>
+      <table>
+        <tr><th>目标路径</th><th>说明</th></tr>
+        <tr><td><code>..</code></td><td>切换到上一级目录。</td></tr>
+        <tr><td><code>~</code> 或 直接 <code>cd</code></td><td>切换到当前用户的家目录。</td></tr>
+        <tr><td><code>-</code></td><td>切换到上一次所在的目录。</td></tr>
+      </table>
+      <h4>实用示例</h4>
+      <pre><code># 进入 /var/log 目录
+cd /var/log
+
+# 返回家目录
+cd ~
+
+# 从任何地方返回到刚才所在的目录
+cd -</code></pre>
+      <div class="tip"><strong>💡 小白提示：</strong>在输入路径时，可以按 `Tab` 键，系统会自动补全路径或给出提示，非常方便！</div>
+    </div>
+    
+    <div class="command-entry">
+      <div class="command-header"><h3><code>cp</code> (copy)</h3></div>
+      <p>功能：复制文件或目录。</p>
+      <div class="command-syntax"><code>cp [选项] 源文件 目标文件</code></div>
+      <h4>常用选项</h4>
+      <table>
+        <tr><th>选项</th><th>说明</th></tr>
+        <tr><td><code>-r</code> 或 <code>-R</code></td><td>递归复制，用于复制整个目录。</td></tr>
+        <tr><td><code>-p</code></td><td>保留源文件的属性（如修改时间、权限）。</td></tr>
+        <tr><td><code>-v</code></td><td>显示详细的复制过程。</td></tr>
+      </table>
+      <h4>实用示例</h4>
+      <pre><code># 将 a.txt 复制为 b.txt
+cp a.txt b.txt
+
+# 将整个 project 目录复制到 /backup 目录下
+cp -r project /backup</code></pre>
+      <div class="tip"><strong>💡 小白提示：</strong>如果目标文件已存在，<code>cp</code> 命令会默认覆盖它。操作前请确认，或者使用 <code>cp -i</code> 命令，这样在覆盖前会进行提示。</div>
+    </div>
+
+    <div class="command-entry">
+      <div class="command-header"><h3><code>mv</code> (move)</h3></div>
+      <p>功能：移动文件/目录，或者重命名文件/目录。</p>
+      <div class="command-syntax"><code>mv 源文件/目录 目标文件/目录</code></div>
+      <p>是的，你没看错，移动和重命名是同一个命令！</p>
+      <h4>实用示例</h4>
+      <pre><code># 将 a.txt 重命名为 b.txt (在同一目录下)
+mv a.txt b.txt
+
+# 将 a.txt 移动到 /tmp 目录中
+mv a.txt /tmp
+
+# 将 a.txt 移动到 /tmp 目录并重命名为 c.txt
+mv a.txt /tmp/c.txt</code></pre>
+      <div class="tip"><strong>💡 小白提示：</strong><code>mv</code> 的逻辑是：如果目标是一个已存在的目录，就执行移动；如果目标是一个不存在的路径，就执行重命名。</div>
+    </div>
+    
+    <div class="command-entry">
+      <div class="command-header"><h3><code>rm</code> (remove)</h3></div>
+      <p>功能：删除文件或目录。</p>
+      <div class="command-syntax"><code>rm [选项] 文件/目录...</code></div>
+      <h4>常用选项</h4>
+      <table>
+        <tr><th>选项</th><th>说明</th></tr>
+        <tr><td><code>-r</code> 或 <code>-R</code></td><td>递归删除，用于删除目录及其内容。</td></tr>
+        <tr><td><code>-f</code></td><td>强制删除，不进行任何提示。</td></tr>
+        <tr><td><code>-i</code></td><td>在删除前进行交互式提示。</td></tr>
+      </table>
+      <h4>实用示例</h4>
+      <pre><code># 删除文件 a.txt
+rm a.txt
+
+# 强制递归删除整个 project 目录及其所有内容
+rm -rf project</code></pre>
+      <div class="tip"><strong>💡 小白提示：</strong><code>rm -rf</code> 是 Linux 中最危险的命令之一！它会无情地删除一切且无法恢复。在使用前，请再三确认路径是否正确，尤其是在 `*` 通配符存在时。</div>
+    </div>
+    
+    <div class="command-entry">
+      <div class="command-header"><h3><code>mkdir</code> (make directory)</h3></div>
+      <p>功能：创建新目录。</p>
+      <div class="command-syntax"><code>mkdir [选项] 目录名...</code></div>
+      <h4>常用选项</h4>
+      <table>
+        <tr><th>选项</th><th>说明</th></tr>
+        <tr><td><code>-p</code></td><td>递归创建目录。如果父目录不存在，会自动创建。</td></tr>
+      </table>
+      <h4>实用示例</h4>
+      <pre><code># 创建一个名为 "images" 的目录
+mkdir images
+
+# 递归创建目录 a/b/c，即使 a 和 b 不存在
+mkdir -p a/b/c</code></pre>
+    </div>
+    
+  </div>
+</details>
+
+<details open>
+    <summary>📝 文本处理</summary>
+    <div class="details-content">
+
+        <div class="command-entry">
+            <div class="command-header"><h3><code>cat</code> (concatenate)</h3></div>
+            <p>功能：查看、创建、合并文件内容。</p>
+            <div class="command-syntax"><code>cat [选项] [文件...]</code></div>
+            <h4>常用选项</h4>
+            <table>
+                <tr><th>选项</th><th>说明</th></tr>
+                <tr><td><code>-n</code></td><td>显示行号。</td></tr>
+            </table>
+            <h4>实用示例</h4>
+            <pre><code># 查看 a.txt 的内容
+cat a.txt
+
+# 查看 a.txt 的内容并显示行号
+cat -n a.txt
+
+# 将 a.txt 和 b.txt 的内容合并，并输出到 c.txt
+cat a.txt b.txt > c.txt</code></pre>
+            <div class="tip"><strong>💡 小白提示：</strong><code>cat</code> 适合查看内容较少的文件。对于大文件，它会一次性刷屏，推荐使用 <code>less</code> 命令。</div>
+        </div>
+
+        <div class="command-entry">
+            <div class="command-header"><h3><code>less</code></h3></div>
+            <p>功能：以分页的方式交互式查看文件内容，功能比 <code>more</code> 更强大。</p>
+            <div class="command-syntax"><code>less [文件]</code></div>
+            <h4>交互操作</h4>
+            <table>
+                <tr><th>按键</th><th>说明</th></tr>
+                <tr><td><code>空格键</code> / <code>f</code></td><td>向下翻一页。</td></tr>
+                <tr><td><code>b</code></td><td>向上翻一页。</td></tr>
+                <tr><td><code>/关键词</code></td><td>向下搜索关键词，按 <code>n</code> 查找下一个。</td></tr>
+                <tr><td><code>?关键词</code></td><td>向上搜索关键词，按 <code>n</code> 查找下一个。</td></tr>
+                <tr><td><code>q</code></td><td>退出查看。</td></tr>
+            </table>
+            <div class="tip"><strong>💡 小白提示：</strong><code>less</code> 是查看大日志文件的神器！它不会一次性把文件全部加载到内存，所以打开大文件速度很快。</div>
+        </div>
+
+        <div class="command-entry">
+            <div class="command-header"><h3><code>head</code> / <code>tail</code></h3></div>
+            <p>功能：分别用于查看文件的开头几行和末尾几行。</p>
+            <div class="command-syntax"><code>head/tail [选项] [文件]</code></div>
+            <h4>常用选项</h4>
+            <table>
+                <tr><th>选项</th><th>说明</th></tr>
+                <tr><td><code>-n 数字</code></td><td>指定显示的行数，例如 <code>-n 20</code> 显示20行。</td></tr>
+                <tr><td><code>-f</code> (仅tail)</td><td>持续刷新显示文件末尾的新增内容，常用于实时监控日志。</td></tr>
+            </table>
+            <h4>实用示例</h4>
+            <pre><code># 查看 a.txt 的前10行 (默认)
+head a.txt
+
+# 查看 b.txt 的后20行
+tail -n 20 b.txt
+
+# 实时监控 a.log 文件的更新
+tail -f a.log</code></pre>
+        </div>
+
+        <div class="command-entry">
+            <div class="command-header"><h3><code>grep</code> (Global Regular Expression Print)</h3></div>
+            <p>功能：在文件中搜索包含指定模式（字符串或正则表达式）的行。</p>
+            <div class="command-syntax"><code>grep [选项] "模式" [文件...]</code></div>
+            <h4>常用选项</h4>
+            <table>
+                <tr><th>选项</th><th>说明</th></tr>
+                <tr><td><code>-i</code></td><td>忽略大小写。</td></tr>
+                <tr><td><code>-v</code></td><td>反向查找，显示不包含模式的行。</td></tr>
+                <tr><td><code>-n</code></td><td>显示匹配行的行号。</td></tr>
+                <tr><td><code>-r</code></td><td>递归搜索目录下的所有文件。</td></tr>
+            </table>
+            <h4>实用示例</h4>
+            <pre><code># 在 a.log 中查找所有包含 "Error" 的行
+grep "Error" a.log
+
+# 在当前目录及子目录中，忽略大小写查找 "hello"
+grep -ir "hello" .</code></pre>
+            <div class="tip"><strong>💡 小白提示：</strong><code>grep</code> 是 Linux 三剑客之一，极其强大。它经常和“管道符 <code>|</code>”一起使用，对其他命令的输出进行过滤。例如：<code>ps aux | grep nginx</code> 可以查看 Nginx 相关的进程。</div>
+        </div>
+
+    </div>
+</details>
+
+<details open>
+  <summary>⚙️ 系统信息与管理</summary>
+  <div class="details-content">
+  
+    <div class="command-entry">
+      <div class="command-header"><h3><code>ps</code> (process status)</h3></div>
+      <p>功能：查看系统当前运行的进程状态。</p>
+      <div class="command-syntax"><code>ps [选项]</code></div>
+      <h4>常用选项组合</h4>
+      <table>
+        <tr><th>选项</th><th>说明</th></tr>
+        <tr><td><code>aux</code></td><td>显示所有用户的全部进程（BSD风格）。这是最常用的组合。</td></tr>
+        <tr><td><code>-ef</code></td><td>以全格式显示所有进程（System V风格）。效果与<code>aux</code>类似。</td></tr>
+      </table>
+      <h4>实用示例</h4>
+      <pre><code># 查看系统中的所有进程
+ps aux
+
+# 结合 grep 查找名为 nginx 的进程
+ps aux | grep nginx</code></pre>
+    </div>
+    
+    <div class="command-entry">
+      <div class="command-header"><h3><code>top</code></h3></div>
+      <p>功能：实时动态地显示系统进程活动和资源占用情况（CPU, 内存等）。</p>
+      <div class="command-syntax"><code>top</code></div>
+       <h4>交互操作</h4>
+       <table>
+           <tr><th>按键</th><th>说明</th></tr>
+           <tr><td><code>P</code></td><td>按 CPU 使用率排序。</td></tr>
+           <tr><td><code>M</code></td><td>按内存使用率排序。</td></tr>
+           <tr><td><code>k</code></td><td>输入进程ID (PID) 来结束一个进程。</td></tr>
+           <tr><td><code>q</code></td><td>退出。</td></tr>
+       </table>
+      <div class="tip"><strong>💡 小白提示：</strong><code>top</code> 就像是 Linux 的“任务管理器”。当你感觉系统变卡时，运行它，看看是哪个进程在“作怪”！</div>
+    </div>
+    
+    <div class="command-entry">
+      <div class="command-header"><h3><code>df</code> (disk free)</h3></div>
+      <p>功能：查看文件系统的磁盘空间占用情况。</p>
+      <div class="command-syntax"><code>df [选项] [挂载点]</code></div>
+      <h4>常用选项</h4>
+      <table>
+        <tr><th>选项</th><th>说明</th></tr>
+        <tr><td><code>-h</code></td><td>以人类可读的格式显示 (G, M, K)。</td></tr>
+        <tr><td><code>-T</code></td><td>显示文件系统类型。</td></tr>
+      </table>
+       <h4>实用示例</h4>
+      <pre><code># 以易读格式查看所有挂载点的磁盘使用情况
+df -h</code></pre>
+    </div>
+    
+    <div class="command-entry">
+      <div class="command-header"><h3><code>du</code> (disk usage)</h3></div>
+      <p>功能：估算文件或目录占用的磁盘空间大小。</p>
+      <div class="command-syntax"><code>du [选项] [文件/目录]</code></div>
+      <h4>常用选项</h4>
+      <table>
+        <tr><th>选项</th><th>说明</th></tr>
+        <tr><td><code>-h</code></td><td>以人类可读的格式显示。</td></tr>
+        <tr><td><code>-s</code></td><td>只显示总计大小，不显示子目录。</td></tr>
+        <tr><td><code>-c</code></td><td>显示总计。</td></tr>
+      </table>
+      <h4>实用示例</h4>
+      <pre><code># 查看当前目录下每个子目录的大小
+du -h
+
+# 只查看 project 目录的总大小
+du -sh project</code></pre>
+    </div>
+    
+    <div class="command-entry">
+      <div class="command-header"><h3><code>free</code></h3></div>
+      <p>功能：显示系统内存的使用情况。</p>
+      <div class="command-syntax"><code>free [选项]</code></div>
+      <h4>常用选项</h4>
+      <table>
+        <tr><th>选项</th><th>说明</th></tr>
+        <tr><td><code>-h</code></td><td>以人类可读的格式显示。</td></tr>
+        <tr><td><code>-s 秒数</code></td><td>持续刷新显示，如 <code>-s 2</code> 每2秒刷新一次。</td></tr>
+      </table>
+      <h4>实用示例</h4>
+      <pre><code># 以易读格式查看当前内存使用
+free -h</code></pre>
+    </div>
+  
+  </div>
+</details>
+
+<details open>
+  <summary>🌐 网络操作</summary>
+  <div class="details-content">
+  
+    <div class="command-entry">
+      <div class="command-header"><h3><code>ping</code></h3></div>
+      <p>功能：测试与目标主机的网络连通性。</p>
+      <div class="command-syntax"><code>ping [选项] 主机名/IP地址</code></div>
+      <h4>常用选项</h4>
+      <table>
+        <tr><th>选项</th><th>说明</th></tr>
+        <tr><td><code>-c 次数</code></td><td>指定发送数据包的次数。</td></tr>
+      </table>
+      <h4>实用示例</h4>
+      <pre><code># 测试与 www.google.com 的连通性，发送4个包后停止
+ping -c 4 www.google.com</code></pre>
+      <div class="tip"><strong>💡 小白提示：</strong>在 Linux 下，<code>ping</code> 会一直持续下去，直到你按 `Ctrl + C` 停止。加上 <code>-c</code> 选项是个好习惯。</div>
+    </div>
+    
+    <div class="command-entry">
+      <div class="command-header"><h3><code>ip</code> / <code>ifconfig</code></h3></div>
+      <p>功能：查看和配置网络接口。</p>
+      <p><code>ip</code> 是新一代的命令，推荐使用。<code>ifconfig</code> 在一些老系统上仍然很常见。</p>
+      <h4>实用示例</h4>
+      <pre><code># (推荐) 使用 ip 命令查看所有网络接口信息
+ip addr show
+
+# (旧) 使用 ifconfig 查看
+ifconfig</code></pre>
+    </div>
+    
+    <div class="command-entry">
+      <div class="command-header"><h3><code>wget</code> / <code>curl</code></h3></div>
+      <p>功能：从网络上下载文件或获取数据。</p>
+      <h4>实用示例</h4>
+      <pre><code># 使用 wget 下载一个文件
+wget https://example.com/somefile.zip
+
+# 使用 curl 获取一个网页的源码并显示在终端
+curl https://www.example.com
+
+# 使用 curl 下载文件 (需要 -o 选项指定输出文件名)
+curl -o somefile.zip https://example.com/somefile.zip</code></pre>
+      <div class="tip"><strong>💡 小白提示：</strong><code>wget</code> 更像一个纯粹的下载器，而 <code>curl</code> 是一个功能强大的数据传输工具，支持多种协议，常用于 API 测试。</div>
+    </div>
+  
+  </div>
+</details>
+
+<details open>
+  <summary>👤 用户与权限</summary>
+  <div class="details-content">
+  
+    <div class="command-entry">
+      <div class="command-header"><h3><code>sudo</code> (superuser do)</h3></div>
+      <p>功能：以超级用户（root）或其他用户的身份执行命令。</p>
+      <div class="command-syntax"><code>sudo [要执行的命令]</code></div>
+      <h4>实用示例</h4>
+      <pre><code># 以 root 权限安装软件 (在 Debian/Ubuntu 系统)
+sudo apt install nginx
+
+# 以 root 权限编辑一个系统配置文件
+sudo nano /etc/hosts</code></pre>
+      <div class="tip"><strong>💡 小白提示：</strong>当系统提示 "Permission denied" (权限不足) 时，通常就是你需要使用 <code>sudo</code> 的时候了。执行时会要求输入你自己的用户密码，而不是 root 密码。</div>
+    </div>
+    
+    <div class="command-entry">
+      <div class="command-header"><h3><code>chmod</code> (change mode)</h3></div>
+      <p>功能：修改文件或目录的访问权限。</p>
+      <div class="command-syntax"><code>chmod [权限模式] 文件/目录</code></div>
+      <p>权限分为读(r=4), 写(w=2), 执行(x=1)。分别对应所有者(u), 所属组(g), 其他人(o)。</p>
+      <h4>常用模式</h4>
+      <table>
+        <tr><th>数字模式</th><th>符号模式</th><th>说明</th></tr>
+        <tr><td><code>755</code></td><td><code>u=rwx,go=rx</code></td><td>所有者可读写执行，其他人可读可执行 (常用于目录和脚本)。</td></tr>
+        <tr><td><code>644</code></td><td><code>u=rw,go=r</code></td><td>所有者可读写，其他人只读 (常用于普通文件)。</td></tr>
+      </table>
+      <h4>实用示例</h4>
+      <pre><code># 赋予 a.sh 脚本可执行权限
+chmod +x a.sh
+
+# 将 project 目录权限设置为 755
+chmod 755 project
+
+# 将 a.txt 文件权限设置为 644
+chmod 644 a.txt</code></pre>
+    </div>
+
+    <div class="command-entry">
+      <div class="command-header"><h3><code>chown</code> (change owner)</h3></div>
+      <p>功能：修改文件或目录的所有者和所属组。</p>
+      <div class="command-syntax"><code>chown [选项] 用户:组 文件/目录</code></div>
+      <h4>常用选项</h4>
+      <table>
+        <tr><th>选项</th><th>说明</th></tr>
+        <tr><td><code>-R</code></td><td>递归修改目录及其下所有文件。</td></tr>
+      </table>
+      <h4>实用示例</h4>
+      <pre><code># 将 a.txt 的所有者改为 tom
+chown tom a.txt
+
+# 将 project 目录及其所有内容的所有者改为 tom，所属组改为 staff
+chown -R tom:staff project</code></pre>
+    </div>
+  
+  </div>
+</details>
+
+<details open>
+  <summary>🧩 软件包管理</summary>
+  <div class="details-content">
+  
+    <div class="command-entry">
+      <div class="command-header"><h3><code>apt</code> (Debian / Ubuntu)</h3></div>
+      <p>功能：基于 Debian 的系统（如 Ubuntu）中用于管理软件包的工具。</p>
+      <h4>常用命令</h4>
+      <table>
+        <tr><th>命令</th><th>说明</th></tr>
+        <tr><td><code>sudo apt update</code></td><td>更新可用软件包列表。</td></tr>
+        <tr><td><code>sudo apt upgrade</code></td><td>升级所有已安装的软件包。</td></tr>
+        <tr><td><code>sudo apt install [包名]</code></td><td>安装一个新的软件包。</td></tr>
+        <tr><td><code>sudo apt remove [包名]</code></td><td>卸载一个软件包。</td></tr>
+        <tr><td><code>apt search [关键词]</code></td><td>搜索软件包。</td></tr>
+      </table>
+      <div class="tip"><strong>💡 小白提示：</strong>在安装任何软件前，最好先执行一次 <code>sudo apt update</code>，确保你的软件列表是最新的。</div>
+    </div>
+    
+    <div class="command-entry">
+      <div class="command-header"><h3><code>dnf</code> / <code>yum</code> (CentOS / Fedora / RHEL)</h3></div>
+      <p>功能：基于 Red Hat 的系统（如 CentOS, Fedora）中用于管理软件包的工具。</p>
+      <p><code>dnf</code> 是新一代的包管理器，<code>yum</code> 在老版本（如 CentOS 7）中使用。</p>
+      <h4>常用命令</h4>
+      <table>
+        <tr><th>命令</th><th>说明</th></tr>
+        <tr><td><code>sudo dnf check-update</code></td><td>检查可用的更新。</td></tr>
+        <tr><td><code>sudo dnf upgrade</code></td><td>升级所有已安装的软件包。</td></tr>
+        <tr><td><code>sudo dnf install [包名]</code></td><td>安装一个新的软件包。</td></tr>
+        <tr><td><code>sudo dnf remove [包名]</code></td><td>卸载一个软件包。</td></tr>
+        <tr><td><code>dnf search [关键词]</code></td><td>搜索软件包。</td></tr>
+      </table>
+      <div class="tip"><strong>💡 小白提示：</strong>如果你使用的是 CentOS 7 或更早的版本，只需将命令中的 <code>dnf</code> 替换为 <code>yum</code> 即可。</div>
+    </div>
+  
+  </div>
+</details>
+
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const items = document.querySelectorAll('details');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.05 });
+
+        items.forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(20px)';
+            item.style.transition = `all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) ${index * 0.08}s`;
+            observer.observe(item);
+        });
+    });
+</script>
+
+</body>
+</html>
+	</div>
+
+	<div class="page-template-comments">
+		
+	</div>
+</div>
+
+<div class="paginator">
+	
+</div>
+  
+			</div>
+
+			
+		</div>
+
+		<div class="main-content-footer">
+			<footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2025</span>
+              -
+            
+            2025&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        共撰写了 72 篇文章
+                    </span>
+                    
+                        <span>
+                            共 24k 字
+                        </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">访问人数</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">总访问量</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
+            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.8.5</a></span>
+        </div>
+        
+        
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+		</div>
+	</div>
+
+	
+
+	<div class="right-side-tools-container">
+		<div class="side-tools-container">
+	<ul class="hidden-tools-list">
+		<li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-plus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-minus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+			<i class="fa-regular fa-moon"></i>
+		</li>
+
+		<!-- rss -->
+		
+
+		
+
+		<li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+			<i class="fa-regular fa-arrow-down"></i>
+		</li>
+	</ul>
+
+	<ul class="visible-tools-list">
+		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+			<i class="fa-regular fa-cog fa-spin"></i>
+		</li>
+		
+		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+			<i class="arrow-up fas fa-arrow-up"></i>
+			<span class="percent"></span>
+		</li>
+		
+		
+	</ul>
+</div>
+	</div>
+
+	<div class="image-viewer-container">
+	<img src="">
+</div>
+
+	
+	<div class="search-pop-overlay">
+	<div class="popup search-popup">
+		<div class="search-header">
+			<span class="search-input-field-pre">
+				<i class="fa-solid fa-keyboard"></i>
+			</span>
+			<div class="search-input-container">
+				<input autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="站内搜索您需要的内容..." spellcheck="false" type="search" class="search-input">
+			</div>
+			<span class="popup-btn-close">
+				<i class="fa-solid fa-times"></i>
+			</span>
+		</div>
+		<div id="search-result">
+			<div id="no-result">
+				<i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+			</div>
+		</div>
+	</div>
+</div>
+	
+
+</main>
+
+
+<script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/libs/Swup.min.js" ></script><script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/libs/SwupSlideTheme.min.js" ></script><script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/libs/SwupScriptsPlugin.min.js" ></script><script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/libs/SwupProgressPlugin.min.js" ></script><script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/libs/SwupScrollPlugin.min.js" ></script><script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/libs/SwupPreloadPlugin.min.js" ></script>
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+	<script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/tools/imageViewer.js" ></script><script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/utils.js" ></script><script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/main.js" ></script><script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/layouts/navbarShrink.js" ></script><script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/tools/scrollTopBottom.js" ></script><script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/tools/lightDarkSwitch.js" ></script><script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/layouts/categoryList.js" ></script>
+
+
+    <script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/tools/localSearch.js" ></script>
+
+
+
+    <script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/tools/codeBlock.js" ></script>
+
+
+
+    <script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/layouts/lazyload.js" ></script>
+
+
+
+    <script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/tools/runtime.js" ></script>
+    <script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/libs/odometer.min.js" ></script>
+    <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/assets/odometer-theme-minimal.css">
+
+
+
+  <script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/libs/Typed.min.js" ></script>
+  <script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/plugins/typed.js" ></script>
+
+
+
+
+
+    <script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/libs/minimasonry.min.js" ></script>
+    <script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/plugins/masonry.js" ></script>
+
+
+
+    <script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/libs/anime.min.js" ></script>
+
+
+
+
+    <script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/tools/tocToggle.js" data-swup-reload-script></script><script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/layouts/toc.js" data-swup-reload-script></script><script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/plugins/tabs.js" data-swup-reload-script></script>
+
+
+<script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/libs/moment-with-locales.min.js" data-swup-reload-script></script>
+<script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/layouts/essays.js" data-swup-reload-script></script>
+
+
+
+
+    <script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/layouts/bookmarkNav.js" ></script>
+
+	
+	<div id="aplayer"></div>
+<script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/libs/APlayer.min.js" ></script>
+<script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.8.5/files/source/js/build/plugins/aplayer.js" ></script>
+
+	
+</body>
+
+</html>
