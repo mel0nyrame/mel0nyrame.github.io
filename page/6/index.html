@@ -732,7 +732,7 @@ mjx-container[display="true"] + br {
         <div class="label text-third-text-color text-sm">分类</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">72</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">74</div>
         <div class="label text-third-text-color text-sm">文章</div>
     </a>
 </div>
@@ -831,7 +831,7 @@ mjx-container[display="true"] + br {
         <div class="label text-third-text-color text-sm">分类</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">72</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">74</div>
         <div class="label text-third-text-color text-sm">文章</div>
     </a>
 </div>
@@ -846,6 +846,141 @@ mjx-container[display="true"] + br {
 			<div class="main-content">
 				<div class="home-content-container">
     <ul class="home-article-list">
+        
+            <li class="home-article-item">
+
+                
+
+                
+                    
+                
+
+                
+                    <div id="home-article-thumbnail" class="home-article-thumbnail relative h-[150px] overflow-hidden rounded-t-large">
+                        <a href="/2025/08/28/BugKu-WEB-%E4%BD%A0%E5%BF%85%E9%A1%BB%E8%AE%A9%E4%BB%96%E5%81%9C%E4%B8%8B/">
+                            <img src="/../img-posts/2025-08-28-BugKu-WEB-%E4%BD%A0%E5%BF%85%E9%A1%BB%E8%AE%A9%E4%BB%96%E5%81%9C%E4%B8%8B/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png" alt="BugKu-WEB-你必须让他停下" class="w-full h-full object-cover dark:brightness-75 transition-all" />
+                        </a>
+                    </div>
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-5">
+                    <h3 class="home-article-title">
+                        <a href="/2025/08/28/BugKu-WEB-%E4%BD%A0%E5%BF%85%E9%A1%BB%E8%AE%A9%E4%BB%96%E5%81%9C%E4%B8%8B/">
+                            BugKu-WEB-你必须让他停下
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            BugKu-WEB-你必须让他停下题目
+思路网页一直在闪，还时不时弹出CTF Harry的图标，打开f12也一直在闪
+
+此时我们使用代理工具，把抓到的包丢给127.0.0.1：8080，也就是burpsuite
+
+打开burpsuite，打开监听器，再打开Repeater逐个逐个请求发送，发现回传的内容有些相同有些不同，而且下面还有提示flag is here~，多发几次，再打开Logger...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Thu Aug 28 2025 23:47:45 GMT+0800">
+                
+                    2025-08-28
+                
+            </span>
+        </span>
+        
+            <span class="home-article-category">
+                <i class="fa-solid fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/CTF-WEB/">CTF-WEB</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/CTF-WEB/">CTF-WEB</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2025/08/28/BugKu-WEB-%E4%BD%A0%E5%BF%85%E9%A1%BB%E8%AE%A9%E4%BB%96%E5%81%9C%E4%B8%8B/">阅读全文<span class="seo-reader-text">BugKu-WEB-你必须让他停下</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+                    
+                
+
+                
+                    <div id="home-article-thumbnail" class="home-article-thumbnail relative h-[150px] overflow-hidden rounded-t-large">
+                        <a href="/2025/08/28/BugKu-WEB-alert/">
+                            <img src="/../img-posts/2025-08-28-BugKu-WEB-alert/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png" alt="BugKu-WEB-alert" class="w-full h-full object-cover dark:brightness-75 transition-all" />
+                        </a>
+                    </div>
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-5">
+                    <h3 class="home-article-title">
+                        <a href="/2025/08/28/BugKu-WEB-alert/">
+                            BugKu-WEB-alert
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            BugKu-WEB-alert题目
+思路通过打开f12查看，发现在alert()下面有一段很有规律的编码，一眼丁真是html实体编码
+
+直接打开赛博大厨，得到flag
+
+Flag1flag&#123;20c95b3f8518df707b54fc11747d8685&#125;
+
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Thu Aug 28 2025 23:22:12 GMT+0800">
+                
+                    2025-08-28
+                
+            </span>
+        </span>
+        
+        
+    </div>
+
+    <a href="/2025/08/28/BugKu-WEB-alert/">阅读全文<span class="seo-reader-text">BugKu-WEB-alert</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
         
             <li class="home-article-item">
 
@@ -1563,188 +1698,6 @@ Flag1flag&#...
                 </div>
             </li>
         
-            <li class="home-article-item">
-
-                
-
-                
-                    
-                
-
-                
-                    <div id="home-article-thumbnail" class="home-article-thumbnail relative h-[150px] overflow-hidden rounded-t-large">
-                        <a href="/2025/08/27/BugKu-MISC-%E9%80%86%E5%90%91%E5%85%A5%E9%97%A8/">
-                            <img src="/../img-posts/2025-08-27-BugKu-MISC-%E9%80%86%E5%90%91%E5%85%A5%E9%97%A8/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png" alt="BugKu-MISC-逆向入门" class="w-full h-full object-cover dark:brightness-75 transition-all" />
-                        </a>
-                    </div>
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-5">
-                    <h3 class="home-article-title">
-                        <a href="/2025/08/27/BugKu-MISC-%E9%80%86%E5%90%91%E5%85%A5%E9%97%A8/">
-                            BugKu-MISC-逆向入门
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            BugKu-MISC-逆向入门题目
-思路解压之后发现是个admin.exe文件，用010editor打开，发现和上次一样，写个html出来
-
-  
-    
-      010Editor
-
-    
-    
-      
-
-    
-  
-
-1&lt;img src=&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAGQC...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Wed Aug 27 2025 12:32:44 GMT+0800">
-                
-                    2025-08-27
-                
-            </span>
-        </span>
-        
-            <span class="home-article-category">
-                <i class="fa-solid fa-folders"></i>&nbsp;
-            <ul>
-                
-                
-                    
-                        
-                        <li>
-                            <a href="/categories/CTF-MISC/">CTF-MISC</a>&nbsp;
-                        </li>
-                    
-                    
-                
-            </ul>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/CTF-MISC/">CTF-MISC</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2025/08/27/BugKu-MISC-%E9%80%86%E5%90%91%E5%85%A5%E9%97%A8/">阅读全文<span class="seo-reader-text">BugKu-MISC-逆向入门</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-                    
-                
-
-                
-                    <div id="home-article-thumbnail" class="home-article-thumbnail relative h-[150px] overflow-hidden rounded-t-large">
-                        <a href="/2025/08/27/BugKu-MISC-%E9%97%AA%E7%9A%84%E5%A5%BD%E5%BF%AB/">
-                            <img src="/../img-posts/2025-08-27-BugKu-MISC-%E9%97%AA%E7%9A%84%E5%A5%BD%E5%BF%AB/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png" alt="BugKu-MISC-闪的好快" class="w-full h-full object-cover dark:brightness-75 transition-all" />
-                        </a>
-                    </div>
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-5">
-                    <h3 class="home-article-title">
-                        <a href="/2025/08/27/BugKu-MISC-%E9%97%AA%E7%9A%84%E5%A5%BD%E5%BF%AB/">
-                            BugKu-MISC-闪的好快
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            BugKu-MISC-闪的好快题目
-思路文件下载下来发现是个一直在闪的gif，尝试用stegsolve打开,发现一共有18帧
-
-  
-    
-      StegSolve
-
-    
-    
-      
-
-    
-  
-
-分别扫码之后得到flag（注意连接符可能是-或者_）
-Flag1SYC&#123;F1aSh_so_f4sT&#125;
-
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Wed Aug 27 2025 12:19:26 GMT+0800">
-                
-                    2025-08-27
-                
-            </span>
-        </span>
-        
-            <span class="home-article-category">
-                <i class="fa-solid fa-folders"></i>&nbsp;
-            <ul>
-                
-                
-                    
-                        
-                        <li>
-                            <a href="/categories/CTF-MISC/">CTF-MISC</a>&nbsp;
-                        </li>
-                    
-                    
-                
-            </ul>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/CTF-MISC/">CTF-MISC</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2025/08/27/BugKu-MISC-%E9%97%AA%E7%9A%84%E5%A5%BD%E5%BF%AB/">阅读全文<span class="seo-reader-text">BugKu-MISC-闪的好快</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
     </ul>
 
     <div class="home-paginator px-7 py-5">
@@ -1775,11 +1728,11 @@ Flag1SYC&#123;F1aSh_so_f4sT&#125;
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        共撰写了 72 篇文章
+                        共撰写了 74 篇文章
                     </span>
                     
                         <span>
-                            共 23.2k 字
+                            共 25k 字
                         </span>
                     
                 </p>

@@ -732,7 +732,7 @@ mjx-container[display="true"] + br {
         <div class="label text-third-text-color text-sm">分类</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">72</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">74</div>
         <div class="label text-third-text-color text-sm">文章</div>
     </a>
 </div>
@@ -831,7 +831,7 @@ mjx-container[display="true"] + br {
         <div class="label text-third-text-color text-sm">分类</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">72</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">74</div>
         <div class="label text-third-text-color text-sm">文章</div>
     </a>
 </div>
@@ -846,6 +846,166 @@ mjx-container[display="true"] + br {
 			<div class="main-content">
 				<div class="home-content-container">
     <ul class="home-article-list">
+        
+            <li class="home-article-item">
+
+                
+
+                
+                    
+                
+
+                
+                    <div id="home-article-thumbnail" class="home-article-thumbnail relative h-[150px] overflow-hidden rounded-t-large">
+                        <a href="/2025/09/04/BugKu-MISC-ping/">
+                            <img src="/../img-posts/2025-09-04-BugKu-MISC-ping/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png" alt="BugKu-MISC-ping" class="w-full h-full object-cover dark:brightness-75 transition-all" />
+                        </a>
+                    </div>
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-5">
+                    <h3 class="home-article-title">
+                        <a href="/2025/09/04/BugKu-MISC-ping/">
+                            BugKu-MISC-ping
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            BugKu-MISC-ping题目
+思路用wireshark打开，发现前面几个数据包有内容部分的ASCII码最后面组成了flag，并且后面的数据包还带上了{，估计就是flag拆开丢进了数据包内，拼起来得到flag
+
+Flag1flag&#123;dc76a1eee6e3822877ed627e0a04ab4a&#125;
+
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Thu Sep 04 2025 20:41:14 GMT+0800">
+                
+                    2025-09-04
+                
+            </span>
+        </span>
+        
+            <span class="home-article-category">
+                <i class="fa-solid fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/CTF-MISC/">CTF-MISC</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/CTF-MISC/">CTF-MISC</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2025/09/04/BugKu-MISC-ping/">阅读全文<span class="seo-reader-text">BugKu-MISC-ping</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+                    
+                
+
+                
+                    <div id="home-article-thumbnail" class="home-article-thumbnail relative h-[150px] overflow-hidden rounded-t-large">
+                        <a href="/2025/09/04/BugKu-MISC-%E6%97%8B%E8%BD%AC%E8%B7%B3%E8%B7%83/">
+                            <img src="/../img-posts/2025-09-04-BugKu-MISC-%E6%97%8B%E8%BD%AC%E8%B7%B3%E8%B7%83/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png" alt="BugKu-MISC-旋转跳跃" class="w-full h-full object-cover dark:brightness-75 transition-all" />
+                        </a>
+                    </div>
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-5">
+                    <h3 class="home-article-title">
+                        <a href="/2025/09/04/BugKu-MISC-%E6%97%8B%E8%BD%AC%E8%B7%B3%E8%B7%83/">
+                            BugKu-MISC-旋转跳跃
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            BugKu-MISC-旋转跳跃题目
+思路打开之后是一段音频，某段熟悉的bgm。。。但是题目给了我们一条信息：key：syclovergeek，直接利用mp3stego解码得到flag
+
+Flag1SYC&#123;Mp3_B15b1uBiu_W0W&#125;
+
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Thu Sep 04 2025 16:14:04 GMT+0800">
+                
+                    2025-09-04
+                
+            </span>
+        </span>
+        
+            <span class="home-article-category">
+                <i class="fa-solid fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/CTF-MISC/">CTF-MISC</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/CTF-MISC/">CTF-MISC</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2025/09/04/BugKu-MISC-%E6%97%8B%E8%BD%AC%E8%B7%B3%E8%B7%83/">阅读全文<span class="seo-reader-text">BugKu-MISC-旋转跳跃</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
         
             <li class="home-article-item">
 
@@ -1503,177 +1663,6 @@ Flag1flag&#123;231aee4bc0131fac43907ed6cda510cf&#125;
                 </div>
             </li>
         
-            <li class="home-article-item">
-
-                
-
-                
-                    
-                
-
-                
-                    <div id="home-article-thumbnail" class="home-article-thumbnail relative h-[150px] overflow-hidden rounded-t-large">
-                        <a href="/2025/09/02/BugKu-WEB-eval/">
-                            <img src="/../img-posts/2025-09-02-BugKu-WEB-eval/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png" alt="BugKu-WEB-eval" class="w-full h-full object-cover dark:brightness-75 transition-all" />
-                        </a>
-                    </div>
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-5">
-                    <h3 class="home-article-title">
-                        <a href="/2025/09/02/BugKu-WEB-eval/">
-                            BugKu-WEB-eval
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            BugKu-WEB-eval题目
-思路
-注：看到一位评论区的大佬，讲得超级详细，也解决了我很多做题的时候的疑问：链接
-
-打开靶机可以看到php代码
-123456&lt;?php    include &quot;flag.php&quot;;    $a = @$_REQUEST[&#x27;hello&#x27;];    eval( &quot;var_dump($a);&quot;);...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Tue Sep 02 2025 23:42:49 GMT+0800">
-                
-                    2025-09-02
-                
-            </span>
-        </span>
-        
-            <span class="home-article-category">
-                <i class="fa-solid fa-folders"></i>&nbsp;
-            <ul>
-                
-                
-                    
-                        
-                        <li>
-                            <a href="/categories/CTF-WEB/">CTF-WEB</a>&nbsp;
-                        </li>
-                    
-                    
-                
-            </ul>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/need-to-review/">need_to_review</a>&nbsp;
-                        </li>
-                    
-                        <li>
-                            | 
-                            <a href="/tags/CTF-WEB/">CTF-WEB</a>&nbsp;
-                        </li>
-                    
-                        <li>
-                            | 
-                            <a href="/tags/star/">star</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2025/09/02/BugKu-WEB-eval/">阅读全文<span class="seo-reader-text">BugKu-WEB-eval</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-                    
-                
-
-                
-                    <div id="home-article-thumbnail" class="home-article-thumbnail relative h-[150px] overflow-hidden rounded-t-large">
-                        <a href="/2025/09/02/BugKu-WEB-shell/">
-                            <img src="/../img-posts/2025-09-02-BugKu-WEB-shell/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png" alt="BugKu-WEB-shell" class="w-full h-full object-cover dark:brightness-75 transition-all" />
-                        </a>
-                    </div>
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-5">
-                    <h3 class="home-article-title">
-                        <a href="/2025/09/02/BugKu-WEB-shell/">
-                            BugKu-WEB-shell
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            BugKu-WEB-shell题目
-思路题目中给了思路
-1$poc=&quot;a#s#s#e#r#t&quot;; $poc_1=explode(&quot;#&quot;,$poc); $poc_2=$poc_1[0].$poc_1[1].$poc_1[2].$poc_1[3].$poc_1[4].$poc_1[5]; $poc_2($_GET[&#x27;s&#x27;]) 
-
-可以先...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Tue Sep 02 2025 20:23:48 GMT+0800">
-                
-                    2025-09-02
-                
-            </span>
-        </span>
-        
-            <span class="home-article-category">
-                <i class="fa-solid fa-folders"></i>&nbsp;
-            <ul>
-                
-                
-                    
-                        
-                        <li>
-                            <a href="/categories/CTF-WEB/">CTF-WEB</a>&nbsp;
-                        </li>
-                    
-                    
-                
-            </ul>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/CTF-WEB/">CTF-WEB</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2025/09/02/BugKu-WEB-shell/">阅读全文<span class="seo-reader-text">BugKu-WEB-shell</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
     </ul>
 
     <div class="home-paginator px-7 py-5">
@@ -1704,11 +1693,11 @@ Flag1flag&#123;231aee4bc0131fac43907ed6cda510cf&#125;
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        共撰写了 72 篇文章
+                        共撰写了 74 篇文章
                     </span>
                     
                         <span>
-                            共 23.2k 字
+                            共 25k 字
                         </span>
                     
                 </p>
