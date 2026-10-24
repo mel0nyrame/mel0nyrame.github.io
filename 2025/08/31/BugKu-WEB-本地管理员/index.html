@@ -789,7 +789,7 @@ mjx-container[display="true"] + br {
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>211 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>207 字</span>
         </span>
     
     
@@ -813,44 +813,14 @@ mjx-container[display="true"] + br {
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="BugKu-WEB-本地管理员"><a href="#BugKu-WEB-本地管理员" class="headerlink" title="BugKu-WEB-本地管理员"></a>BugKu-WEB-本地管理员</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-31-BugKu-WEB-%E6%9C%AC%E5%9C%B0%E7%AE%A1%E7%90%86%E5%91%98/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png"
-                      alt="Question"
-                ><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-31-BugKu-WEB-%E6%9C%AC%E5%9C%B0%E7%AE%A1%E7%90%86%E5%91%98/%E9%A2%98%E7%9B%AE%E7%BD%91%E9%A1%B5.png"
-                      alt="Question"
-                ></p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>一上来就看到下面有一长串n，打开f12发现果然有端倪<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-31-BugKu-WEB-%E6%9C%AC%E5%9C%B0%E7%AE%A1%E7%90%86%E5%91%98/f12.png"
-                      alt="Question"
-                ></p>
-<p>一眼丁真是base64，丢给赛博大厨看看，发现是一个普通的字符串<em>test123</em>，但是联想到这个和题目是不是有关系，比如说密码之类的，尝试使用<em>username&#x3D;admin，password&#x3D;test123</em>但是发现不行，但是题目名字有提示，说是本地管理员<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-31-BugKu-WEB-%E6%9C%AC%E5%9C%B0%E7%AE%A1%E7%90%86%E5%91%98/cyber.png"
-                      alt="Question"
-                ><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-31-BugKu-WEB-%E6%9C%AC%E5%9C%B0%E7%AE%A1%E7%90%86%E5%91%98/ip.png"
-                      alt="Question"
-                ></p>
+			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="BugKu-WEB-本地管理员"><a href="#BugKu-WEB-本地管理员" class="headerlink" title="BugKu-WEB-本地管理员"></a>BugKu-WEB-本地管理员</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-31-BugKu-WEB-%E6%9C%AC%E5%9C%B0%E7%AE%A1%E7%90%86%E5%91%98/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png" alt="Question"><br><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-31-BugKu-WEB-%E6%9C%AC%E5%9C%B0%E7%AE%A1%E7%90%86%E5%91%98/%E9%A2%98%E7%9B%AE%E7%BD%91%E9%A1%B5.png" alt="Question"></p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>一上来就看到下面有一长串n，打开f12发现果然有端倪<br><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-31-BugKu-WEB-%E6%9C%AC%E5%9C%B0%E7%AE%A1%E7%90%86%E5%91%98/f12.png" alt="Question"></p>
+<p>一眼丁真是base64，丢给赛博大厨看看，发现是一个普通的字符串<em>test123</em>，但是联想到这个和题目是不是有关系，比如说密码之类的，尝试使用<em>username=admin，password=test123</em>但是发现不行，但是题目名字有提示，说是本地管理员<br><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-31-BugKu-WEB-%E6%9C%AC%E5%9C%B0%E7%AE%A1%E7%90%86%E5%91%98/cyber.png" alt="Question"><br><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-31-BugKu-WEB-%E6%9C%AC%E5%9C%B0%E7%AE%A1%E7%90%86%E5%91%98/ip.png" alt="Question"></p>
 <p>既然说是本地管理员，那么可以猜想是不是改请求头，打开hackbar，把请求头类型从host改成xff(X-Forwarded-For)，并把ip改成127.0.0.1，这样就可以伪造服务器读取的xff，认为请求来源于原服务器，再次传递上面的post数据，得到flag</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-31-BugKu-WEB-%E6%9C%AC%E5%9C%B0%E7%AE%A1%E7%90%86%E5%91%98/flag.png"
-                      alt="Question"
-                ></p>
-<a class="button center large" target="_blank" rel="noopener" href='https://www.runoob.com/w3cnote/http-x-forwarded-for.html' title='与XFF有关的文章'><i class='fa-solid fa-newspaper'></i> 与XFF有关的文章</a>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-31-BugKu-WEB-%E6%9C%AC%E5%9C%B0%E7%AE%A1%E7%90%86%E5%91%98/flag.png" alt="Question"></p>
+<a class="button center large" target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/http-x-forwarded-for.html" title="与XFF有关的文章"><i class="fa-solid fa-newspaper"></i> 与XFF有关的文章</a>
 
-<h3 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;ed4ca87b383f179cd8e59ea4540fed33&#125;</span><br></pre></td></tr></table></figure></div>
+<h3 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag{ed4ca87b383f179cd8e59ea4540fed33}</span><br></pre></td></tr></table></figure></div>
 
 		</div>
 
@@ -1016,7 +986,7 @@ mjx-container[display="true"] + br {
               <span>2025</span>
               -
             
-            2025&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
+            2026&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
             
                 
                 <p class="post-count space-x-0.5">
@@ -1025,7 +995,7 @@ mjx-container[display="true"] + br {
                     </span>
                     
                         <span>
-                            共 26.4k 字
+                            共 25.6k 字
                         </span>
                     
                 </p>

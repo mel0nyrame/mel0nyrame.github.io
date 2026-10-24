@@ -789,7 +789,7 @@ mjx-container[display="true"] + br {
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>136 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>134 字</span>
         </span>
     
     
@@ -813,18 +813,8 @@ mjx-container[display="true"] + br {
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="BugKu-MISC-隐写"><a href="#BugKu-MISC-隐写" class="headerlink" title="BugKu-MISC-隐写"></a>BugKu-MISC-隐写</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-26-BugKu-MISC-%E9%9A%90%E5%86%99/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png"
-                      alt="Question"
-                ><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-26-BugKu-MISC-%E9%9A%90%E5%86%99/%E9%A2%98%E7%9B%AE%E6%96%87%E4%BB%B6.png"
-                      alt="Question"
-                ></p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>打开发现里面是张图片，但是打不开，题目说是隐写，打开<a class="link"   target="_blank" rel="noopener" href="https://github.com/souno-io/Stegsolve" >Stegsolve<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>分析一下，发现CRC效验错误，说明有人修改了图片的数据但没有重现计算CRC,大概率是修改了图片的高度（一般不好修改宽度，不方便藏东西而且CRC计算的时候也会有些问题）</p>
+			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="BugKu-MISC-隐写"><a href="#BugKu-MISC-隐写" class="headerlink" title="BugKu-MISC-隐写"></a>BugKu-MISC-隐写</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-26-BugKu-MISC-%E9%9A%90%E5%86%99/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png" alt="Question"><br><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-26-BugKu-MISC-%E9%9A%90%E5%86%99/%E9%A2%98%E7%9B%AE%E6%96%87%E4%BB%B6.png" alt="Question"></p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>打开发现里面是张图片，但是打不开，题目说是隐写，打开<a class="link" target="_blank" rel="noopener" href="https://github.com/souno-io/Stegsolve">Stegsolve<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>分析一下，发现CRC效验错误，说明有人修改了图片的数据但没有重现计算CRC,大概率是修改了图片的高度（一般不好修改宽度，不方便藏东西而且CRC计算的时候也会有些问题）</p>
 
   <div class="note-large default">
     <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
@@ -832,12 +822,7 @@ mjx-container[display="true"] + br {
 
     </div>
     <div class="notel-content markdown-body">
-      <p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-26-BugKu-MISC-%E9%9A%90%E5%86%99/stegsolve.png"
-                      alt="Question"
-                ></p>
+      <p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-26-BugKu-MISC-%E9%9A%90%E5%86%99/stegsolve.png" alt="Question"></p>
 
     </div>
   </div>
@@ -853,17 +838,12 @@ mjx-container[display="true"] + br {
 
     </div>
     <div class="notel-content markdown-body">
-      <p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-26-BugKu-MISC-%E9%9A%90%E5%86%99/010editor.png"
-                      alt="Question"
-                ></p>
+      <p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-26-BugKu-MISC-%E9%9A%90%E5%86%99/010editor.png" alt="Question"></p>
 
     </div>
   </div>
 
-<h3 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BUGKU&#123;a1e5aSA&#125;</span><br></pre></td></tr></table></figure></div>
+<h3 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BUGKU{a1e5aSA}</span><br></pre></td></tr></table></figure></div>
 
 		</div>
 
@@ -1029,7 +1009,7 @@ mjx-container[display="true"] + br {
               <span>2025</span>
               -
             
-            2025&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
+            2026&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
             
                 
                 <p class="post-count space-x-0.5">
@@ -1038,7 +1018,7 @@ mjx-container[display="true"] + br {
                     </span>
                     
                         <span>
-                            共 26.4k 字
+                            共 25.6k 字
                         </span>
                     
                 </p>

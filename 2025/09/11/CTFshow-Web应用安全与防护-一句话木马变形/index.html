@@ -789,7 +789,7 @@ mjx-container[display="true"] + br {
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>605 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>577 字</span>
         </span>
     
     
@@ -813,60 +813,30 @@ mjx-container[display="true"] + br {
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="CTFshow-Web应用安全与防护-一句话木马变形"><a href="#CTFshow-Web应用安全与防护-一句话木马变形" class="headerlink" title="CTFshow-_Web应用安全与防护-一句话木马变形"></a>CTFshow-_Web应用安全与防护-一句话木马变形</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-11-CTFshow-Web%E5%BA%94%E7%94%A8%E5%AE%89%E5%85%A8%E4%B8%8E%E9%98%B2%E6%8A%A4-%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%9C%A8%E9%A9%AC%E5%8F%98%E5%BD%A2/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png"
-                      alt="Question"
-                ><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-11-CTFshow-Web%E5%BA%94%E7%94%A8%E5%AE%89%E5%85%A8%E4%B8%8E%E9%98%B2%E6%8A%A4-%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%9C%A8%E9%A9%AC%E5%8F%98%E5%BD%A2/%E9%A2%98%E7%9B%AE%E7%BD%91%E9%A1%B5.png"
-                      alt="Question"
-                ></p>
+			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="CTFshow-Web应用安全与防护-一句话木马变形"><a href="#CTFshow-Web应用安全与防护-一句话木马变形" class="headerlink" title="CTFshow-_Web应用安全与防护-一句话木马变形"></a>CTFshow-_Web应用安全与防护-一句话木马变形</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-11-CTFshow-Web%E5%BA%94%E7%94%A8%E5%AE%89%E5%85%A8%E4%B8%8E%E9%98%B2%E6%8A%A4-%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%9C%A8%E9%A9%AC%E5%8F%98%E5%BD%A2/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png" alt="Question"><br><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-11-CTFshow-Web%E5%BA%94%E7%94%A8%E5%AE%89%E5%85%A8%E4%B8%8E%E9%98%B2%E6%8A%A4-%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%9C%A8%E9%A9%AC%E5%8F%98%E5%BD%A2/%E9%A2%98%E7%9B%AE%E7%BD%91%E9%A1%B5.png" alt="Question"></p>
 <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>看到是个php代码执行器，先按照框内提示输入，但是题目只允许使用字母、数字、下划线、括号和分号</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-11-CTFshow-Web%E5%BA%94%E7%94%A8%E5%AE%89%E5%85%A8%E4%B8%8E%E9%98%B2%E6%8A%A4-%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%9C%A8%E9%A9%AC%E5%8F%98%E5%BD%A2/wtf.png"
-                      alt="Question"
-                ></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-11-CTFshow-Web%E5%BA%94%E7%94%A8%E5%AE%89%E5%85%A8%E4%B8%8E%E9%98%B2%E6%8A%A4-%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%9C%A8%E9%A9%AC%E5%8F%98%E5%BD%A2/wtf.png" alt="Question"></p>
 <p>此时打开f12可以发现，单引号被<code>&amp;quot;</code>替代了</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-11-CTFshow-Web%E5%BA%94%E7%94%A8%E5%AE%89%E5%85%A8%E4%B8%8E%E9%98%B2%E6%8A%A4-%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%9C%A8%E9%A9%AC%E5%8F%98%E5%BD%A2/f12.png"
-                      alt="Question"
-                ></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-11-CTFshow-Web%E5%BA%94%E7%94%A8%E5%AE%89%E5%85%A8%E4%B8%8E%E9%98%B2%E6%8A%A4-%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%9C%A8%E9%A9%AC%E5%8F%98%E5%BD%A2/f12.png" alt="Question"></p>
 <p>那输入<code>phpinfo();</code>发现能执行，看来源代码大概是使用<code>eval(_POST())</code>之类的语句，尝试输入<code>system(ls);</code>，发现了<em>flag.php</em>分拣</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-11-CTFshow-Web%E5%BA%94%E7%94%A8%E5%AE%89%E5%85%A8%E4%B8%8E%E9%98%B2%E6%8A%A4-%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%9C%A8%E9%A9%AC%E5%8F%98%E5%BD%A2/php.png"
-                      alt="Question"
-                ></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-11-CTFshow-Web%E5%BA%94%E7%94%A8%E5%AE%89%E5%85%A8%E4%B8%8E%E9%98%B2%E6%8A%A4-%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%9C%A8%E9%A9%AC%E5%8F%98%E5%BD%A2/php.png" alt="Question"></p>
 <p>尝试使用<code>system(cat flag.php);</code>命令，发现无法执行，不能有小数点，那就只能无参数rce绕过了</p>
-<p><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/2301_76690905/article/details/133808536" >参考资料<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<p><a class="link" target="_blank" rel="noopener" href="https://blog.csdn.net/2301_76690905/article/details/133808536">参考资料<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
 <p>输入<code>show_source(next(array_reverse(scandir(getcwd()))));</code>得到flag</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-11-CTFshow-Web%E5%BA%94%E7%94%A8%E5%AE%89%E5%85%A8%E4%B8%8E%E9%98%B2%E6%8A%A4-%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%9C%A8%E9%A9%AC%E5%8F%98%E5%BD%A2/flag.png"
-                      alt="Question"
-                ></p>
-<h3 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CTF&#123;shell_code_base64_bypass&#125;</span><br></pre></td></tr></table></figure></div>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-11-CTFshow-Web%E5%BA%94%E7%94%A8%E5%AE%89%E5%85%A8%E4%B8%8E%E9%98%B2%E6%8A%A4-%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%9C%A8%E9%A9%AC%E5%8F%98%E5%BD%A2/flag.png" alt="Question"></p>
+<h3 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CTF{shell_code_base64_bypass}</span><br></pre></td></tr></table></figure></div>
 
 <h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><p>对于初学者的我来说，没错，完全想不到，对于php学得头痛的我来说也是完全想不到php还有这么多函数（崩<br>题目说是一句话木马变形，我还以为是通过各种各样的方法来构建一句话木马然后通过蚁剑来连接……<br>然后我通过各种各样的方式搞清楚了这题的考点</p>
 <p>rce，全称Remote Code Execution，远程代码执行，无参rce就是不传递参数获取服务器根目录下的文件内容来获得flag</p>
-<p>根据<a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/2402_86423757/article/details/151228250?spm=1001.2014.3001.5502" >csnd大神<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>的wp可以猜测，源代码应该长这样子</p>
+<p>根据<a class="link" target="_blank" rel="noopener" href="https://blog.csdn.net/2402_86423757/article/details/151228250?spm=1001.2014.3001.5502">csnd大神<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>的wp可以猜测，源代码应该长这样子</p>
 <blockquote>
 <p>侵删</p>
 </blockquote>
-<div class="code-container" data-rel="Php"><figure class="iseeu highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;code&#x27;</span>])) &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="title function_ invoke__">htmlspecialchars</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;code&#x27;</span>]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="comment">// Validate input characters</span></span><br><span class="line">    <span class="keyword">if</span> (!<span class="title function_ invoke__">preg_match</span>(<span class="string">&#x27;/^[a-zA-Z0-9();_]+$/&#x27;</span>, <span class="variable">$_POST</span>[<span class="string">&#x27;code&#x27;</span>])) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Exception</span>(<span class="string">&#x27;Invalid characters detected! Only letters, numbers, underscores, parentheses and semicolons are allowed.&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="title function_ invoke__">ob_start</span>();</span><br><span class="line">    <span class="keyword">eval</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;code&#x27;</span>]);</span><br><span class="line">    <span class="variable">$output</span> = <span class="title function_ invoke__">ob_get_clean</span>();</span><br><span class="line">    <span class="keyword">echo</span> <span class="title function_ invoke__">htmlspecialchars</span>(<span class="variable">$output</span>);</span><br><span class="line">&#125; <span class="keyword">catch</span> (<span class="built_in">Exception</span> <span class="variable">$e</span>) &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&#x27;Error: &#x27;</span> . <span class="title function_ invoke__">htmlspecialchars</span>(<span class="variable">$e</span>-&gt;<span class="title function_ invoke__">getMessage</span>());</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Php"><figure class="iseeu highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">'code'</span>])) {</span><br><span class="line">    <span class="keyword">echo</span> <span class="title function_ invoke__">htmlspecialchars</span>(<span class="variable">$_POST</span>[<span class="string">'code'</span>]);</span><br><span class="line">}</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">try</span> {</span><br><span class="line">    <span class="comment">// Validate input characters</span></span><br><span class="line">    <span class="keyword">if</span> (!<span class="title function_ invoke__">preg_match</span>(<span class="string">'/^[a-zA-Z0-9();_]+$/'</span>, <span class="variable">$_POST</span>[<span class="string">'code'</span>])) {</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Exception</span>(<span class="string">'Invalid characters detected! Only letters, numbers, underscores, parentheses and semicolons are allowed.'</span>);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="title function_ invoke__">ob_start</span>();</span><br><span class="line">    <span class="keyword">eval</span>(<span class="variable">$_POST</span>[<span class="string">'code'</span>]);</span><br><span class="line">    <span class="variable">$output</span> = <span class="title function_ invoke__">ob_get_clean</span>();</span><br><span class="line">    <span class="keyword">echo</span> <span class="title function_ invoke__">htmlspecialchars</span>(<span class="variable">$output</span>);</span><br><span class="line">} <span class="keyword">catch</span> (<span class="built_in">Exception</span> <span class="variable">$e</span>) {</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">'Error: '</span> . <span class="title function_ invoke__">htmlspecialchars</span>(<span class="variable">$e</span>-&gt;<span class="title function_ invoke__">getMessage</span>());</span><br><span class="line">}</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></div>
 
-<p>关于<a class="link"   target="_blank" rel="noopener" href="https://www.php.net/manual/zh/function.htmlspecialchars.php" >htmlspecialchars()<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>函数可见，会把一些特殊字符变成HTML实体，那就不能通过系统命令来获得<em>flag.php</em>的文件内容，那就只能通过无参rce</p>
+<p>关于<a class="link" target="_blank" rel="noopener" href="https://www.php.net/manual/zh/function.htmlspecialchars.php">htmlspecialchars()<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>函数可见，会把一些特殊字符变成HTML实体，那就不能通过系统命令来获得<em>flag.php</em>的文件内容，那就只能通过无参rce</p>
 <p>然后来看<code>show_source(next(array_reverse(scandir(getcwd()))));</code>这条命令</p>
-<p><code>getcwd()</code>：返回当前工作的目录，比如说<code>/var/www/html</code><br><code>scandir()</code>：列出指定目录的文件，并通过数组方式返回，在这里就是类似于<code>scandir(/var/www/html)</code>，然后文件返回格式是<code>[......&#39;flag.php&#39;,&#39;index.php&#39;]</code>按照字母升序返回<br><code>array_reverse()</code>：把数组倒转过来<br><code>next()</code>：取反转后的第二个文件名，即flag<br><code>show_source()</code>：输出源码</p>
+<p><code>getcwd()</code>：返回当前工作的目录，比如说<code>/var/www/html</code><br><code>scandir()</code>：列出指定目录的文件，并通过数组方式返回，在这里就是类似于<code>scandir(/var/www/html)</code>，然后文件返回格式是<code>[......'flag.php','index.php']</code>按照字母升序返回<br><code>array_reverse()</code>：把数组倒转过来<br><code>next()</code>：取反转后的第二个文件名，即flag<br><code>show_source()</code>：输出源码</p>
 <p>这条命令可以通过不传具体的参而是通过使用系统命令来获得信息</p>
 
 		</div>
@@ -1033,7 +1003,7 @@ mjx-container[display="true"] + br {
               <span>2025</span>
               -
             
-            2025&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
+            2026&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
             
                 
                 <p class="post-count space-x-0.5">
@@ -1042,7 +1012,7 @@ mjx-container[display="true"] + br {
                     </span>
                     
                         <span>
-                            共 26.4k 字
+                            共 25.6k 字
                         </span>
                     
                 </p>

@@ -145,7 +145,7 @@
 <meta property="og:description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://mel0nyrame.github.io/images/redefine-og.webp">
-<meta property="article:published_time" content="2025-09-01T17:36:42.134Z">
+<meta property="article:published_time" content="2026-08-23T15:23:34.385Z">
 <meta property="article:modified_time" content="2025-09-01T17:36:42.134Z">
 <meta property="article:author" content="Mel0ny">
 <meta property="article:tag" content="高中">
@@ -726,182 +726,7 @@ mjx-container[display="true"] + br {
 		<h1></h1>
 		
 
-		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Linux 目录功能全览图 (完整版)</title>
-    <style>
-        /* --- 全局样式 --- */
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
-
-        :root {
-            --bg-color: #121826;
-            --card-bg-color: #1f2937;
-            --text-color: #e5e7eb;
-            --text-secondary-color: #9ca3af;
-            --border-color: #374151;
-            --accent-color: #38bdf8;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Noto Sans SC', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            padding: 2rem;
-            font-size: 16px;
-        }
-
-        /* --- 主标题样式 --- */
-        .main-title {
-            font-size: 2.5rem;
-            margin-bottom: 30px;
-            text-align: center;
-            color: var(--accent-color);
-            animation: fadeInDown 0.8s ease-out;
-            font-weight: 700;
-        }
-
-        /* --- 主容器和副标题 --- */
-        .container {
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 2.5rem;
-            animation: fadeInDown 0.8s ease-out;
-        }
-
-        .header h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 0.5rem;
-        }
-
-        /* --- 目录网格布局 --- */
-        .directory-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-
-        /* --- 目录卡片样式 --- */
-        .dir-card {
-            background: var(--card-bg-color);
-            border-radius: 12px;
-            padding: 1.75rem 1.5rem;
-            display: flex;
-            flex-direction: column;
-            border: 1px solid var(--border-color);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-            cursor: default;
-        }
-
-        .dir-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
-            border-color: var(--accent-color);
-        }
-
-        .card-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .card-header .icon {
-            width: 28px;
-            height: 28px;
-            margin-right: 1rem;
-            display: inline-block;
-            color: var(--text-color);
-            flex-shrink: 0;
-        }
-
-        .card-header h2 {
-            font-size: 1.25rem;
-            font-weight: 500;
-            color: #fff;
-        }
-        
-        /* --- 卡片颜色 --- */
-        .dir-card.c1  { border-left: 4px solid #7c3aed; }
-        .dir-card.c2  { border-left: 4px solid #c026d3; }
-        .dir-card.c3  { border-left: 4px solid #db2777; }
-        .dir-card.c4  { border-left: 4px solid #e11d48; }
-        .dir-card.c5  { border-left: 4px solid #ea580c; }
-        .dir-card.c6  { border-left: 4px solid #d97706; }
-        .dir-card.c7  { border-left: 4px solid #65a30d; }
-        .dir-card.c8  { border-left: 4px solid #16a34a; }
-        .dir-card.c9  { border-left: 4px solid #059669; }
-        .dir-card.c10 { border-left: 4px solid #0d9488; }
-        .dir-card.c11 { border-left: 4px solid #0891b2; }
-        .dir-card.c12 { border-left: 4px solid #0284c7; }
-        .dir-card.c13 { border-left: 4px solid #2563eb; }
-        .dir-card.c14 { border-left: 4px solid #4f46e5; }
-        .dir-card.c15 { border-left: 4px solid #7c3aed; }
-        .dir-card.c16 { border-left: 4px solid #c026d3; }
-        .dir-card.c17 { border-left: 4px solid #db2777; }
-        .dir-card.c18 { border-left: 4px solid #e11d48; }
-        .dir-card.c19 { border-left: 4px solid #ea580c; }
-        .dir-card.c20 { border-left: 4px solid #d97706; }
-        .dir-card.c21 { border-left: 4px solid #65a30d; }
-        .dir-card.c22 { border-left: 4px solid #16a34a; }
-
-        .dir-card p {
-            font-size: 0.95rem;
-            line-height: 1.6;
-            color: var(--text-secondary-color);
-            flex-grow: 1;
-        }
-
-        /* --- 动画 --- */
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        /* --- 响应式设计 --- */
-        @media (max-width: 640px) {
-            body {
-                padding: 1rem;
-            }
-            .main-title {
-                font-size: 2.2rem;
-            }
-            .header h1 {
-                font-size: 2rem;
-            }
-            .directory-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    
-    </style>
-</head>
-
-<body>
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css">
     <div class="container">
         <header class="header">
             <h1>Linux 目录功能全览图 (完整版)</h1>
@@ -911,7 +736,7 @@ mjx-container[display="true"] + br {
             <div class="dir-card c1">
                 <div class="card-header">
                     <span class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.5 1.5v2h1v-2h-1zm-1 3v2h3v-2h-3zm-1 3v2h5v-2h-5zM15 6.5h-5v2h5v-2zm0 3h-5v2h5v-2zM15 2.5h-5v2h5v-2z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.5 1.5v2h1v-2h-1zm-1 3v2h3v-2h-3zm-1 3v2h5v-2h-5zM15 6.5h-5v2h5v-2zm0 3h-5v2h5v-2zM15 2.5h-5v2h5v-2z"></path></svg>
                     </span>
                     <h2>/bin</h2>
                 </div>
@@ -921,7 +746,7 @@ mjx-container[display="true"] + br {
             <div class="dir-card c2">
                 <div class="card-header">
                      <span class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M8.837 1.626a.5.5 0 0 0-.674 0l-6.5 4.5a.5.5 0 0 0 0 .748l6.5 4.5a.5.5 0 0 0 .674 0l6.5-4.5a.5.5 0 0 0 0-.748l-6.5-4.5zM1 6.375l6.5-4.5 6.5 4.5L8 10.125 1.5 6.375z"/><path d="m16 6.375-6.5 4.5v3.834a.5.5 0 0 0 .674.474l6-3.5a.5.5 0 0 0 0-.848V6.375zM1 10.875l6.5 4.5v-3.834a.5.5 0 0 0-.674-.474l-6 3.5a.5.5 0 0 0 0 .848v-3.026z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M8.837 1.626a.5.5 0 0 0-.674 0l-6.5 4.5a.5.5 0 0 0 0 .748l6.5 4.5a.5.5 0 0 0 .674 0l6.5-4.5a.5.5 0 0 0 0-.748l-6.5-4.5zM1 6.375l6.5-4.5 6.5 4.5L8 10.125 1.5 6.375z"></path><path d="m16 6.375-6.5 4.5v3.834a.5.5 0 0 0 .674.474l6-3.5a.5.5 0 0 0 0-.848V6.375zM1 10.875l6.5 4.5v-3.834a.5.5 0 0 0-.674-.474l-6 3.5a.5.5 0 0 0 0 .848v-3.026z"></path></svg>
                     </span>
                     <h2>/boot</h2>
                 </div>
@@ -931,7 +756,7 @@ mjx-container[display="true"] + br {
             <div class="dir-card c3">
                 <div class="card-header">
                     <span class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M3.5 1.5a.5.5 0 0 1 .5-.5h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z"/><path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.5 1.5v2h1v-2h-1zm-1 3v2h3v-2h-3zm-1 3v2h5v-2h-5zM15 6.5h-5v2h5v-2zm0 3h-5v2h5v-2zM15 2.5h-5v2h5v-2z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M3.5 1.5a.5.5 0 0 1 .5-.5h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z"></path><path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.5 1.5v2h1v-2h-1zm-1 3v2h3v-2h-3zm-1 3v2h5v-2h-5zM15 6.5h-5v2h5v-2zm0 3h-5v2h5v-2zM15 2.5h-5v2h5v-2z"></path></svg>
                     </span>
                     <h2>/dev</h2>
                 </div>
@@ -941,7 +766,7 @@ mjx-container[display="true"] + br {
             <div class="dir-card c4">
                 <div class="card-header">
                     <span class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.234-.124 2.502.217 3.612.632 1.11.415 2.293.848 3.388.893 1.095.045 2.288-.34 3.112-.734V13.5a1.5 1.5 0 0 1-1.5 1.5h-10A1.5 1.5 0 0 1 1 13.5V2.828zM15 1.828c-.885.37-2.154.769-3.388.893-1.234.124-2.502-.217-3.612-.632-1.11-.415-2.293.848-3.388-.893-1.095.045-2.288.34-3.112.734V1.5A1.5 1.5 0 0 1 2.5 0h11A1.5 1.5 0 0 1 15 1.5v.328zM4 6.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5H4zm0 3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5H4z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.234-.124 2.502.217 3.612.632 1.11.415 2.293.848 3.388.893 1.095.045 2.288-.34 3.112-.734V13.5a1.5 1.5 0 0 1-1.5 1.5h-10A1.5 1.5 0 0 1 1 13.5V2.828zM15 1.828c-.885.37-2.154.769-3.388.893-1.234.124-2.502-.217-3.612-.632-1.11-.415-2.293.848-3.388-.893-1.095.045-2.288.34-3.112.734V1.5A1.5 1.5 0 0 1 2.5 0h11A1.5 1.5 0 0 1 15 1.5v.328zM4 6.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5H4zm0 3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5H4z"></path></svg>
                     </span>
                     <h2>/etc</h2>
                 </div>
@@ -951,7 +776,7 @@ mjx-container[display="true"] + br {
             <div class="dir-card c5">
                 <div class="card-header">
                     <span class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z"></path></svg>
                     </span>
                     <h2>/home</h2>
                 </div>
@@ -961,7 +786,7 @@ mjx-container[display="true"] + br {
             <div class="dir-card c6">
                 <div class="card-header">
                      <span class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm12 1a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V3z"/><path d="M8.5 5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5H11a.5.5 0 0 0 0-1H8.5V5z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm12 1a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V3z"></path><path d="M8.5 5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5H11a.5.5 0 0 0 0-1H8.5V5z"></path></svg>
                     </span>
                     <h2>/lib</h2>
                 </div>
@@ -971,7 +796,7 @@ mjx-container[display="true"] + br {
             <div class="dir-card c7">
                 <div class="card-header">
                      <span class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M.5 3A1.5 1.5 0 0 1 2 1.5h3.879a1.5 1.5 0 0 1 1.06.44l.822.822A.5.5 0 0 0 8 3h6.5a1.5 1.5 0 0 1 1.5 1.5v9a1.5 1.5 0 0 1-1.5 1.5H2A1.5 1.5 0 0 1 .5 12V3zm6.854 6.146a.5.5 0 0 0-.708 0L6 9.854V8.5a.5.5 0 0 0-1 0v1.354L4.354 9.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l1.5-1.5a.5.5 0 0 0 0-.708zM14 12.5V4.5a.5.5 0 0 0-.5-.5h-6a1.5 1.5 0 0 1-1.06-.44L5.62 2.72A.5.5 0 0 0 5.26 2.5H2a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h12z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M.5 3A1.5 1.5 0 0 1 2 1.5h3.879a1.5 1.5 0 0 1 1.06.44l.822.822A.5.5 0 0 0 8 3h6.5a1.5 1.5 0 0 1 1.5 1.5v9a1.5 1.5 0 0 1-1.5 1.5H2A1.5 1.5 0 0 1 .5 12V3zm6.854 6.146a.5.5 0 0 0-.708 0L6 9.854V8.5a.5.5 0 0 0-1 0v1.354L4.354 9.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l1.5-1.5a.5.5 0 0 0 0-.708zM14 12.5V4.5a.5.5 0 0 0-.5-.5h-6a1.5 1.5 0 0 1-1.06-.44L5.62 2.72A.5.5 0 0 0 5.26 2.5H2a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h12z"></path></svg>
                     </span>
                     <h2>/media</h2>
                 </div>
@@ -981,7 +806,7 @@ mjx-container[display="true"] + br {
             <div class="dir-card c8">
                 <div class="card-header">
                     <span class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M2.5 1A1.5 1.5 0 0 0 1 2.5v11A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-11A1.5 1.5 0 0 0 13.5 1h-11zM2 2.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11z"/><path d="M11 2.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1a.5.5 0 0 1 .5-.5zm-2 0a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1a.5.5 0 0 1 .5-.5zm-2 0a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1a.5.5 0 0 1 .5-.5zm-2 0a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1a.5.5 0 0 1 .5-.5z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M2.5 1A1.5 1.5 0 0 0 1 2.5v11A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-11A1.5 1.5 0 0 0 13.5 1h-11zM2 2.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11z"></path><path d="M11 2.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1a.5.5 0 0 1 .5-.5zm-2 0a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1a.5.5 0 0 1 .5-.5zm-2 0a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1a.5.5 0 0 1 .5-.5zm-2 0a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1a.5.5 0 0 1 .5-.5z"></path></svg>
                     </span>
                     <h2>/mnt</h2>
                 </div>
@@ -991,7 +816,7 @@ mjx-container[display="true"] + br {
              <div class="dir-card c9">
                 <div class="card-header">
                      <span class="icon">
-                       <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.814 5.166a.5.5 0 0 0 0 .668l6 3.999a.5.5 0 0 0 .372 0l6-3.999a.5.5 0 0 0 0-.748L8.186 1.113zM1 6.375l6.5-4.5 6.5 4.5L8 10.125 1.5 6.375z"/><path d="M16 6.375-6.5 4.5v3.834a.5.5 0 0 0 .674.474l6-3.5a.5.5 0 0 0 0-.848V6.375zM1 10.875l6.5 4.5v-3.834a.5.5 0 0 0-.674-.474l-6 3.5a.5.5 0 0 0 0 .848v-3.026z"/></svg>
+                       <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.814 5.166a.5.5 0 0 0 0 .668l6 3.999a.5.5 0 0 0 .372 0l6-3.999a.5.5 0 0 0 0-.748L8.186 1.113zM1 6.375l6.5-4.5 6.5 4.5L8 10.125 1.5 6.375z"></path><path d="M16 6.375-6.5 4.5v3.834a.5.5 0 0 0 .674.474l6-3.5a.5.5 0 0 0 0-.848V6.375zM1 10.875l6.5 4.5v-3.834a.5.5 0 0 0-.674-.474l-6 3.5a.5.5 0 0 0 0 .848v-3.026z"></path></svg>
                     </span>
                     <h2>/opt</h2>
                 </div>
@@ -1001,7 +826,7 @@ mjx-container[display="true"] + br {
             <div class="dir-card c10">
                 <div class="card-header">
                      <span class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm12 1a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V3z"/><path d="M4 6.5a.5.5 0 0 0 .5.5H11a.5.5 0 0 0 0-1H4.5a.5.5 0 0 0-.5.5z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm12 1a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V3z"></path><path d="M4 6.5a.5.5 0 0 0 .5.5H11a.5.5 0 0 0 0-1H4.5a.5.5 0 0 0-.5.5z"></path></svg>
                     </span>
                     <h2>/proc</h2>
                 </div>
@@ -1011,7 +836,7 @@ mjx-container[display="true"] + br {
             <div class="dir-card c11">
                 <div class="card-header">
                     <span class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M8 11.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zm0 1a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9z"/><path d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm10.97-9.47a.5.5 0 0 1 0 .708L12.207 4.5l1.263 1.262a.5.5 0 1 1-.708.708L11.5 5.207 10.238 6.47a.5.5 0 1 1-.707-.708L10.793 4.5 9.53 3.238a.5.5 0 1 1 .707-.707L11.5 3.793l1.263-1.263a.5.5 0 0 1 .707 0zM2.53 2.53a.5.5 0 0 1 .708 0L4.5 3.793l1.262-1.263a.5.5 0 1 1 .708.708L5.207 4.5l1.262 1.262a.5.5 0 1 1-.708.708L4.5 5.207 3.238 6.47a.5.5 0 1 1-.707-.708L3.793 4.5 2.53 3.238a.5.5 0 0 1 0-.707z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M8 11.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zm0 1a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9z"></path><path d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm10.97-9.47a.5.5 0 0 1 0 .708L12.207 4.5l1.263 1.262a.5.5 0 1 1-.708.708L11.5 5.207 10.238 6.47a.5.5 0 1 1-.707-.708L10.793 4.5 9.53 3.238a.5.5 0 1 1 .707-.707L11.5 3.793l1.263-1.263a.5.5 0 0 1 .707 0zM2.53 2.53a.5.5 0 0 1 .708 0L4.5 3.793l1.262-1.263a.5.5 0 1 1 .708.708L5.207 4.5l1.262 1.262a.5.5 0 1 1-.708.708L4.5 5.207 3.238 6.47a.5.5 0 1 1-.707-.708L3.793 4.5 2.53 3.238a.5.5 0 0 1 0-.707z"></path></svg>
                     </span>
                     <h2>/root</h2>
                 </div>
@@ -1021,7 +846,7 @@ mjx-container[display="true"] + br {
             <div class="dir-card c12">
                 <div class="card-header">
                      <span class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/><path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"></path><path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"></path></svg>
                     </span>
                     <h2>/run</h2>
                 </div>
@@ -1031,7 +856,7 @@ mjx-container[display="true"] + br {
             <div class="dir-card c13">
                 <div class="card-header">
                      <span class="icon">
-                         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M12 1a4 4 0 0 1 4 4v6a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V5a4 4 0 0 1 4-4h8zM4 0a5 5 0 0 0-5 5v6a5 5 0 0 0 5 5h8a5 5 0 0 0 5-5V5a5 5 0 0 0-5-5H4z"/><path d="M11.5 4a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .5.5h.5a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.5-.5h-.5zm-3 0a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .5.5h.5a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.5-.5h-.5zm-3 0a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .5.5h.5a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.5-.5h-.5z"/></svg>
+                         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M12 1a4 4 0 0 1 4 4v6a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V5a4 4 0 0 1 4-4h8zM4 0a5 5 0 0 0-5 5v6a5 5 0 0 0 5 5h8a5 5 0 0 0 5-5V5a5 5 0 0 0-5-5H4z"></path><path d="M11.5 4a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .5.5h.5a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.5-.5h-.5zm-3 0a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .5.5h.5a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.5-.5h-.5zm-3 0a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .5.5h.5a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.5-.5h-.5z"></path></svg>
                     </span>
                     <h2>/sbin</h2>
                 </div>
@@ -1041,7 +866,7 @@ mjx-container[display="true"] + br {
             <div class="dir-card c14">
                 <div class="card-header">
                      <span class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M3.595 2.343a.5.5 0 0 1 .81-.399l6 4a.5.5 0 0 1 0 .798l-6 4a.5.5 0 0 1-.81-.4V2.743zM4 3.313v9.374L9.122 8 4 3.313z"/><path d="M13.5 1a1.5 1.5 0 0 1 1.5 1.5v11a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 1 13.5v-11A1.5 1.5 0 0 1 2.5 1h11zm-11 1A.5.5 0 0 0 2 2.5v11a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 .5-.5v-11a.5.5 0 0 0-.5-.5h-11z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M3.595 2.343a.5.5 0 0 1 .81-.399l6 4a.5.5 0 0 1 0 .798l-6 4a.5.5 0 0 1-.81-.4V2.743zM4 3.313v9.374L9.122 8 4 3.313z"></path><path d="M13.5 1a1.5 1.5 0 0 1 1.5 1.5v11a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 1 13.5v-11A1.5 1.5 0 0 1 2.5 1h11zm-11 1A.5.5 0 0 0 2 2.5v11a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 .5-.5v-11a.5.5 0 0 0-.5-.5h-11z"></path></svg>
                     </span>
                     <h2>/srv</h2>
                 </div>
@@ -1051,7 +876,7 @@ mjx-container[display="true"] + br {
              <div class="dir-card c15">
                 <div class="card-header">
                      <span class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M12 1a4 4 0 0 1 4 4v6a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V5a4 4 0 0 1 4-4h8zM4 0a5 5 0 0 0-5 5v6a5 5 0 0 0 5 5h8a5 5 0 0 0 5-5V5a5 5 0 0 0-5-5H4z"/><path d="M11.5 4a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .5.5h.5a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.5-.5h-.5zm-3 0a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .5.5h.5a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.5-.5h-.5zm-3 0a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .5.5h.5a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.5-.5h-.5z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M12 1a4 4 0 0 1 4 4v6a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V5a4 4 0 0 1 4-4h8zM4 0a5 5 0 0 0-5 5v6a5 5 0 0 0 5 5h8a5 5 0 0 0 5-5V5a5 5 0 0 0-5-5H4z"></path><path d="M11.5 4a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .5.5h.5a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.5-.5h-.5zm-3 0a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .5.5h.5a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.5-.5h-.5zm-3 0a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .5.5h.5a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.5-.5h-.5z"></path></svg>
                     </span>
                     <h2>/sys</h2>
                 </div>
@@ -1061,7 +886,7 @@ mjx-container[display="true"] + br {
             <div class="dir-card c16">
                 <div class="card-header">
                     <span class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M11 2.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1a.5.5 0 0 1 .5-.5zm-2 0a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1a.5.5 0 0 1 .5-.5zm-2 0a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1a.5.5 0 0 1 .5-.5zm-2 0a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1a.5.5 0 0 1 .5-.5z"/><path d="M2.5 1A1.5 1.5 0 0 0 1 2.5v11A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-11A1.5 1.5 0 0 0 13.5 1h-11zM2 2.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11z"/><path d="M8.5 8.5a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h4a.5.5 0 0 1 .5.5zM8 5.5a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2a.5.5 0 0 1 .5-.5z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M11 2.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1a.5.5 0 0 1 .5-.5zm-2 0a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1a.5.5 0 0 1 .5-.5zm-2 0a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1a.5.5 0 0 1 .5-.5zm-2 0a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1a.5.5 0 0 1 .5-.5z"></path><path d="M2.5 1A1.5 1.5 0 0 0 1 2.5v11A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-11A1.5 1.5 0 0 0 13.5 1h-11zM2 2.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11z"></path><path d="M8.5 8.5a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h4a.5.5 0 0 1 .5.5zM8 5.5a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2a.5.5 0 0 1 .5-.5z"></path></svg>
                     </span>
                     <h2>/tmp</h2>
                 </div>
@@ -1071,7 +896,7 @@ mjx-container[display="true"] + br {
             <div class="dir-card c17">
                 <div class="card-header">
                     <span class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"></path></svg>
                     </span>
                     <h2>/usr</h2>
                 </div>
@@ -1081,7 +906,7 @@ mjx-container[display="true"] + br {
             <div class="dir-card c18">
                 <div class="card-header">
                      <span class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M4 11H2V5h2v6zm4 0H6V5h2v6zm4 0h-2V5h2v6zM2 4h12v11h-2V5H4v10H2V4zM1 1v2h14V1H1z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M4 11H2V5h2v6zm4 0H6V5h2v6zm4 0h-2V5h2v6zM2 4h12v11h-2V5H4v10H2V4zM1 1v2h14V1H1z"></path></svg>
                     </span>
                     <h2>/var</h2>
                 </div>
@@ -1091,7 +916,7 @@ mjx-container[display="true"] + br {
             <div class="dir-card c19">
                 <div class="card-header">
                      <span class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M12.5 11h-.39l-.28-.27a6.5 6.5 0 1 0-.7.7l.27.28v.39l5 5L18 16.5l-5-5zM6.5 11a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9z"/><path d="M5.5 5.5A.5.5 0 0 1 6 5h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5zM5 8h4a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M12.5 11h-.39l-.28-.27a6.5 6.5 0 1 0-.7.7l.27.28v.39l5 5L18 16.5l-5-5zM6.5 11a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9z"></path><path d="M5.5 5.5A.5.5 0 0 1 6 5h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5zM5 8h4a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1z"></path></svg>
                     </span>
                     <h2>/lost+found</h2>
                 </div>
@@ -1101,7 +926,7 @@ mjx-container[display="true"] + br {
             <div class="dir-card c20">
                 <div class="card-header">
                      <span class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M7.442 2.55a.5.5 0 0 1 .29.43L8 5.417l.268-2.437a.5.5 0 0 1 .29-.43p1.034 0a.5.5 0 0 1 .4.192l.532.851 2.224.288a.5.5 0 0 1 .37.662l-1.554 2.126.54 2.454a.5.5 0 0 1-.65.551L8 12.673l-2.45.922a.5.5 0 0 1-.65-.551l.54-2.454-1.554-2.126a.5.5 0 0 1 .37-.662l2.224-.288.532-.851A.5.5 0 0 1 6.408 2.55h1.034z"/><path d="M.5 1A.5.5 0 0 0 0 1.5v13a.5.5 0 0 0 .5.5h15a.5.5 0 0 0 .5-.5v-13a.5.5 0 0 0-.5-.5H.5zM1 14V2h14v12H1z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M7.442 2.55a.5.5 0 0 1 .29.43L8 5.417l.268-2.437a.5.5 0 0 1 .29-.43p1.034 0a.5.5 0 0 1 .4.192l.532.851 2.224.288a.5.5 0 0 1 .37.662l-1.554 2.126.54 2.454a.5.5 0 0 1-.65.551L8 12.673l-2.45.922a.5.5 0 0 1-.65-.551l.54-2.454-1.554-2.126a.5.5 0 0 1 .37-.662l2.224-.288.532-.851A.5.5 0 0 1 6.408 2.55h1.034z"></path><path d="M.5 1A.5.5 0 0 0 0 1.5v13a.5.5 0 0 0 .5.5h15a.5.5 0 0 0 .5-.5v-13a.5.5 0 0 0-.5-.5H.5zM1 14V2h14v12H1z"></path></svg>
                     </span>
                     <h2>/usr/local</h2>
                 </div>
@@ -1111,7 +936,7 @@ mjx-container[display="true"] + br {
             <div class="dir-card c21">
                 <div class="card-header">
                      <span class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/><path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"></path><path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"></path></svg>
                     </span>
                     <h2>/var/log</h2>
                 </div>
@@ -1121,7 +946,7 @@ mjx-container[display="true"] + br {
             <div class="dir-card c22">
                 <div class="card-header">
                      <span class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M.5 4.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm4 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm4 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm4 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zM.5 10.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm4 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm4 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M.5 4.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm4 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm4 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm4 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zM.5 10.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm4 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm4 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z"></path></svg>
                     </span>
                     <h2>/snap</h2>
                 </div>
@@ -1154,8 +979,7 @@ mjx-container[display="true"] + br {
         });
     
     </script>
-</body>
-</html>
+
 	</div>
 
 	<div class="page-template-comments">
@@ -1182,7 +1006,7 @@ mjx-container[display="true"] + br {
               <span>2025</span>
               -
             
-            2025&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
+            2026&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
             
                 
                 <p class="post-count space-x-0.5">
@@ -1191,7 +1015,7 @@ mjx-container[display="true"] + br {
                     </span>
                     
                         <span>
-                            共 26.4k 字
+                            共 25.6k 字
                         </span>
                     
                 </p>

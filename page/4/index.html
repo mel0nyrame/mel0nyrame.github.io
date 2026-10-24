@@ -875,11 +875,11 @@ mjx-container[display="true"] + br {
                             BugKu-WEB-需要管理员题目
 打开f12查看，都没什么问题
 
-可以先使用dirsearch扫一下目录，但是可以先看看*&#x2F;robots.txt*文件，发现端倪
+可以先使用dirsearch扫一下目录，但是可以先看看*/robots.txt*文件，发现端倪
 
-此时dirsearch也扫出来了，但是只有robots.txt是可以访问的，回头看下面的提示，是要我们爆破密码吗？但是题目又说是需要管理员，先试试burpsuite爆破吧最后爆破出来，x&#x3D;admin
+此时dirsearch也扫出来了，但是只有robots.txt是可以访问的，回头看下面的提示，是要我们爆破密码吗？但是题目又说是需要管理员，先试试burpsuite爆破吧最后爆破出来，x=admin
 
-你妈早...
+你妈早知道就手动输入弱密码...
                         
                     </div>
 
@@ -960,7 +960,7 @@ mjx-container[display="true"] + br {
 注：看到一位评论区的大佬，讲得超级详细，也解决了我很多做题的时候的疑问：链接
 
 打开靶机可以看到php代码
-123456&lt;?php    include &quot;flag.php&quot;;    $a = @$_REQUEST[&#x27;hello&#x27;];    eval( &quot;var_dump($a);&quot;);...
+123456&lt;?php    include "flag.php";    $a = @$_REQUEST['hello'];    eval( "var_dump($a);");    show_source(__FILE__);?&gt...
                         
                     </div>
 
@@ -1048,9 +1048,9 @@ mjx-container[display="true"] + br {
                             
                             BugKu-WEB-shell题目
 思路题目中给了思路
-1$poc=&quot;a#s#s#e#r#t&quot;; $poc_1=explode(&quot;#&quot;,$poc); $poc_2=$poc_1[0].$poc_1[1].$poc_1[2].$poc_1[3].$poc_1[4].$poc_1[5]; $poc_2($_GET[&#x27;s&#x27;]) 
+1$poc="a#s#s#e#r#t"; $poc_1=explode("#",$poc); $poc_2=$poc_1[0].$poc_1[1].$poc_1[2].$poc_1[3].$poc_1[4].$poc_1[5]; $poc_2($_GET['s']) 
 
-可以先...
+可以先看看explode()函数的文档和assert()函数的文档...
                         
                     </div>
 
@@ -1212,7 +1212,7 @@ mjx-container[display="true"] + br {
 
 找到flag
 
-Flag1flag&#123;cd101d7a76054b1e3262dfa19b763d7d&#125;
+Flag1flag{cd101d7a76054b1e3262dfa19b763d7d}
 
                         
                     </div>
@@ -1391,7 +1391,7 @@ Flag1flag&#123;cd101d7a76054b1e3262dfa19b763d7d&#125;
 
 打开check.php可以看见有一串检测的语句
 
-12345678var r = &#123;code: &#x27;bugku10000&#x27;&#125;  if(r.code == &#x27;bugku10000&#x27;)...
+12345678var r = {code: 'bugku10000'}  if(r.code == 'bugku10000'){        console.log('e');docu...
                         
                     </div>
 
@@ -1488,7 +1488,7 @@ Flag1flag&#123;cd101d7a76054b1e3262dfa19b763d7d&#125;
     
   
 
-Flag1flag&#12...
+Flag1flag{b61...
                         
                     </div>
 
@@ -1566,7 +1566,7 @@ Flag1flag&#12...
                             
                             BugKu-WEB-源代码题目
 思路题目提示看源代码，看源代码，发现传递方式是POST，而且有一段编码，也有一段脚本，考察代码审计
-12345&lt;script&gt;var p1 = &#x27;%66%75%6e%63%74%69%6f%6e%20%63%68%65%63%6b%53%75%62%6d%69%74%28%29%7b%76%61%72%20%61%3d%64%6f%63%...
+12345&lt;script&gt;var p1 = '%66%75%6e%63%74%69%6f%6e%20%63%68%65%63%6b%53%75%62%6d%69%74%28%29%7b%76%61%72%20%61%3d%64%6f%63%75%6d...
                         
                     </div>
 
@@ -1734,7 +1734,7 @@ Flag1flag&#12...
               <span>2025</span>
               -
             
-            2025&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
+            2026&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
             
                 
                 <p class="post-count space-x-0.5">
@@ -1743,7 +1743,7 @@ Flag1flag&#12...
                     </span>
                     
                         <span>
-                            共 26.4k 字
+                            共 25.6k 字
                         </span>
                     
                 </p>

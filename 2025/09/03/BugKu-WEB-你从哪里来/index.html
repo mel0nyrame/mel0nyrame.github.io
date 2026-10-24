@@ -789,7 +789,7 @@ mjx-container[display="true"] + br {
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>103 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>101 字</span>
         </span>
     
     
@@ -813,30 +813,15 @@ mjx-container[display="true"] + br {
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="BugKu-WEB-你从哪里来"><a href="#BugKu-WEB-你从哪里来" class="headerlink" title="BugKu-WEB-你从哪里来"></a>BugKu-WEB-你从哪里来</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-03-BugKu-WEB-%E4%BD%A0%E4%BB%8E%E5%93%AA%E9%87%8C%E6%9D%A5/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png"
-                      alt="Question"
-                ><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-03-BugKu-WEB-%E4%BD%A0%E4%BB%8E%E5%93%AA%E9%87%8C%E6%9D%A5/%E9%A2%98%E7%9B%AE%E7%BD%91%E9%A1%B5.png"
-                      alt="Question"
-                ></p>
+			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="BugKu-WEB-你从哪里来"><a href="#BugKu-WEB-你从哪里来" class="headerlink" title="BugKu-WEB-你从哪里来"></a>BugKu-WEB-你从哪里来</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-03-BugKu-WEB-%E4%BD%A0%E4%BB%8E%E5%93%AA%E9%87%8C%E6%9D%A5/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png" alt="Question"><br><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-03-BugKu-WEB-%E4%BD%A0%E4%BB%8E%E5%93%AA%E9%87%8C%E6%9D%A5/%E9%A2%98%E7%9B%AE%E7%BD%91%E9%A1%B5.png" alt="Question"></p>
 <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>题目和网页内容都提示我们要改请求头的Referer，让网页认为我们是从google来的，直接用burpsuite抓包，然后在请求头上加上下面这一句，直接得到flag</p>
 <div class="code-container" data-rel="Text"><figure class="iseeu highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Referer: https://www.google.com</span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-03-BugKu-WEB-%E4%BD%A0%E4%BB%8E%E5%93%AA%E9%87%8C%E6%9D%A5/flag.png"
-                      alt="Question"
-                >\</p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-03-BugKu-WEB-%E4%BD%A0%E4%BB%8E%E5%93%AA%E9%87%8C%E6%9D%A5/flag.png" alt="Question">\</p>
 <blockquote>
-<p>我一开始也是用XXF，还是评论区大神讲得好：<a class="link"   target="_blank" rel="noopener" href="https://www.yuque.com/u21437924/ap9vtm/gqkc3dcfmfpe5p85?singleDoc#kx59X" >https://www.yuque.com/u21437924/ap9vtm/gqkc3dcfmfpe5p85?singleDoc#kx59X<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<p>我一开始也是用XXF，还是评论区大神讲得好：<a class="link" target="_blank" rel="noopener" href="https://www.yuque.com/u21437924/ap9vtm/gqkc3dcfmfpe5p85?singleDoc#kx59X">https://www.yuque.com/u21437924/ap9vtm/gqkc3dcfmfpe5p85?singleDoc#kx59X<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
 </blockquote>
-<h3 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;d6b191c02103054f5b94dc80b6473450&#125;</span><br></pre></td></tr></table></figure></div>
+<h3 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag{d6b191c02103054f5b94dc80b6473450}</span><br></pre></td></tr></table></figure></div>
 
 		</div>
 
@@ -1002,7 +987,7 @@ mjx-container[display="true"] + br {
               <span>2025</span>
               -
             
-            2025&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
+            2026&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
             
                 
                 <p class="post-count space-x-0.5">
@@ -1011,7 +996,7 @@ mjx-container[display="true"] + br {
                     </span>
                     
                         <span>
-                            共 26.4k 字
+                            共 25.6k 字
                         </span>
                     
                 </p>

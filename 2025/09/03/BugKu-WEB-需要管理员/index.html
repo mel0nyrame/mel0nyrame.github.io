@@ -789,7 +789,7 @@ mjx-container[display="true"] + br {
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>137 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>133 字</span>
         </span>
     
     
@@ -813,47 +813,17 @@ mjx-container[display="true"] + br {
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="BugKu-WEB-需要管理员"><a href="#BugKu-WEB-需要管理员" class="headerlink" title="BugKu-WEB-需要管理员"></a>BugKu-WEB-需要管理员</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-03-BugKu-WEB-%E9%9C%80%E8%A6%81%E7%AE%A1%E7%90%86%E5%91%98/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png"
-                      alt="Question"
-                ><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-03-BugKu-WEB-%E9%9C%80%E8%A6%81%E7%AE%A1%E7%90%86%E5%91%98/%E9%A2%98%E7%9B%AE%E7%BD%91%E9%A1%B5.png"
-                      alt="Question"
-                ></p>
+			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="BugKu-WEB-需要管理员"><a href="#BugKu-WEB-需要管理员" class="headerlink" title="BugKu-WEB-需要管理员"></a>BugKu-WEB-需要管理员</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-03-BugKu-WEB-%E9%9C%80%E8%A6%81%E7%AE%A1%E7%90%86%E5%91%98/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png" alt="Question"><br><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-03-BugKu-WEB-%E9%9C%80%E8%A6%81%E7%AE%A1%E7%90%86%E5%91%98/%E9%A2%98%E7%9B%AE%E7%BD%91%E9%A1%B5.png" alt="Question"></p>
 <p>打开f12查看，都没什么问题</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-03-BugKu-WEB-%E9%9C%80%E8%A6%81%E7%AE%A1%E7%90%86%E5%91%98/f12.png"
-                      alt="Question"
-                ></p>
-<p>可以先使用dirsearch扫一下目录，但是可以先看看*&#x2F;robots.txt*文件，发现端倪</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-03-BugKu-WEB-%E9%9C%80%E8%A6%81%E7%AE%A1%E7%90%86%E5%91%98/robots.png"
-                      alt="Question"
-                ><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-03-BugKu-WEB-%E9%9C%80%E8%A6%81%E7%AE%A1%E7%90%86%E5%91%98/php.png"
-                      alt="Question"
-                ></p>
-<p>此时dirsearch也扫出来了，但是只有<em>robots.txt</em>是可以访问的，回头看下面的提示，是要我们爆破密码吗？但是题目又说是需要管理员，先试试burpsuite爆破吧<br>最后爆破出来，x&#x3D;admin</p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-03-BugKu-WEB-%E9%9C%80%E8%A6%81%E7%AE%A1%E7%90%86%E5%91%98/f12.png" alt="Question"></p>
+<p>可以先使用dirsearch扫一下目录，但是可以先看看*/robots.txt*文件，发现端倪</p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-03-BugKu-WEB-%E9%9C%80%E8%A6%81%E7%AE%A1%E7%90%86%E5%91%98/robots.png" alt="Question"><br><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-03-BugKu-WEB-%E9%9C%80%E8%A6%81%E7%AE%A1%E7%90%86%E5%91%98/php.png" alt="Question"></p>
+<p>此时dirsearch也扫出来了，但是只有<em>robots.txt</em>是可以访问的，回头看下面的提示，是要我们爆破密码吗？但是题目又说是需要管理员，先试试burpsuite爆破吧<br>最后爆破出来，x=admin</p>
 <blockquote>
 <p>你妈早知道就手动输入弱密码了，爆破我快50分钟</p>
 </blockquote>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-03-BugKu-WEB-%E9%9C%80%E8%A6%81%E7%AE%A1%E7%90%86%E5%91%98/flag.png"
-                      alt="Question"
-                ></p>
-<h3 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;df81aca6f81291f323fb5942114bddad&#125;</span><br></pre></td></tr></table></figure></div>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-03-BugKu-WEB-%E9%9C%80%E8%A6%81%E7%AE%A1%E7%90%86%E5%91%98/flag.png" alt="Question"></p>
+<h3 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag{df81aca6f81291f323fb5942114bddad}</span><br></pre></td></tr></table></figure></div>
 
 		</div>
 
@@ -1019,7 +989,7 @@ mjx-container[display="true"] + br {
               <span>2025</span>
               -
             
-            2025&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
+            2026&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
             
                 
                 <p class="post-count space-x-0.5">
@@ -1028,7 +998,7 @@ mjx-container[display="true"] + br {
                     </span>
                     
                         <span>
-                            共 26.4k 字
+                            共 25.6k 字
                         </span>
                     
                 </p>

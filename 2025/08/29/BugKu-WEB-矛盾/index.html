@@ -789,7 +789,7 @@ mjx-container[display="true"] + br {
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>315 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>304 字</span>
         </span>
     
     
@@ -813,51 +813,21 @@ mjx-container[display="true"] + br {
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="BugKu-WEB-矛盾"><a href="#BugKu-WEB-矛盾" class="headerlink" title="BugKu-WEB-矛盾"></a>BugKu-WEB-矛盾</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-29-BugKu-WEB-%E7%9F%9B%E7%9B%BE/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png"
-                      alt="Question"
-                ><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-29-BugKu-WEB-%E7%9F%9B%E7%9B%BE/%E9%A2%98%E7%9B%AE%E7%BD%91%E9%A1%B5.png"
-                      alt="Question"
-                ></p>
+			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="BugKu-WEB-矛盾"><a href="#BugKu-WEB-矛盾" class="headerlink" title="BugKu-WEB-矛盾"></a>BugKu-WEB-矛盾</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-29-BugKu-WEB-%E7%9F%9B%E7%9B%BE/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png" alt="Question"><br><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-29-BugKu-WEB-%E7%9F%9B%E7%9B%BE/%E9%A2%98%E7%9B%AE%E7%BD%91%E9%A1%B5.png" alt="Question"></p>
 <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>很明显这是一个代码审计的题目</p>
-<div class="code-container" data-rel="Php"><figure class="iseeu highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$num</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;num&#x27;</span>];</span><br><span class="line"><span class="keyword">if</span>(!<span class="title function_ invoke__">is_numeric</span>(<span class="variable">$num</span>))</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$num</span>;</span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$num</span>==<span class="number">1</span>)</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&#x27;flag&#123;**********&#125;&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Php"><figure class="iseeu highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$num</span>=<span class="variable">$_GET</span>[<span class="string">'num'</span>];</span><br><span class="line"><span class="keyword">if</span>(!<span class="title function_ invoke__">is_numeric</span>(<span class="variable">$num</span>))</span><br><span class="line">{</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$num</span>;</span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$num</span>==<span class="number">1</span>)</span><br><span class="line"><span class="keyword">echo</span> <span class="string">'flag{**********}'</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure></div>
 
 <p>通过题目可知这题应该考的是php弱判断的漏洞，不过要先知道服务器的php版本，使用<em>whatweb</em>可以查看</p>
 <div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whatweb 117.72.52.127:15078</span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-29-BugKu-WEB-%E7%9F%9B%E7%9B%BE/whatweb.png"
-                      alt="Question"
-                ></p>
-<p>可以看到是低版本，这就意味着可以利用一些低版本的php弱比较的漏洞，可以去<a class="link"   target="_blank" rel="noopener" href="https://www.php.net/manual/zh/types.comparisons.php" >官网文档<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>查看</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-29-BugKu-WEB-%E7%9F%9B%E7%9B%BE/php.png"
-                      alt="Question"
-                ></p>
-<p>先分析代码，先是定义了<em>num</em>为GET方法得到的输入，然后又执行了一个if语句，<code>is_numeric()</code>方法判断输入是不是数字，<code>!is_numeric()</code>表示非数字，但是下面又有一个if语句，如果<em>num</em>是1的话就输出flag，前后就矛盾了<br>此时我们可以翻看<a class="link"   target="_blank" rel="noopener" href="https://www.php.net/manual/zh/types.comparisons.php" >官网文档<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>，查看有没有办法让num不是数字，但又可以num判定等于1的<br>可以看见，如果num是个字符串且包含1的话，php就会把字符串转换成1</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-29-BugKu-WEB-%E7%9F%9B%E7%9B%BE/bug.png"
-                      alt="Question"
-                ></p>
-<p>传入参数?num&#x3D;1a， php从左往右读，读到1之后发现后面的不是数字就不读了，此时就可以满足看似矛盾的条件了</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-29-BugKu-WEB-%E7%9F%9B%E7%9B%BE/flag.png"
-                      alt="Question"
-                ></p>
-<h3 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;21ca78b8239ca7282de29084f518c051&#125; </span><br></pre></td></tr></table></figure></div>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-29-BugKu-WEB-%E7%9F%9B%E7%9B%BE/whatweb.png" alt="Question"></p>
+<p>可以看到是低版本，这就意味着可以利用一些低版本的php弱比较的漏洞，可以去<a class="link" target="_blank" rel="noopener" href="https://www.php.net/manual/zh/types.comparisons.php">官网文档<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>查看</p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-29-BugKu-WEB-%E7%9F%9B%E7%9B%BE/php.png" alt="Question"></p>
+<p>先分析代码，先是定义了<em>num</em>为GET方法得到的输入，然后又执行了一个if语句，<code>is_numeric()</code>方法判断输入是不是数字，<code>!is_numeric()</code>表示非数字，但是下面又有一个if语句，如果<em>num</em>是1的话就输出flag，前后就矛盾了<br>此时我们可以翻看<a class="link" target="_blank" rel="noopener" href="https://www.php.net/manual/zh/types.comparisons.php">官网文档<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>，查看有没有办法让num不是数字，但又可以num判定等于1的<br>可以看见，如果num是个字符串且包含1的话，php就会把字符串转换成1</p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-29-BugKu-WEB-%E7%9F%9B%E7%9B%BE/bug.png" alt="Question"></p>
+<p>传入参数?num=1a， php从左往右读，读到1之后发现后面的不是数字就不读了，此时就可以满足看似矛盾的条件了</p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-29-BugKu-WEB-%E7%9F%9B%E7%9B%BE/flag.png" alt="Question"></p>
+<h3 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag{21ca78b8239ca7282de29084f518c051} </span><br></pre></td></tr></table></figure></div>
 
 		</div>
 
@@ -1023,7 +993,7 @@ mjx-container[display="true"] + br {
               <span>2025</span>
               -
             
-            2025&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
+            2026&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
             
                 
                 <p class="post-count space-x-0.5">
@@ -1032,7 +1002,7 @@ mjx-container[display="true"] + br {
                     </span>
                     
                         <span>
-                            共 26.4k 字
+                            共 25.6k 字
                         </span>
                     
                 </p>

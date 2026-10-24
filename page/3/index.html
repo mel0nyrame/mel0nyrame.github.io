@@ -875,10 +875,10 @@ mjx-container[display="true"] + br {
                             BugKu-MISC-USB流量截取题目
 思路可以先参考一下资料
 大致看了一下数据的Leftover Capture Data，全是八个字节的，可以确认是键盘usb数据无疑了，使用tshark命令提取数据
-1tshark -r usb.pcap -T fields -e usb.capdata | sed &#x27;/^\s*$/d&#x27; &gt; usbdata.txt
+1tshark -r usb.pcap -T fields -e usb.capdata | sed '/^\s*$/d' &gt; usbdata.txt
 
 
-注：-...
+注：-r为输入文件 -T是...
                         
                     </div>
 
@@ -957,7 +957,7 @@ mjx-container[display="true"] + br {
                             BugKu-MISC-ping题目
 思路用wireshark打开，发现前面几个数据包有内容部分的ASCII码最后面组成了flag，并且后面的数据包还带上了{，估计就是flag拆开丢进了数据包内，拼起来得到flag
 
-Flag1flag&#123;dc76a1eee6e3822877ed627e0a04ab4a&#125;
+Flag1flag{dc76a1eee6e3822877ed627e0a04ab4a}
 
                         
                     </div>
@@ -1037,7 +1037,7 @@ Flag1flag&#123;dc76a1eee6e3822877ed627e0a04ab4a&#125;
                             BugKu-MISC-旋转跳跃题目
 思路打开之后是一段音频，某段熟悉的bgm。。。但是题目给了我们一条信息：key：syclovergeek，直接利用mp3stego解码得到flag
 
-Flag1SYC&#123;Mp3_B15b1uBiu_W0W&#125;
+Flag1SYC{Mp3_B15b1uBiu_W0W}
 
                         
                     </div>
@@ -1279,7 +1279,7 @@ ps：看了评论区思路只有写py脚本之类的，奈何本人目前还没�
                             
                             BugKu-WEB-各种绕过哟题目
 思路先看了一眼f12，没什么大问题，开始代码审计
-12345678910111213141516171819&lt;?phphighlight_file(&#x27;flag.php&#x27;);$_GET[&#x27;id&#x27;] = urldecode($_GET[&#x27;id&#x27;]);$flag = &#x27;flag&#123...
+12345678910111213141516171819&lt;?phphighlight_file('flag.php');$_GET['id'] = urldecode($_GET['id']);$flag = 'flag{xxxxxxxxxxxxxxxxxx}';if (isset($_GET['u...
                         
                     </div>
 
@@ -1367,7 +1367,7 @@ ps：看了评论区思路只有写py脚本之类的，奈何本人目前还没�
                             
                             BugKu-WEB-MD5题目
 打开f12看网页没多大问题，接下来就分析文本中的php代码
-12345678910111213$md51 = md5(&#x27;QNKCDZO&#x27;);$a = @$_GET[&#x27;a&#x27;];$md52 = @md5($a);if(isset($a))&#123;    if ($a != &#x27;QNKCDZO&#x27; &amp...
+12345678910111213$md51 = md5('QNKCDZO');$a = @$_GET['a'];$md52 = @md5($a);if(isset($a)){    if ($a != 'QNKCDZO' &amp;&amp; $md51 == $md52) {        ech...
                         
                     </div>
 
@@ -1446,7 +1446,7 @@ ps：看了评论区思路只有写py脚本之类的，奈何本人目前还没�
                             BugKu-WEB-前女友题目
 思路打开f12，看到一个code.txt打开之后是php代码
 
-123456789101112&lt;?phpif(isset($_GET[&#x27;v1&#x27;]) &amp;&amp; isset($_GET[&#x27;v2&#x27;]) &amp;&amp; isset($_GET[&#x27;v3&#x27;]))&#123;    $v1 ...
+123456789101112&lt;?phpif(isset($_GET['v1']) &amp;&amp; isset($_GET['v2']) &amp;&amp; isset($_GET['v3'])){    $v1 = $_GET['v1'];    $v2 = $_GET['v2']...
                         
                     </div>
 
@@ -1610,7 +1610,7 @@ ps：看了评论区思路只有写py脚本之类的，奈何本人目前还没�
 就这题要三个币？
 
 
-Flag1flag&#123;231aee4bc0131fac43907ed6cda510cf&#125;
+Flag1flag{231aee4bc0131fac43907ed6cda510cf}
 
                         
                     </div>
@@ -1687,7 +1687,7 @@ Flag1flag&#123;231aee4bc0131fac43907ed6cda510cf&#125;
               <span>2025</span>
               -
             
-            2025&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
+            2026&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
             
                 
                 <p class="post-count space-x-0.5">
@@ -1696,7 +1696,7 @@ Flag1flag&#123;231aee4bc0131fac43907ed6cda510cf&#125;
                     </span>
                     
                         <span>
-                            共 26.4k 字
+                            共 25.6k 字
                         </span>
                     
                 </p>

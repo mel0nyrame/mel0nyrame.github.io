@@ -794,7 +794,7 @@ mjx-container[display="true"] + br {
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>124 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>104 字</span>
         </span>
     
     
@@ -818,32 +818,12 @@ mjx-container[display="true"] + br {
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="BugKu-WEB-bp"><a href="#BugKu-WEB-bp" class="headerlink" title="BugKu-WEB-bp"></a>BugKu-WEB-bp</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-01-BugKu-WEB-bp/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png"
-                      alt="Question"
-                ><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-01-BugKu-WEB-bp/%E9%A2%98%E7%9B%AE%E6%96%87%E4%BB%B6.png"
-                      alt="Question"
-                ></p>
+			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="BugKu-WEB-bp"><a href="#BugKu-WEB-bp" class="headerlink" title="BugKu-WEB-bp"></a>BugKu-WEB-bp</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-01-BugKu-WEB-bp/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png" alt="Question"><br><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-01-BugKu-WEB-bp/%E9%A2%98%E7%9B%AE%E6%96%87%E4%BB%B6.png" alt="Question"></p>
 <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>打开源代码可以检查输入的文件时<em>check.php</em>，传递方式是POST，下面还贴心地说明了复制代码还要改成本地的js文件</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-01-BugKu-WEB-bp/f12-1.png"
-                      alt="Question"
-                ></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-01-BugKu-WEB-bp/f12-1.png" alt="Question"></p>
 <p>打开<em>check.php</em>可以看见有一串检测的语句</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-01-BugKu-WEB-bp/f12-2.png"
-                      alt="Question"
-                ></p>
-<div class="code-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> r = &#123;<span class="attr">code</span>: <span class="string">&#x27;bugku10000&#x27;</span>&#125;</span><br><span class="line">  <span class="keyword">if</span>(r.<span class="property">code</span> == <span class="string">&#x27;bugku10000&#x27;</span>)&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;e&#x27;</span>);</span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;d&#x27;</span>).<span class="property">innerHTML</span> = <span class="string">&quot;Wrong account or password!&quot;</span>;</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">        <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = <span class="string">&#x27;success.php?code=&#x27;</span>+r.<span class="property">code</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></div>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-01-BugKu-WEB-bp/f12-2.png" alt="Question"></p>
+<div class="code-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> r = {<span class="attr">code</span>: <span class="string">'bugku10000'</span>}</span><br><span class="line">  <span class="keyword">if</span>(r.<span class="property">code</span> == <span class="string">'bugku10000'</span>){</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">'e'</span>);</span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">'d'</span>).<span class="property">innerHTML</span> = <span class="string">"Wrong account or password!"</span>;</span><br><span class="line">  }<span class="keyword">else</span>{</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">'0'</span>);</span><br><span class="line">        <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = <span class="string">'success.php?code='</span>+r.<span class="property">code</span>;</span><br><span class="line">  }</span><br></pre></td></tr></table></figure></div>
 
 <p>未完待续</p>
 
@@ -1015,7 +995,7 @@ mjx-container[display="true"] + br {
               <span>2025</span>
               -
             
-            2025&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
+            2026&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
             
                 
                 <p class="post-count space-x-0.5">
@@ -1024,7 +1004,7 @@ mjx-container[display="true"] + br {
                     </span>
                     
                         <span>
-                            共 26.4k 字
+                            共 25.6k 字
                         </span>
                     
                 </p>

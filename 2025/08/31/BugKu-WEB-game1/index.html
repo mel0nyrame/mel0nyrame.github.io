@@ -794,7 +794,7 @@ mjx-container[display="true"] + br {
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>205 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>194 字</span>
         </span>
     
     
@@ -818,17 +818,7 @@ mjx-container[display="true"] + br {
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="BugKu-WEB-game1"><a href="#BugKu-WEB-game1" class="headerlink" title="BugKu-WEB-game1"></a>BugKu-WEB-game1</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-31-BugKu-WEB-game1/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png"
-                      alt="Question"
-                ><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-31-BugKu-WEB-game1/%E9%A2%98%E7%9B%AE%E7%BD%91%E9%A1%B5.png"
-                      alt="Question"
-                ></p>
+			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="BugKu-WEB-game1"><a href="#BugKu-WEB-game1" class="headerlink" title="BugKu-WEB-game1"></a>BugKu-WEB-game1</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-31-BugKu-WEB-game1/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png" alt="Question"><br><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-31-BugKu-WEB-game1/%E9%A2%98%E7%9B%AE%E7%BD%91%E9%A1%B5.png" alt="Question"></p>
 <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>打开发现是个小游戏，先开个代理，把包发往burpsuite，发现游戏结束后，出现了一个<em>score.php</em>的GET方法来传递分数</p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /score.php?score=50&amp;ip=183.236.147.22&amp;sign=zMNTA=== HTTP/1.1</span><br></pre></td></tr></table></figure></div>
 
@@ -839,31 +829,16 @@ mjx-container[display="true"] + br {
 
     </div>
     <div class="notel-content markdown-body">
-      <p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-31-BugKu-WEB-game1/burpsuite.png"
-                      alt="Question"
-                ></p>
+      <p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-31-BugKu-WEB-game1/burpsuite.png" alt="Question"></p>
 
     </div>
   </div>
 
-<p>来分析这个链接，显示向<em>score.php</em>这个文件传递<em>score&#x3D;50</em>的参数，ip参数和签名参数<em>zMNTA&#x3D;&#x3D;&#x3D;</em><br>其他都好理解，但就是这个签名参数，一看就是被加密的，但是一眼过去就像是base64<br>先打开赛博大厨，解密一下<em>zMNTA&#x3D;&#x3D;&#x3D;</em>，发现什么都没解密出来</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-31-BugKu-WEB-game1/cyber.png"
-                      alt="Question"
-                ></p>
-<p>此时我们逆向一下，用分数50来推测算法，发现就是<em>zM + (base64)score + &#x3D;&#x3D;</em><br>尝试将分数修改成9999999999999999999999999999999，再发包，发现返回flag</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-31-BugKu-WEB-game1/flag.png"
-                      alt="Question"
-                ></p>
-<h3 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;cd4def7a4ca880315ff7460f670f874f&#125;</span><br></pre></td></tr></table></figure></div>
+<p>来分析这个链接，显示向<em>score.php</em>这个文件传递<em>score=50</em>的参数，ip参数和签名参数<em>zMNTA===</em><br>其他都好理解，但就是这个签名参数，一看就是被加密的，但是一眼过去就像是base64<br>先打开赛博大厨，解密一下<em>zMNTA===</em>，发现什么都没解密出来</p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-31-BugKu-WEB-game1/cyber.png" alt="Question"></p>
+<p>此时我们逆向一下，用分数50来推测算法，发现就是<em>zM + (base64)score + ==</em><br>尝试将分数修改成9999999999999999999999999999999，再发包，发现返回flag</p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-31-BugKu-WEB-game1/flag.png" alt="Question"></p>
+<h3 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag{cd4def7a4ca880315ff7460f670f874f}</span><br></pre></td></tr></table></figure></div>
 
 		</div>
 
@@ -1033,7 +1008,7 @@ mjx-container[display="true"] + br {
               <span>2025</span>
               -
             
-            2025&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
+            2026&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
             
                 
                 <p class="post-count space-x-0.5">
@@ -1042,7 +1017,7 @@ mjx-container[display="true"] + br {
                     </span>
                     
                         <span>
-                            共 26.4k 字
+                            共 25.6k 字
                         </span>
                     
                 </p>

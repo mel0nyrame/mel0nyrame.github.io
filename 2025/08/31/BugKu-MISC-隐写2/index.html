@@ -789,7 +789,7 @@ mjx-container[display="true"] + br {
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>215 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>205 字</span>
         </span>
     
     
@@ -813,17 +813,7 @@ mjx-container[display="true"] + br {
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="BugKu-MISC-隐写2"><a href="#BugKu-MISC-隐写2" class="headerlink" title="BugKu-MISC-隐写2"></a>BugKu-MISC-隐写2</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-31-BugKu-MISC-%E9%9A%90%E5%86%992/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png"
-                      alt="Question"
-                ><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-31-BugKu-MISC-%E9%9A%90%E5%86%992/%E9%A2%98%E7%9B%AE%E6%96%87%E4%BB%B6.png"
-                      alt="Question"
-                ></p>
+			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="BugKu-MISC-隐写2"><a href="#BugKu-MISC-隐写2" class="headerlink" title="BugKu-MISC-隐写2"></a>BugKu-MISC-隐写2</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-31-BugKu-MISC-%E9%9A%90%E5%86%992/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png" alt="Question"><br><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-31-BugKu-MISC-%E9%9A%90%E5%86%992/%E9%A2%98%E7%9B%AE%E6%96%87%E4%BB%B6.png" alt="Question"></p>
 <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>老样子看到这样子的先丢到010editor看看，发现中间有大段的空白，大概率藏有文件</p>
 
   <div class="note-large default">
@@ -832,44 +822,19 @@ mjx-container[display="true"] + br {
 
     </div>
     <div class="notel-content markdown-body">
-      <p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-31-BugKu-MISC-%E9%9A%90%E5%86%992/010editor.png"
-                      alt="Question"
-                ></p>
+      <p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-31-BugKu-MISC-%E9%9A%90%E5%86%992/010editor.png" alt="Question"></p>
 
     </div>
   </div>
 
-<p>尝试用binwalk看看，果然发现藏了一堆文件，分离一看，有个hint和压缩包<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-31-BugKu-MISC-%E9%9A%90%E5%86%992/binwalk.png"
-                      alt="Question"
-                ><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-31-BugKu-MISC-%E9%9A%90%E5%86%992/binwalke.png"
-                      alt="Question"
-                ></p>
+<p>尝试用binwalk看看，果然发现藏了一堆文件，分离一看，有个hint和压缩包<br><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-31-BugKu-MISC-%E9%9A%90%E5%86%992/binwalk.png" alt="Question"><br><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-31-BugKu-MISC-%E9%9A%90%E5%86%992/binwalke.png" alt="Question"></p>
 <p>压缩包在kali打不开（又是伪加密？？？），在windows下可以打开，发现是zipcrypto加密方式，deflate压缩方式，可以先试试john暴力破解</p>
 <p>题目说是3个数字，先拿个脚本跑个字典先</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">filename = &quot;dic.txt&quot;</span><br><span class="line">with open(filename, &quot;w&quot;) as f:</span><br><span class="line">    for i in range(1000):</span><br><span class="line">        f.write(f&quot;&#123;i:03&#125;\n&quot;)</span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">filename = "dic.txt"</span><br><span class="line">with open(filename, "w") as f:</span><br><span class="line">    for i in range(1000):</span><br><span class="line">        f.write(f"{i:03}\n")</span><br></pre></td></tr></table></figure></div>
 
 <div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zip2john flag.rar &gt; 1.<span class="built_in">hash</span></span><br><span class="line">john --wordlist=/home/melony/桌面/weekpass/rockyou.txt 1.<span class="built_in">hash</span></span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-31-BugKu-MISC-%E9%9A%90%E5%86%992/pw.png"
-                      alt="Question"
-                ><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-31-BugKu-MISC-%E9%9A%90%E5%86%992/pic.png"
-                      alt="Question"
-                ></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-31-BugKu-MISC-%E9%9A%90%E5%86%992/pw.png" alt="Question"><br><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-31-BugKu-MISC-%E9%9A%90%E5%86%992/pic.png" alt="Question"></p>
 <p>丢到010editor看看，在结尾找到flag，并且发现一串像base64的编码，丢到赛博大厨，解得flag</p>
 
   <div class="note-large default">
@@ -878,23 +843,13 @@ mjx-container[display="true"] + br {
 
     </div>
     <div class="notel-content markdown-body">
-      <p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-31-BugKu-MISC-%E9%9A%90%E5%86%992/010editor1.png"
-                      alt="Question"
-                ></p>
+      <p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-31-BugKu-MISC-%E9%9A%90%E5%86%992/010editor1.png" alt="Question"></p>
 
     </div>
   </div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-31-BugKu-MISC-%E9%9A%90%E5%86%992/cyber.png"
-                      alt="Question"
-                ></p>
-<h3 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f1@g&#123;y0u Are a h@cker!&#125;</span><br></pre></td></tr></table></figure></div>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-31-BugKu-MISC-%E9%9A%90%E5%86%992/cyber.png" alt="Question"></p>
+<h3 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f1@g{y0u Are a h@cker!}</span><br></pre></td></tr></table></figure></div>
 
 		</div>
 
@@ -1060,7 +1015,7 @@ mjx-container[display="true"] + br {
               <span>2025</span>
               -
             
-            2025&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
+            2026&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
             
                 
                 <p class="post-count space-x-0.5">
@@ -1069,7 +1024,7 @@ mjx-container[display="true"] + br {
                     </span>
                     
                         <span>
-                            共 26.4k 字
+                            共 25.6k 字
                         </span>
                     
                 </p>

@@ -965,8 +965,8 @@ mjx-container[display="true"] + br {
                             
                             BugKu-WEB-本地管理员题目
 思路一上来就看到下面有一长串n，打开f12发现果然有端倪
-一眼丁真是base64，丢给赛博大厨看看，发现是一个普通的字符串test123，但是联想到这个和题目是不是有关系，比如说密码之类的，尝试使用username&#x3D;admin，password&#x3D;test123但是发现不行，但是题目名字有提示，说是本地管理员
-既然说是本地管理员，那么可以...
+一眼丁真是base64，丢给赛博大厨看看，发现是一个普通的字符串test123，但是联想到这个和题目是不是有关系，比如说密码之类的，尝试使用username=admin，password=test123但是发现不行，但是题目名字有提示，说是本地管理员
+既然说是本地管理员，那么可以猜想是不是改请求头，...
                         
                     </div>
 
@@ -1044,7 +1044,7 @@ mjx-container[display="true"] + br {
                             
                             BugKu-WEB-变量1题目
 思路打开可以看到是一份php代码，估计就是在考察代码审计
-123456789101112&lt;?php  error_reporting(0);include &quot;flag1.php&quot;;highlight_file(__file__);if(isset($_GET[&#x27;args&#x27;]))&#123;    $args = $...
+123456789101112&lt;?php  error_reporting(0);include "flag1.php";highlight_file(__file__);if(isset($_GET['args'])){    $args = $_GET['args'];    if(!preg...
                         
                     </div>
 
@@ -1377,9 +1377,10 @@ mjx-container[display="true"] + br {
                             
                             BugKu-WEB-矛盾题目
 思路很明显这是一个代码审计的题目
-1234567$num=$_GET[&#x27;num&#x27;];if(!is_numeric($num))&#123;echo $num;if($num==1)echo &#x27;flag&#123;**********&#125;&#x27;;&#125;
+1234567$num=$_GET['num'];if(!is_numeric($num)){echo $num;if($num==1)echo 'flag{**********}';}
 
-通过题目可知这题应该考的是php弱判断的漏洞，不过要先知道服...
+通过题目可知这题应该考的是php弱判断的漏洞，不过要先知道服务器的php版本，使用whatweb可以查看
+1whatweb 117.72.5...
                         
                     </div>
 
@@ -1541,9 +1542,9 @@ mjx-container[display="true"] + br {
                         
                             
                             BugKu-WEB-POST题目
-思路审计代码发现和上题逻辑一样，只不过需要传输的数据变成了POST，此时需要用到HackBar，把USE POST method打开，在body处输入”what&#x3D;flag”，点击EXECUTE得到flag
+思路审计代码发现和上题逻辑一样，只不过需要传输的数据变成了POST，此时需要用到HackBar，把USE POST method打开，在body处输入”what=flag”，点击EXECUTE得到flag
 
-Flag1flag&#123;a1d64513bc7e3dd9f6ecd64cac02226e&#125; 
+Flag1flag{a1d64513bc7e3dd9f6ecd64cac02226e} 
 
                         
                     </div>
@@ -1622,9 +1623,9 @@ Flag1flag&#123;a1d64513bc7e3dd9f6ecd64cac02226e&#125;
                             
                             BugKu-WEB-GET题目
 思路可以看到网页是php语言
-1234$what=$_GET[&#x27;what&#x27;];echo $what;if($what==&#x27;flag&#x27;)echo &#x27;flag&#123;****&#125;&#x27;;
+1234$what=$_GET['what'];echo $what;if($what=='flag')echo 'flag{****}';
 
-打开意思就是定义what为GET方法传参的内容，然后打印what，再然后是一个判断，如果what弱等于fla...
+打开意思就是定义what为GET方法传参的内容，然后打印what，再然后是一个判断，如果what弱等于flag，就打印flag此时只需要在网址后面加上”?what=flag”，得到flag...
                         
                     </div>
 
@@ -1700,7 +1701,7 @@ Flag1flag&#123;a1d64513bc7e3dd9f6ecd64cac02226e&#125;
               <span>2025</span>
               -
             
-            2025&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
+            2026&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
             
                 
                 <p class="post-count space-x-0.5">
@@ -1709,7 +1710,7 @@ Flag1flag&#123;a1d64513bc7e3dd9f6ecd64cac02226e&#125;
                     </span>
                     
                         <span>
-                            共 26.4k 字
+                            共 25.6k 字
                         </span>
                     
                 </p>

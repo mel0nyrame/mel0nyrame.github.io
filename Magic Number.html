@@ -145,7 +145,7 @@
 <meta property="og:description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://mel0nyrame.github.io/images/redefine-og.webp">
-<meta property="article:published_time" content="2025-08-31T17:25:10.944Z">
+<meta property="article:published_time" content="2026-08-23T15:23:34.385Z">
 <meta property="article:modified_time" content="2025-08-31T17:25:10.944Z">
 <meta property="article:author" content="Mel0ny">
 <meta property="article:tag" content="高中">
@@ -726,127 +726,12 @@ mjx-container[display="true"] + br {
 		<h1></h1>
 		
 
-		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="UTF-8">
-<title>Magic Number 速查表（完整版）</title>
-<style>
-  :root {
-    --bg-color: #ffffff;
-    --text-color: #222222;
-    --border-color: #d1d9e0;
-    --header-bg: #f1f3f4;
-    --code-bg: #eef;
-    --accent-color: #0366d6;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg-color: #1e1e1e;
-      --text-color: #e0e0e0;
-      --border-color: #444;
-      --header-bg: #2c2c2c;
-      --code-bg: #2d2d40;
-    }
-  }
-
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-    margin: 0;
-    padding: 40px;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    overflow-x: hidden; /* 防止动画期间出现滚动条 */
-  }
-  
-  .container {
-    max-width: 960px;
-    margin: 0 auto;
-  }
-
-  h1 {
-    margin-bottom: 30px;
-    text-align: center;
-    animation: fadeInDown 0.8s ease-out;
-  }
-
-  h2 {
-    color: var(--accent-color);
-    margin-top: 40px;
-  }
-
-  details {
-    background-color: var(--bg-color);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    margin-bottom: 16px;
-    padding: 12px 16px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-  }
-
-  details:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-    border-color: var(--accent-color);
-  }
-
-  summary {
-    font-weight: 600;
-    font-size: 1.1rem;
-    cursor: pointer;
-    outline: none;
-  }
-
-  table {
-    border-collapse: collapse;
-    width: 100%;
-    margin-top: 12px;
-  }
-
-  th, td {
-    padding: 8px 12px;
-    text-align: left;
-    font-size: 14px;
-    border-bottom: 1px solid var(--border-color);
-  }
-
-  tr:last-child td {
-    border-bottom: none;
-  }
-
-  th {
-    background-color: var(--header-bg);
-  }
-
-  code {
-    background-color: var(--code-bg);
-    padding: 2px 5px;
-    border-radius: 4px;
-    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-  }
-
-  /* 动画效果 */
-  @keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-  }
-
-</style>
-</head>
-<body>
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css">
 
 <div class="container">
 <h1>Magic Number 速查表（完整版）</h1>
 
-<details open>
+<details open="">
   <summary>🖼️ 图像与矢量</summary>
   <table>
     <thead><tr><th>扩展名</th><th>描述</th><th>文件头 (Hex)</th><th>文件尾 (Hex)</th></tr></thead>
@@ -869,7 +754,7 @@ mjx-container[display="true"] + br {
   </table>
 </details>
 
-<details open>
+<details open="">
   <summary>⚙️ 可执行 / 库 / 安装包</summary>
   <table>
     <thead><tr><th>扩展名</th><th>描述</th><th>文件头 (Hex)</th><th>文件尾 (Hex)</th></tr></thead>
@@ -887,7 +772,7 @@ mjx-container[display="true"] + br {
   </table>
 </details>
 
-<details open>
+<details open="">
   <summary>🗜️ 压缩与归档</summary>
   <table>
     <thead><tr><th>扩展名</th><th>描述</th><th>文件头 (Hex)</th><th>文件尾 (Hex)</th></tr></thead>
@@ -904,13 +789,13 @@ mjx-container[display="true"] + br {
       <tr><td>LZH / LHA</td><td>LZH/LHA 压缩包</td><td><code>2D 6C 68</code></td><td>无</td></tr>
       <tr><td>ARJ</td><td>ARJ 压缩包</td><td><code>60 EA</code></td><td>无</td></tr>
       <tr><td>PKG (macOS)</td><td>macOS 安装包 (XAR 容器)</td><td><code>78 61 72 21</code> ("xar!")</td><td>无</td></tr>
-      <tr><td>DEB</td><td>Debian 软件包</td><td><code>21 3C 61 72 63 68 3E</code> ("!<arch>")</td><td>无</td></tr>
+      <tr><td>DEB</td><td>Debian 软件包</td><td><code>21 3C 61 72 63 68 3E</code> ("!<arch>")</arch></td><td>无</td></tr>
       <tr><td>RPM</td><td>RedHat Package Manager</td><td><code>ED AB EE DB</code></td><td>无</td></tr>
     </tbody>
   </table>
 </details>
 
-<details open>
+<details open="">
   <summary>🎧 音频</summary>
   <table>
     <thead><tr><th>扩展名</th><th>描述</th><th>文件头 (Hex)</th><th>文件尾 (Hex)</th></tr></thead>
@@ -934,7 +819,7 @@ mjx-container[display="true"] + br {
   </table>
 </details>
 
-<details open>
+<details open="">
   <summary>🎬 视频</summary>
   <table>
     <thead><tr><th>扩展名</th><th>描述</th><th>文件头 (Hex)</th><th>文件尾 (Hex)</th></tr></thead>
@@ -954,7 +839,7 @@ mjx-container[display="true"] + br {
   </table>
 </details>
 
-<details open>
+<details open="">
   <summary>🗃️ 数据库 / 虚拟磁盘 / 字体 / 加密容器</summary>
   <table>
     <thead><tr><th>扩展名</th><th>描述</th><th>文件头 (Hex)</th><th>文件尾 (Hex)</th></tr></thead>
@@ -964,10 +849,10 @@ mjx-container[display="true"] + br {
       <tr><td>DBF</td><td>dBASE 数据库文件</td><td><code>03</code> / <code>83</code> / <code>8B</code> / <code>F5</code></td><td>无</td></tr>
       <tr><td>SQLITE / DB</td><td>SQLite 数据库文件</td><td><code>53 51 4C 69 74 65 20 66 6F 72 6D 61 74 20 33 00</code> ("SQLite 3")</td><td>无</td></tr>
       <tr><td>DTA</td><td>Stata 数据文件</td><td><code>7B 21 53 54 41</code></td><td>无</td></tr>
-      <tr><td>SAV</td><td>SPSS 保存文件</td><td>$FL2 / $FL3 / $FL4</td><td>无</td></tr>
+      <tr><td>SAV</td><td>SPSS 保存文件</td><td><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="5.498ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2430 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D439" d="M48 1Q31 1 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q146 66 215 342T285 622Q285 629 281 629Q273 632 228 634H197Q191 640 191 642T193 659Q197 676 203 680H742Q749 676 749 669Q749 664 736 557T722 447Q720 440 702 440H690Q683 445 683 453Q683 454 686 477T689 530Q689 560 682 579T663 610T626 626T575 633T503 634H480Q398 633 393 631Q388 629 386 623Q385 622 352 492L320 363H375Q378 363 398 363T426 364T448 367T472 374T489 386Q502 398 511 419T524 457T529 475Q532 480 548 480H560Q567 475 567 470Q567 467 536 339T502 207Q500 200 482 200H470Q463 206 463 212Q463 215 468 234T473 274Q473 303 453 310T364 317H309L277 190Q245 66 245 60Q245 46 334 46H359Q365 40 365 39T363 19Q359 6 353 0H336Q295 2 185 2Q120 2 86 2T48 1Z"></path></g><g data-mml-node="mi" transform="translate(749,0)"><path data-c="1D43F" d="M228 637Q194 637 192 641Q191 643 191 649Q191 673 202 682Q204 683 217 683Q271 680 344 680Q485 680 506 683H518Q524 677 524 674T522 656Q517 641 513 637H475Q406 636 394 628Q387 624 380 600T313 336Q297 271 279 198T252 88L243 52Q243 48 252 48T311 46H328Q360 46 379 47T428 54T478 72T522 106T564 161Q580 191 594 228T611 270Q616 273 628 273H641Q647 264 647 262T627 203T583 83T557 9Q555 4 553 3T537 0T494 -1Q483 -1 418 -1T294 0H116Q32 0 32 10Q32 17 34 24Q39 43 44 45Q48 46 59 46H65Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Q285 635 228 637Z"></path></g><g data-mml-node="mn" transform="translate(1430,0)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(1930,0)"><g data-mml-node="mo"><path data-c="2F" d="M423 750Q432 750 438 744T444 730Q444 725 271 248T92 -240Q85 -250 75 -250Q68 -250 62 -245T56 -231Q56 -221 230 257T407 740Q411 750 423 750Z"></path></g></g></g></g></svg></mjx-container>FL3 / $FL4</td><td>无</td></tr>
       <tr><td>POR</td><td>SPSS 便携文件</td><td>ASCII 文本型，以 SPSSPORT 开头</td><td>无</td></tr>
       <tr><td>VMDK</td><td>VMware 虚拟磁盘</td><td><code>4B 44 4D 56</code> ("KDMV")</td><td>无</td></tr>
-      <tr><td>VDI</td><td>VirtualBox 虚拟磁盘</td><td>ASCII: <<< Oracle VM VirtualBox Disk Image >>></td><td>无</td></tr>
+      <tr><td>VDI</td><td>VirtualBox 虚拟磁盘</td><td>ASCII: &lt;&lt;&lt; Oracle VM VirtualBox Disk Image &gt;&gt;&gt;</td><td>无</td></tr>
       <tr><td>VHD</td><td>Microsoft 虚拟硬盘</td><td><code>63 6F 6E 6E 65 63 74 69 78</code> ("connectix")</td><td>无</td></tr>
       <tr><td>VHDX</td><td>Microsoft 虚拟硬盘 (Win8+)</td><td><code>76 68 64 78 66 69 6C 65</code> ("vhdxfile")</td><td>无</td></tr>
       <tr><td>QCOW2</td><td>QEMU 虚拟机磁盘</td><td><code>51 46 49 FB</code></td><td>无</td></tr>
@@ -982,7 +867,7 @@ mjx-container[display="true"] + br {
   </table>
 </details>
 
-<details open>
+<details open="">
   <summary>📄 文档 / 邮件 / 其它</summary>
   <table>
     <thead><tr><th>扩展名</th><th>描述</th><th>文件头 (Hex)</th><th>文件尾 (Hex)</th></tr></thead>
@@ -1042,8 +927,7 @@ mjx-container[display="true"] + br {
     });
 </script>
 
-</body>
-</html>
+
 	</div>
 
 	<div class="page-template-comments">
@@ -1070,7 +954,7 @@ mjx-container[display="true"] + br {
               <span>2025</span>
               -
             
-            2025&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
+            2026&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
             
                 
                 <p class="post-count space-x-0.5">
@@ -1079,7 +963,7 @@ mjx-container[display="true"] + br {
                     </span>
                     
                         <span>
-                            共 26.4k 字
+                            共 25.6k 字
                         </span>
                     
                 </p>

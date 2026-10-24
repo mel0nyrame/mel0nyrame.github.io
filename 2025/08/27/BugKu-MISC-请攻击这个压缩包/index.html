@@ -789,7 +789,7 @@ mjx-container[display="true"] + br {
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>455 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>449 字</span>
         </span>
     
     
@@ -816,18 +816,8 @@ mjx-container[display="true"] + br {
 			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="BugKu-MISC-请攻击这个压缩包"><a href="#BugKu-MISC-请攻击这个压缩包" class="headerlink" title="BugKu-MISC-请攻击这个压缩包"></a>BugKu-MISC-请攻击这个压缩包</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><blockquote>
 <p>注：已试过zip2john获取哈希值再用john字典弱密码破解</p>
 </blockquote>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-27-BugKu-MISC-%E8%AF%B7%E6%94%BB%E5%87%BB%E8%BF%99%E4%B8%AA%E5%8E%8B%E7%BC%A9%E5%8C%85/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png"
-                      alt="Question"
-                ><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-27-BugKu-MISC-%E8%AF%B7%E6%94%BB%E5%87%BB%E8%BF%99%E4%B8%AA%E5%8E%8B%E7%BC%A9%E5%8C%85/%E9%A2%98%E7%9B%AE%E6%96%87%E4%BB%B6.png"
-                      alt="Question"
-                ></p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>看了题目，是个加密的压缩包，里面放着一个<em>flag.png</em>的文件，先使用<a class="link"   target="_blank" rel="noopener" href="https://github.com/kimci86/bkcrack" >bkcrack<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>查看文件的加密方式</p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-27-BugKu-MISC-%E8%AF%B7%E6%94%BB%E5%87%BB%E8%BF%99%E4%B8%AA%E5%8E%8B%E7%BC%A9%E5%8C%85/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png" alt="Question"><br><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-27-BugKu-MISC-%E8%AF%B7%E6%94%BB%E5%87%BB%E8%BF%99%E4%B8%AA%E5%8E%8B%E7%BC%A9%E5%8C%85/%E9%A2%98%E7%9B%AE%E6%96%87%E4%BB%B6.png" alt="Question"></p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>看了题目，是个加密的压缩包，里面放着一个<em>flag.png</em>的文件，先使用<a class="link" target="_blank" rel="noopener" href="https://github.com/kimci86/bkcrack">bkcrack<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>查看文件的加密方式</p>
 
   <div class="note-large default">
     <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
@@ -835,47 +825,32 @@ mjx-container[display="true"] + br {
 
     </div>
     <div class="notel-content markdown-body">
-      <p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-27-BugKu-MISC-%E8%AF%B7%E6%94%BB%E5%87%BB%E8%BF%99%E4%B8%AA%E5%8E%8B%E7%BC%A9%E5%8C%85/bkcrack.png"
-                      alt="Question"
-                ></p>
+      <p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-27-BugKu-MISC-%E8%AF%B7%E6%94%BB%E5%87%BB%E8%BF%99%E4%B8%AA%E5%8E%8B%E7%BC%A9%E5%8C%85/bkcrack.png" alt="Question"></p>
 
     </div>
   </div>
 
 <p>发现是zipcrypto加密，压缩算法是store，满足明文攻击文件的要求，现在要找出明文，而且要求大于12个字节，怎么找呢<br>刚刚看到，压缩包里的文件是一张png图片，那么png图片的文件头是已知的：<strong>89 50 4E 47 0D 0A 1A 0A</strong>，那么就可以利用png的文件头来明文攻击</p>
 <p>先创建一个<em>plain.txt</em>的文件储存明文（注：-n是防止添加换行符，xxd是一个16进制工具，-是表示反向操作，把十六进制转回二进制，-ps表示输入是纯 hex 字符串而不是带偏移量的格式）</p>
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> -n <span class="string">&#x27;89504E470D0A1A0A&#x27;</span> | xxd -r -ps &gt; plain.txt</span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> -n <span class="string">'89504E470D0A1A0A'</span> | xxd -r -ps &gt; plain.txt</span><br></pre></td></tr></table></figure></div>
 
 <p>使用这段明文来攻击，发现字节不够，搜索寻找png的数据结构，发现这段文件头后面还有一段固定的内容（IHDR，存储图片各种信息的，比如说长宽,详细的可以看下面按钮的内容，需梯子），加上这段内容，输出plain.txt</p>
-<a class="button center large" target="_blank" rel="noopener" href='https://hello-ctf.com/hc-misc/stego/#png' title='隐写技术'><i class='fa-solid fa-newspaper'></i> 隐写技术</a>
+<a class="button center large" target="_blank" rel="noopener" href="https://hello-ctf.com/hc-misc/stego/#png" title="隐写技术"><i class="fa-solid fa-newspaper"></i> 隐写技术</a>
 
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> -n <span class="string">&#x27;89504E470D0A1A0A0000000D49484452&#x27;</span> | xxd -r -ps &gt; plain.txt</span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> -n <span class="string">'89504E470D0A1A0A0000000D49484452'</span> | xxd -r -ps &gt; plain.txt</span><br></pre></td></tr></table></figure></div>
 
 <p>现在通过这个明文来攻击压缩包</p>
 <div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./bkcrack -C file.zip -c flag.png -p plain.txt</span><br></pre></td></tr></table></figure></div>
 
 <p>找到了key，注意这个key并不是压缩包的密码，而是zipcrypto加密的一段密钥</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-27-BugKu-MISC-%E8%AF%B7%E6%94%BB%E5%87%BB%E8%BF%99%E4%B8%AA%E5%8E%8B%E7%BC%A9%E5%8C%85/key.png"
-                      alt="Question"
-                ></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-27-BugKu-MISC-%E8%AF%B7%E6%94%BB%E5%87%BB%E8%BF%99%E4%B8%AA%E5%8E%8B%E7%BC%A9%E5%8C%85/key.png" alt="Question"></p>
 <p>再利用key来解压缩出<em>flag.png</em>，打开得到flag</p>
 <div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./bkcrack -C file.zip -c flag.png -k 92802c24 9955f8d6 65c652b8 -d flag.png</span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-27-BugKu-MISC-%E8%AF%B7%E6%94%BB%E5%87%BB%E8%BF%99%E4%B8%AA%E5%8E%8B%E7%BC%A9%E5%8C%85/flag.png"
-                      alt="Question"
-                ></p>
-<a class="button center large" target="_blank" rel="noopener" href='https://www.freebuf.com/articles/network/255145.html' title='相关的文章'><i class='fa-solid fa-newspaper'></i> 相关的文章</a>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-27-BugKu-MISC-%E8%AF%B7%E6%94%BB%E5%87%BB%E8%BF%99%E4%B8%AA%E5%8E%8B%E7%BC%A9%E5%8C%85/flag.png" alt="Question"></p>
+<a class="button center large" target="_blank" rel="noopener" href="https://www.freebuf.com/articles/network/255145.html" title="相关的文章"><i class="fa-solid fa-newspaper"></i> 相关的文章</a>
 
-<h3 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BugKu&#123;不是非得两个文件你才能明文攻击&#125;</span><br></pre></td></tr></table></figure></div>
+<h3 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BugKu{不是非得两个文件你才能明文攻击}</span><br></pre></td></tr></table></figure></div>
 
 		</div>
 
@@ -1041,7 +1016,7 @@ mjx-container[display="true"] + br {
               <span>2025</span>
               -
             
-            2025&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
+            2026&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
             
                 
                 <p class="post-count space-x-0.5">
@@ -1050,7 +1025,7 @@ mjx-container[display="true"] + br {
                     </span>
                     
                         <span>
-                            共 26.4k 字
+                            共 25.6k 字
                         </span>
                     
                 </p>

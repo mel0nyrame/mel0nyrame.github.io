@@ -789,7 +789,7 @@ mjx-container[display="true"] + br {
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>217 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>211 字</span>
         </span>
     
     
@@ -813,17 +813,7 @@ mjx-container[display="true"] + br {
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="BugKu-MISC-look"><a href="#BugKu-MISC-look" class="headerlink" title="BugKu-MISC-look"></a>BugKu-MISC-look</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-02-BugKu-MISC-look/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png"
-                      alt="Question"
-                ><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-02-BugKu-MISC-look/%E9%A2%98%E7%9B%AE%E6%96%87%E4%BB%B6.png"
-                      alt="Question"
-                ></p>
+			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="BugKu-MISC-look"><a href="#BugKu-MISC-look" class="headerlink" title="BugKu-MISC-look"></a>BugKu-MISC-look</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-02-BugKu-MISC-look/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png" alt="Question"><br><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-02-BugKu-MISC-look/%E9%A2%98%E7%9B%AE%E6%96%87%E4%BB%B6.png" alt="Question"></p>
 <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>照常丢进010editor看看，发现了zip文件的文件头，果断改后缀名为zip，发现了一张图片</p>
 
   <div class="note-large default">
@@ -832,88 +822,38 @@ mjx-container[display="true"] + br {
 
     </div>
     <div class="notel-content markdown-body">
-      <p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-02-BugKu-MISC-look/010editor.png"
-                      alt="Question"
-                ></p>
+      <p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-02-BugKu-MISC-look/010editor.png" alt="Question"></p>
 
     </div>
   </div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-02-BugKu-MISC-look/bmp.png"
-                      alt="Question"
-                ></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-02-BugKu-MISC-look/bmp.png" alt="Question"></p>
 <h4 id="思路1"><a href="#思路1" class="headerlink" title="思路1"></a>思路1</h4><p>这个是一个bmp文件，先尝试修改高，发现没用</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-02-BugKu-MISC-look/height.png"
-                      alt="Question"
-                ></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-02-BugKu-MISC-look/height.png" alt="Question"></p>
 <p>再用binwalk查看有没有隐藏文件，发现也没用</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-02-BugKu-MISC-look/binwalk.png"
-                      alt="Question"
-                ></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-02-BugKu-MISC-look/binwalk.png" alt="Question"></p>
 <p>看看字符串，发现也没用</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-02-BugKu-MISC-look/strings.png"
-                      alt="Question"
-                ></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-02-BugKu-MISC-look/strings.png" alt="Question"></p>
 <p>看看图片信息，发现也没用</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-02-BugKu-MISC-look/exiftool.png"
-                      alt="Question"
-                ></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-02-BugKu-MISC-look/exiftool.png" alt="Question"></p>
 <p>最后试试lsb隐写，发现了flag，不过只有一段</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;3c 15d07e-</span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag{3c 15d07e-</span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-02-BugKu-MISC-look/flag1.png"
-                      alt="Question"
-                ></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-02-BugKu-MISC-look/flag1.png" alt="Question"></p>
 <p>继续查看三原色，发现了其他的flag</p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5d9a-4c cb-b67c</span><br></pre></td></tr></table></figure></div>
 
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-d2369e b2c1b9&#125;</span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-d2369e b2c1b9}</span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-02-BugKu-MISC-look/flag2.png"
-                      alt="Question"
-                ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-02-BugKu-MISC-look/flag3.png"
-                      alt="Question"
-                ></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-02-BugKu-MISC-look/flag2.png" alt="Question"></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-02-BugKu-MISC-look/flag3.png" alt="Question"></p>
 <p>拼在一起就是flag</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;3c 15d07e-5d9a-4c cb-b67c-d2369e b2c1b9&#125;</span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag{3c 15d07e-5d9a-4c cb-b67c-d2369e b2c1b9}</span><br></pre></td></tr></table></figure></div>
 
 <p>题目说没有空格，去掉空格得到flag</p>
 <h4 id="思路2"><a href="#思路2" class="headerlink" title="思路2"></a>思路2</h4><p>直接使用zsteg，输入参数<code>-a</code>尝试所有方法，直接找到flag的片段，拼在一起就可以获得flag</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-02-BugKu-MISC-look/L.png"
-                      alt="Question"
-                ></p>
-<h3 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;3c15d07e-5d9a-4ccb-b67c-d2369eb2c1b9&#125;</span><br></pre></td></tr></table></figure></div>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-02-BugKu-MISC-look/L.png" alt="Question"></p>
+<h3 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag{3c15d07e-5d9a-4ccb-b67c-d2369eb2c1b9}</span><br></pre></td></tr></table></figure></div>
 
 		</div>
 
@@ -1079,7 +1019,7 @@ mjx-container[display="true"] + br {
               <span>2025</span>
               -
             
-            2025&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
+            2026&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
             
                 
                 <p class="post-count space-x-0.5">
@@ -1088,7 +1028,7 @@ mjx-container[display="true"] + br {
                     </span>
                     
                         <span>
-                            共 26.4k 字
+                            共 25.6k 字
                         </span>
                     
                 </p>

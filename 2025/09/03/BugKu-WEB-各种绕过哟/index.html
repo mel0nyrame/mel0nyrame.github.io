@@ -799,7 +799,7 @@ mjx-container[display="true"] + br {
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>302 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>262 字</span>
         </span>
     
     
@@ -823,40 +823,20 @@ mjx-container[display="true"] + br {
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="BugKu-WEB-各种绕过哟"><a href="#BugKu-WEB-各种绕过哟" class="headerlink" title="BugKu-WEB-各种绕过哟"></a>BugKu-WEB-各种绕过哟</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-03-BugKu-WEB-%E5%90%84%E7%A7%8D%E7%BB%95%E8%BF%87%E5%93%9F/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png"
-                      alt="Question"
-                ><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-03-BugKu-WEB-%E5%90%84%E7%A7%8D%E7%BB%95%E8%BF%87%E5%93%9F/%E9%A2%98%E7%9B%AE%E7%BD%91%E9%A1%B5.png"
-                      alt="Question"
-                ></p>
+			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="BugKu-WEB-各种绕过哟"><a href="#BugKu-WEB-各种绕过哟" class="headerlink" title="BugKu-WEB-各种绕过哟"></a>BugKu-WEB-各种绕过哟</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-03-BugKu-WEB-%E5%90%84%E7%A7%8D%E7%BB%95%E8%BF%87%E5%93%9F/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png" alt="Question"><br><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-03-BugKu-WEB-%E5%90%84%E7%A7%8D%E7%BB%95%E8%BF%87%E5%93%9F/%E9%A2%98%E7%9B%AE%E7%BD%91%E9%A1%B5.png" alt="Question"></p>
 <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>先看了一眼f12，没什么大问题，开始代码审计</p>
-<div class="code-container" data-rel="Php"><figure class="iseeu highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">highlight_file</span>(<span class="string">&#x27;flag.php&#x27;</span>);</span><br><span class="line"><span class="variable">$_GET</span>[<span class="string">&#x27;id&#x27;</span>] = <span class="title function_ invoke__">urldecode</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;id&#x27;</span>]);</span><br><span class="line"><span class="variable">$flag</span> = <span class="string">&#x27;flag&#123;xxxxxxxxxxxxxxxxxx&#125;&#x27;</span>;</span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;uname&#x27;</span>]) <span class="keyword">and</span> <span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;passwd&#x27;</span>])) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$_GET</span>[<span class="string">&#x27;uname&#x27;</span>] == <span class="variable">$_POST</span>[<span class="string">&#x27;passwd&#x27;</span>])</span><br><span class="line"></span><br><span class="line">        <span class="keyword">print</span> <span class="string">&#x27;passwd can not be uname.&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (<span class="title function_ invoke__">sha1</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;uname&#x27;</span>]) === <span class="title function_ invoke__">sha1</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;passwd&#x27;</span>])&amp;(<span class="variable">$_GET</span>[<span class="string">&#x27;id&#x27;</span>]==<span class="string">&#x27;margin&#x27;</span>))</span><br><span class="line"></span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&#x27;Flag: &#x27;</span>.<span class="variable">$flag</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">print</span> <span class="string">&#x27;sorry!&#x27;</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span> </span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Php"><figure class="iseeu highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">highlight_file</span>(<span class="string">'flag.php'</span>);</span><br><span class="line"><span class="variable">$_GET</span>[<span class="string">'id'</span>] = <span class="title function_ invoke__">urldecode</span>(<span class="variable">$_GET</span>[<span class="string">'id'</span>]);</span><br><span class="line"><span class="variable">$flag</span> = <span class="string">'flag{xxxxxxxxxxxxxxxxxx}'</span>;</span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">'uname'</span>]) <span class="keyword">and</span> <span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">'passwd'</span>])) {</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$_GET</span>[<span class="string">'uname'</span>] == <span class="variable">$_POST</span>[<span class="string">'passwd'</span>])</span><br><span class="line"></span><br><span class="line">        <span class="keyword">print</span> <span class="string">'passwd can not be uname.'</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (<span class="title function_ invoke__">sha1</span>(<span class="variable">$_GET</span>[<span class="string">'uname'</span>]) === <span class="title function_ invoke__">sha1</span>(<span class="variable">$_POST</span>[<span class="string">'passwd'</span>])&amp;(<span class="variable">$_GET</span>[<span class="string">'id'</span>]==<span class="string">'margin'</span>))</span><br><span class="line"></span><br><span class="line">        <span class="keyword">die</span>(<span class="string">'Flag: '</span>.<span class="variable">$flag</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">print</span> <span class="string">'sorry!'</span>;</span><br><span class="line"></span><br><span class="line">}</span><br><span class="line"><span class="meta">?&gt;</span> </span><br></pre></td></tr></table></figure></div>
 
-<p>可以先看看参考资料:<br>1.<a class="link"   target="_blank" rel="noopener" href="https://www.php.net/manual/zh/function.urldecode.php" >urldecode()<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a><br>2.<a class="link"   target="_blank" rel="noopener" href="https://www.php.net/manual/zh/language.operators.logical.php" >and<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a><br>3.<a class="link"   target="_blank" rel="noopener" href="https://www.php.net/manual/zh/function.sha1.php" >sha1()<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a><br>首先可以确定的是有三个变量，分别是id，uname，passwd，传递方式分别是GET，GET，POST<br>直接来看最核心的地方：首先变量uname和passwd不能相等，但是是弱比较，然后是对变量uname和passwd的sha1值进行比较，再和变量id是否等于margin进行按位于进行比较<br>和md5似曾相识，查询<a class="link"   target="_blank" rel="noopener" href="https://medium.com/%40mena.meseha/php-functions-security-issues-755ce4c8643c" >资料<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>可知2个数组的sha1值都是null，null&#x3D;&#x3D;&#x3D;null返回true，接下来只要让id&#x3D;margin就可以了</p>
+<p>可以先看看参考资料:<br>1.<a class="link" target="_blank" rel="noopener" href="https://www.php.net/manual/zh/function.urldecode.php">urldecode()<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a><br>2.<a class="link" target="_blank" rel="noopener" href="https://www.php.net/manual/zh/language.operators.logical.php">and<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a><br>3.<a class="link" target="_blank" rel="noopener" href="https://www.php.net/manual/zh/function.sha1.php">sha1()<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a><br>首先可以确定的是有三个变量，分别是id，uname，passwd，传递方式分别是GET，GET，POST<br>直接来看最核心的地方：首先变量uname和passwd不能相等，但是是弱比较，然后是对变量uname和passwd的sha1值进行比较，再和变量id是否等于margin进行按位于进行比较<br>和md5似曾相识，查询<a class="link" target="_blank" rel="noopener" href="https://medium.com/%40mena.meseha/php-functions-security-issues-755ce4c8643c">资料<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>可知2个数组的sha1值都是null，null===null返回true，接下来只要让id=margin就可以了</p>
 <blockquote>
 <p>注：在本地运行的时候发现在php8的情况下会直接TypeError报错，在php7以下会返回null</p>
 </blockquote>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-03-BugKu-WEB-%E5%90%84%E7%A7%8D%E7%BB%95%E8%BF%87%E5%93%9F/sha1.png"
-                      alt="Question"
-                ></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-03-BugKu-WEB-%E5%90%84%E7%A7%8D%E7%BB%95%E8%BF%87%E5%93%9F/sha1.png" alt="Question"></p>
 <p>用hackbar传入数据</p>
 <div class="code-container" data-rel="Php"><figure class="iseeu highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_GET:?uname[]=<span class="number">1</span>&amp;id=margin;  _POST:passwd[]=<span class="number">2</span></span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-03-BugKu-WEB-%E5%90%84%E7%A7%8D%E7%BB%95%E8%BF%87%E5%93%9F/flag.png"
-                      alt="Question"
-                ></p>
-<h3 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;193cc93dbc220417980e3916c5831ca8&#125;</span><br></pre></td></tr></table></figure></div>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-03-BugKu-WEB-%E5%90%84%E7%A7%8D%E7%BB%95%E8%BF%87%E5%93%9F/flag.png" alt="Question"></p>
+<h3 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag{193cc93dbc220417980e3916c5831ca8}</span><br></pre></td></tr></table></figure></div>
 
 		</div>
 
@@ -1030,7 +1010,7 @@ mjx-container[display="true"] + br {
               <span>2025</span>
               -
             
-            2025&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
+            2026&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
             
                 
                 <p class="post-count space-x-0.5">
@@ -1039,7 +1019,7 @@ mjx-container[display="true"] + br {
                     </span>
                     
                         <span>
-                            共 26.4k 字
+                            共 25.6k 字
                         </span>
                     
                 </p>

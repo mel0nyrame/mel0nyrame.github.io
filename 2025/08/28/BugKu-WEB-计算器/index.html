@@ -789,7 +789,7 @@ mjx-container[display="true"] + br {
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>174 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>172 字</span>
         </span>
     
     
@@ -813,39 +813,14 @@ mjx-container[display="true"] + br {
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="BugKu-WEB-计算器"><a href="#BugKu-WEB-计算器" class="headerlink" title="BugKu-WEB-计算器"></a>BugKu-WEB-计算器</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-28-BugKu-WEB-%E8%AE%A1%E7%AE%97%E5%99%A8/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png"
-                      alt="Question"
-                ><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-28-BugKu-WEB-%E8%AE%A1%E7%AE%97%E5%99%A8/%E9%A2%98%E7%9B%AE%E7%BD%91%E9%A1%B5.png"
-                      alt="Question"
-                ></p>
+			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="BugKu-WEB-计算器"><a href="#BugKu-WEB-计算器" class="headerlink" title="BugKu-WEB-计算器"></a>BugKu-WEB-计算器</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-28-BugKu-WEB-%E8%AE%A1%E7%AE%97%E5%99%A8/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png" alt="Question"><br><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-28-BugKu-WEB-%E8%AE%A1%E7%AE%97%E5%99%A8/%E9%A2%98%E7%9B%AE%E7%BD%91%E9%A1%B5.png" alt="Question"></p>
 <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><h4 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h4><p>题目名字叫做计算器，说计算正确就可以拿到flag，但是输入框只能输入一位数字，此时可以想到是前端代码中规定了这个框最大是一位数字，只需要修改最大位数然后输入正确答案就可以获得flag了</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-28-BugKu-WEB-%E8%AE%A1%E7%AE%97%E5%99%A8/flag1.png"
-                      alt="Question"
-                ></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-28-BugKu-WEB-%E8%AE%A1%E7%AE%97%E5%99%A8/flag1.png" alt="Question"></p>
 <h4 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h4><p>直接不管这玩意，去后台翻文件，看看是怎么处理输入的数字的，在Network中刷新网页发现了用来处理数字的<em>code.js</em>文件</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-28-BugKu-WEB-%E8%AE%A1%E7%AE%97%E5%99%A8/int.png"
-                      alt="Question"
-                ></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-28-BugKu-WEB-%E8%AE%A1%E7%AE%97%E5%99%A8/int.png" alt="Question"></p>
 <p>在后台发现原文件，很幸运地发现<em>code.js</em>没有混淆，于是直接得到flag</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-28-BugKu-WEB-%E8%AE%A1%E7%AE%97%E5%99%A8/flag2.png"
-                      alt="Question"
-                ></p>
-<h3 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;0806767a830cd564addfa28268a210b3&#125;</span><br></pre></td></tr></table></figure></div>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-28-BugKu-WEB-%E8%AE%A1%E7%AE%97%E5%99%A8/flag2.png" alt="Question"></p>
+<h3 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag{0806767a830cd564addfa28268a210b3}</span><br></pre></td></tr></table></figure></div>
 
 		</div>
 
@@ -1011,7 +986,7 @@ mjx-container[display="true"] + br {
               <span>2025</span>
               -
             
-            2025&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
+            2026&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
             
                 
                 <p class="post-count space-x-0.5">
@@ -1020,7 +995,7 @@ mjx-container[display="true"] + br {
                     </span>
                     
                         <span>
-                            共 26.4k 字
+                            共 25.6k 字
                         </span>
                     
                 </p>

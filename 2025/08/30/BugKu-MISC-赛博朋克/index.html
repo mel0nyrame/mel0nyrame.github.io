@@ -794,7 +794,7 @@ mjx-container[display="true"] + br {
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>414 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>412 字</span>
         </span>
     
     
@@ -818,31 +818,11 @@ mjx-container[display="true"] + br {
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="BugKu-MISC-赛博朋克"><a href="#BugKu-MISC-赛博朋克" class="headerlink" title="BugKu-MISC-赛博朋克"></a>BugKu-MISC-赛博朋克</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-30-BugKu-MISC-%E8%B5%9B%E5%8D%9A%E6%9C%8B%E5%85%8B/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png"
-                      alt="Question"
-                ><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-30-BugKu-MISC-%E8%B5%9B%E5%8D%9A%E6%9C%8B%E5%85%8B/%E9%A2%98%E7%9B%AE%E6%96%87%E4%BB%B6.png"
-                      alt="Question"
-                ></p>
+			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="BugKu-MISC-赛博朋克"><a href="#BugKu-MISC-赛博朋克" class="headerlink" title="BugKu-MISC-赛博朋克"></a>BugKu-MISC-赛博朋克</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-30-BugKu-MISC-%E8%B5%9B%E5%8D%9A%E6%9C%8B%E5%85%8B/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png" alt="Question"><br><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-30-BugKu-MISC-%E8%B5%9B%E5%8D%9A%E6%9C%8B%E5%85%8B/%E9%A2%98%E7%9B%AE%E6%96%87%E4%BB%B6.png" alt="Question"></p>
 <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>虽然在kali打不开，但是在windows下面可以打开，并且知道压缩包的压缩方式是zipcrypto，压缩方式是deflate</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-30-BugKu-MISC-%E8%B5%9B%E5%8D%9A%E6%9C%8B%E5%85%8B/zip.png"
-                      alt="Question"
-                ></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-30-BugKu-MISC-%E8%B5%9B%E5%8D%9A%E6%9C%8B%E5%85%8B/zip.png" alt="Question"></p>
 <p>可以考虑一下明文攻击，但是在此之前先试一试hash值破解，但是使用zip2john的时候发现<em>cyberpunk.txt</em>未加密的提示，先猜想是不是伪加密</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-30-BugKu-MISC-%E8%B5%9B%E5%8D%9A%E6%9C%8B%E5%85%8B/fake.png"
-                      alt="Question"
-                ></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-30-BugKu-MISC-%E8%B5%9B%E5%8D%9A%E6%9C%8B%E5%85%8B/fake.png" alt="Question"></p>
 <p>先丢到010editor看看，发现的确是伪加密，修改之后便可在kali中打开</p>
 
   <div class="note-large default">
@@ -851,27 +831,12 @@ mjx-container[display="true"] + br {
 
     </div>
     <div class="notel-content markdown-body">
-      <p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-30-BugKu-MISC-%E8%B5%9B%E5%8D%9A%E6%9C%8B%E5%85%8B/fake1.png"
-                      alt="Question"
-                ><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-30-BugKu-MISC-%E8%B5%9B%E5%8D%9A%E6%9C%8B%E5%85%8B/fake2.png"
-                      alt="Question"
-                ></p>
+      <p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-30-BugKu-MISC-%E8%B5%9B%E5%8D%9A%E6%9C%8B%E5%85%8B/fake1.png" alt="Question"><br><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-30-BugKu-MISC-%E8%B5%9B%E5%8D%9A%E6%9C%8B%E5%85%8B/fake2.png" alt="Question"></p>
 
     </div>
   </div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-30-BugKu-MISC-%E8%B5%9B%E5%8D%9A%E6%9C%8B%E5%85%8B/fake3.png"
-                      alt="Question"
-                ></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-30-BugKu-MISC-%E8%B5%9B%E5%8D%9A%E6%9C%8B%E5%85%8B/fake3.png" alt="Question"></p>
 <p>发现这一个400多kb的”txt”文件，先丢到010editor先，发现是png文件，文件头和文件尾都是齐的，改成png就可以看到原图</p>
 
   <div class="note-large default">
@@ -880,27 +845,12 @@ mjx-container[display="true"] + br {
 
     </div>
     <div class="notel-content markdown-body">
-      <p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-30-BugKu-MISC-%E8%B5%9B%E5%8D%9A%E6%9C%8B%E5%85%8B/png1.png"
-                      alt="Question"
-                ><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-30-BugKu-MISC-%E8%B5%9B%E5%8D%9A%E6%9C%8B%E5%85%8B/png2.png"
-                      alt="Question"
-                ></p>
+      <p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-30-BugKu-MISC-%E8%B5%9B%E5%8D%9A%E6%9C%8B%E5%85%8B/png1.png" alt="Question"><br><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-30-BugKu-MISC-%E8%B5%9B%E5%8D%9A%E6%9C%8B%E5%85%8B/png2.png" alt="Question"></p>
 
     </div>
   </div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-30-BugKu-MISC-%E8%B5%9B%E5%8D%9A%E6%9C%8B%E5%85%8B/png3.png"
-                      alt="Question"
-                ></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-30-BugKu-MISC-%E8%B5%9B%E5%8D%9A%E6%9C%8B%E5%85%8B/png3.png" alt="Question"></p>
 <p>这下大抵可以确认是图片隐写，丢到stegsolve可以看到一开始Chunk的CRC是没问题的，但是在最后一个Chunk的CRC发现了问题，说明这个Chunk被人为地修改了</p>
 
   <div class="note-large default">
@@ -909,17 +859,7 @@ mjx-container[display="true"] + br {
 
     </div>
     <div class="notel-content markdown-body">
-      <p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-30-BugKu-MISC-%E8%B5%9B%E5%8D%9A%E6%9C%8B%E5%85%8B/stegsolve1.png"
-                      alt="Question"
-                ><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-30-BugKu-MISC-%E8%B5%9B%E5%8D%9A%E6%9C%8B%E5%85%8B/stegsolve2.png"
-                      alt="Question"
-                ></p>
+      <p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-30-BugKu-MISC-%E8%B5%9B%E5%8D%9A%E6%9C%8B%E5%85%8B/stegsolve1.png" alt="Question"><br><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-30-BugKu-MISC-%E8%B5%9B%E5%8D%9A%E6%9C%8B%E5%85%8B/stegsolve2.png" alt="Question"></p>
 
     </div>
   </div>
@@ -932,18 +872,13 @@ mjx-container[display="true"] + br {
 
     </div>
     <div class="notel-content markdown-body">
-      <p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-30-BugKu-MISC-%E8%B5%9B%E5%8D%9A%E6%9C%8B%E5%85%8B/010editor.png"
-                      alt="Question"
-                ></p>
+      <p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-30-BugKu-MISC-%E8%B5%9B%E5%8D%9A%E6%9C%8B%E5%85%8B/010editor.png" alt="Question"></p>
 
     </div>
   </div>
 
 <p>此时感觉没有解了</p>
-<h4 id="WP1"><a href="#WP1" class="headerlink" title="WP1"></a>WP1</h4><p>查阅<a class="link"   target="_blank" rel="noopener" href="https://hello-ctf.com/hc-misc/stego/#lsb" >资料<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>之后发现这种情况有可能是lsb隐写，使用stegsolve中的Data Extract，将三原色的位平面(Bit Planes)全部变成0，点击preview便可在最上面找到flag</p>
+<h4 id="WP1"><a href="#WP1" class="headerlink" title="WP1"></a>WP1</h4><p>查阅<a class="link" target="_blank" rel="noopener" href="https://hello-ctf.com/hc-misc/stego/#lsb">资料<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>之后发现这种情况有可能是lsb隐写，使用stegsolve中的Data Extract，将三原色的位平面(Bit Planes)全部变成0，点击preview便可在最上面找到flag</p>
 <blockquote>
 <p>Stegsolve要1.5alpha版本的，不然没有LSB-First模式，而且也不能把位平面变成0<br>bro这个是真不会啊，我是看了常见的隐写方式才知道的，这没办法啊，况且我的stegsolve还没有LSB-First模式</p>
 </blockquote>
@@ -954,17 +889,12 @@ mjx-container[display="true"] + br {
 
     </div>
     <div class="notel-content markdown-body">
-      <p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-30-BugKu-MISC-%E8%B5%9B%E5%8D%9A%E6%9C%8B%E5%85%8B/flag1.png"
-                      alt="Question"
-                ></p>
+      <p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-30-BugKu-MISC-%E8%B5%9B%E5%8D%9A%E6%9C%8B%E5%85%8B/flag1.png" alt="Question"></p>
 
     </div>
   </div>
 
-<h4 id="WP2"><a href="#WP2" class="headerlink" title="WP2"></a>WP2</h4><p>查阅<a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42570883/article/details/112965757" >资料<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>可知，<a class="link"   target="_blank" rel="noopener" href="https://github.com/zed-0xff/zsteg" >zsteg<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>是一款能有效解决lsb隐写的工具，输入指令直接一把梭</p>
+<h4 id="WP2"><a href="#WP2" class="headerlink" title="WP2"></a>WP2</h4><p>查阅<a class="link" target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42570883/article/details/112965757">资料<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>可知，<a class="link" target="_blank" rel="noopener" href="https://github.com/zed-0xff/zsteg">zsteg<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>是一款能有效解决lsb隐写的工具，输入指令直接一把梭</p>
 <div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zsteg cyberpunk.png</span><br></pre></td></tr></table></figure></div>
 
 
@@ -974,17 +904,12 @@ mjx-container[display="true"] + br {
 
     </div>
     <div class="notel-content markdown-body">
-      <p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-30-BugKu-MISC-%E8%B5%9B%E5%8D%9A%E6%9C%8B%E5%85%8B/flag2.png"
-                      alt="Question"
-                ></p>
+      <p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-30-BugKu-MISC-%E8%B5%9B%E5%8D%9A%E6%9C%8B%E5%85%8B/flag2.png" alt="Question"></p>
 
     </div>
   </div>
 
-<h3 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;Hel1o_Wor1e&#125;</span><br></pre></td></tr></table></figure></div>
+<h3 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag{Hel1o_Wor1e}</span><br></pre></td></tr></table></figure></div>
 
 		</div>
 
@@ -1154,7 +1079,7 @@ mjx-container[display="true"] + br {
               <span>2025</span>
               -
             
-            2025&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
+            2026&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
             
                 
                 <p class="post-count space-x-0.5">
@@ -1163,7 +1088,7 @@ mjx-container[display="true"] + br {
                     </span>
                     
                         <span>
-                            共 26.4k 字
+                            共 25.6k 字
                         </span>
                     
                 </p>

@@ -789,7 +789,7 @@ mjx-container[display="true"] + br {
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>289 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>287 字</span>
         </span>
     
     
@@ -813,17 +813,7 @@ mjx-container[display="true"] + br {
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="BugKu-MISC-split-all"><a href="#BugKu-MISC-split-all" class="headerlink" title="BugKu-MISC-split_all"></a>BugKu-MISC-split_all</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-27-BugKu-MISC-split-all/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png"
-                      alt="Question"
-                ><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-27-BugKu-MISC-split-all/%E9%A2%98%E7%9B%AE%E6%96%87%E4%BB%B6.png"
-                      alt="Question"
-                ></p>
+			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="BugKu-MISC-split-all"><a href="#BugKu-MISC-split-all" class="headerlink" title="BugKu-MISC-split_all"></a>BugKu-MISC-split_all</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-27-BugKu-MISC-split-all/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png" alt="Question"><br><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-27-BugKu-MISC-split-all/%E9%A2%98%E7%9B%AE%E6%96%87%E4%BB%B6.png" alt="Question"></p>
 <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>一张打不开的png文件，丢到010editor看看，发现这个文件很奇怪，png的data很少，看看文件尾，发现是<strong>00 3B</strong>，为gif文件</p>
 
   <div class="note-large default">
@@ -832,24 +822,14 @@ mjx-container[display="true"] + br {
 
     </div>
     <div class="notel-content markdown-body">
-      <p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-27-BugKu-MISC-split-all/010editor.png"
-                      alt="Question"
-                ></p>
+      <p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-27-BugKu-MISC-split-all/010editor.png" alt="Question"></p>
 
     </div>
   </div>
 
 <p>这里本人有两种想法:<br>1.直接修改png的文件头为gif，但是有可能会破坏文件<br>2.在原文件的基础上添加gif的文件头</p>
 <p>先试试方法2，新建一个hex文件，添加gif文件头，再粘贴原文件，发现不行，转方法1<br>将<strong>89 50 4E 47 0D 0A 1A 0A 00 00 00 0D 49 48 44 52 00 00 01 90 00 00 02 58 08 02 00 00 00 C3 8E 27 DF</strong>改成<strong>47 49 46 38 37 61</strong>或者<strong>47 49 46 38 39 61</strong>，发现后者可以打开，但是只有一条非常细的像素</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-27-BugKu-MISC-split-all/gif.png"
-                      alt="Question"
-                ></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-27-BugKu-MISC-split-all/gif.png" alt="Question"></p>
 <p>用stegsolve查看一下，发现图片有770帧</p>
 
   <div class="note-large default">
@@ -858,12 +838,7 @@ mjx-container[display="true"] + br {
 
     </div>
     <div class="notel-content markdown-body">
-      <p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-27-BugKu-MISC-split-all/stegsolve.png"
-                      alt="Question"
-                ></p>
+      <p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-27-BugKu-MISC-split-all/stegsolve.png" alt="Question"></p>
 
     </div>
   </div>
@@ -874,25 +849,15 @@ mjx-container[display="true"] + br {
 </blockquote>
 <div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">convert file.gif flag.png</span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-27-BugKu-MISC-split-all/convert.png"
-                      alt="Question"
-                ></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-27-BugKu-MISC-split-all/convert.png" alt="Question"></p>
 <p>在使用montage命令拼接图片（注：-tile x1表示每行放一张图片，-geometry +0+0表示没有间距地放在一起）</p>
 <div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">montage flag*.png -tile x1 -geometry +0+0 flag.png</span><br></pre></td></tr></table></figure></div>
 
 <p>打开<em>flag.png</em>得到flag</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-27-BugKu-MISC-split-all/flag.png"
-                      alt="Question"
-                ></p>
-<a class="button center large" target="_blank" rel="noopener" href='https://hello-ctf.com/hc-misc/stego/#gif' title='相关的文章'><i class='fa-solid fa-newspaper'></i> 相关的文章</a>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-27-BugKu-MISC-split-all/flag.png" alt="Question"></p>
+<a class="button center large" target="_blank" rel="noopener" href="https://hello-ctf.com/hc-misc/stego/#gif" title="相关的文章"><i class="fa-solid fa-newspaper"></i> 相关的文章</a>
 
-<h3 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;9f019c27eca746beb9c297cd70bf93ca&#125;</span><br></pre></td></tr></table></figure></div>
+<h3 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag{9f019c27eca746beb9c297cd70bf93ca}</span><br></pre></td></tr></table></figure></div>
 
 		</div>
 
@@ -1058,7 +1023,7 @@ mjx-container[display="true"] + br {
               <span>2025</span>
               -
             
-            2025&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
+            2026&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
             
                 
                 <p class="post-count space-x-0.5">
@@ -1067,7 +1032,7 @@ mjx-container[display="true"] + br {
                     </span>
                     
                         <span>
-                            共 26.4k 字
+                            共 25.6k 字
                         </span>
                     
                 </p>

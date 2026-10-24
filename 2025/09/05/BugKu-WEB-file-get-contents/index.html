@@ -789,7 +789,7 @@ mjx-container[display="true"] + br {
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>319 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>304 字</span>
         </span>
     
     
@@ -813,47 +813,22 @@ mjx-container[display="true"] + br {
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="BugKu-WEB-file-get-contents"><a href="#BugKu-WEB-file-get-contents" class="headerlink" title="BugKu-WEB-file_get_contents"></a>BugKu-WEB-file_get_contents</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-05-BugKu-WEB-file-get-contents/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png"
-                      alt="Question"
-                ><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-05-BugKu-WEB-file-get-contents/%E9%A2%98%E7%9B%AE%E7%BD%91%E9%A1%B5.png"
-                      alt="Question"
-                ></p>
+			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="BugKu-WEB-file-get-contents"><a href="#BugKu-WEB-file-get-contents" class="headerlink" title="BugKu-WEB-file_get_contents"></a>BugKu-WEB-file_get_contents</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-05-BugKu-WEB-file-get-contents/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png" alt="Question"><br><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-05-BugKu-WEB-file-get-contents/%E9%A2%98%E7%9B%AE%E7%BD%91%E9%A1%B5.png" alt="Question"></p>
 <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>打开网页看到php代码，先打开f12看了一遍发现没什么问题，再开始代码审计</p>
-<div class="code-container" data-rel="Php"><figure class="iseeu highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">extract</span>(<span class="variable">$_GET</span>);</span><br><span class="line"><span class="keyword">if</span> (!<span class="keyword">empty</span>(<span class="variable">$ac</span>))</span><br><span class="line">&#123;</span><br><span class="line"><span class="variable">$f</span> = <span class="title function_ invoke__">trim</span>(<span class="title function_ invoke__">file_get_contents</span>(<span class="variable">$fn</span>));</span><br><span class="line"><span class="keyword">if</span> (<span class="variable">$ac</span> === <span class="variable">$f</span>)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;&lt;p&gt;This is flag:&quot;</span> .<span class="string">&quot; <span class="subst">$flag</span>&lt;/p&gt;&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;&lt;p&gt;sorry!&lt;/p&gt;&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Php"><figure class="iseeu highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">extract</span>(<span class="variable">$_GET</span>);</span><br><span class="line"><span class="keyword">if</span> (!<span class="keyword">empty</span>(<span class="variable">$ac</span>))</span><br><span class="line">{</span><br><span class="line"><span class="variable">$f</span> = <span class="title function_ invoke__">trim</span>(<span class="title function_ invoke__">file_get_contents</span>(<span class="variable">$fn</span>));</span><br><span class="line"><span class="keyword">if</span> (<span class="variable">$ac</span> === <span class="variable">$f</span>)</span><br><span class="line">{</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;p&gt;This is flag:"</span> .<span class="string">" <span class="subst">$flag</span>&lt;/p&gt;"</span>;</span><br><span class="line">}</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">{</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;p&gt;sorry!&lt;/p&gt;"</span>;</span><br><span class="line">}</span><br><span class="line">}</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></div>
 
-<p>可以先参考一下<code>extract()</code>的<a class="link"   target="_blank" rel="noopener" href="https://www.runoob.com/php/func-array-extract.html" >资料<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>和<code>file_get_contents()</code>的<a class="link"   target="_blank" rel="noopener" href="https://www.runoob.com/php/func-filesystem-file-get-contents.html" >资料<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a><br>审计代码之后可以发现3个变量：$ac，$f，$fn，并且这三个变量都通过GET方法传递并通过<code>extract()</code>方法赋值<br>变量fn是需要读取文件，变量f是文件的内容去掉前后空格<br>题目要求变量ac必须强等于变量f才能输出flag，但是没有文件读取怎么办呢，可以先通过dirsearch扫描一下，果然发现有东西</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-05-BugKu-WEB-file-get-contents/dir.png"
-                      alt="Question"
-                ><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-05-BugKu-WEB-file-get-contents/flagtxt.png"
-                      alt="Question"
-                ></p>
+<p>可以先参考一下<code>extract()</code>的<a class="link" target="_blank" rel="noopener" href="https://www.runoob.com/php/func-array-extract.html">资料<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>和<code>file_get_contents()</code>的<a class="link" target="_blank" rel="noopener" href="https://www.runoob.com/php/func-filesystem-file-get-contents.html">资料<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a><br>审计代码之后可以发现3个变量：<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.452ex;" xmlns="http://www.w3.org/2000/svg" width="4.439ex" height="2.149ex" role="img" focusable="false" viewBox="0 -750 1962 950"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path></g><g data-mml-node="mi" transform="translate(529,0)"><path data-c="1D450" d="M34 159Q34 268 120 355T306 442Q362 442 394 418T427 355Q427 326 408 306T360 285Q341 285 330 295T319 325T330 359T352 380T366 386H367Q367 388 361 392T340 400T306 404Q276 404 249 390Q228 381 206 359Q162 315 142 235T121 119Q121 73 147 50Q169 26 205 26H209Q321 26 394 111Q403 121 406 121Q410 121 419 112T429 98T420 83T391 55T346 25T282 0T202 -11Q127 -11 81 37T34 159Z"></path></g><g data-mml-node="mi" transform="translate(962,0)"><text data-variant="italic" transform="scale(1,-1)" font-size="884px" font-family="serif" font-style="italic">，</text></g></g></g></svg></mjx-container>f，$fn，并且这三个变量都通过GET方法传递并通过<code>extract()</code>方法赋值<br>变量fn是需要读取文件，变量f是文件的内容去掉前后空格<br>题目要求变量ac必须强等于变量f才能输出flag，但是没有文件读取怎么办呢，可以先通过dirsearch扫描一下，果然发现有东西</p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-05-BugKu-WEB-file-get-contents/dir.png" alt="Question"><br><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-05-BugKu-WEB-file-get-contents/flagtxt.png" alt="Question"></p>
 <p>这下有东西可以读取了，传入参数，得到flag</p>
 <div class="code-container" data-rel="Text"><figure class="iseeu highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?ac=bugku&amp;fn=flag.txt</span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-05-BugKu-WEB-file-get-contents/flag.png"
-                      alt="Question"
-                ></p>
-<h3 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;068a5659eb1a536d3e87c83587c34dfb&#125;</span><br></pre></td></tr></table></figure></div>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-05-BugKu-WEB-file-get-contents/flag.png" alt="Question"></p>
+<h3 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag{068a5659eb1a536d3e87c83587c34dfb}</span><br></pre></td></tr></table></figure></div>
 
-<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><p>还是评论区大神，不需要扫目录就可以做出来题，原文链接：<a class="link"   target="_blank" rel="noopener" href="https://www.yuque.com/u21437924/ap9vtm/gqkc3dcfmfpe5p85?singleDoc#X0GpS" >https://www.yuque.com/u21437924/ap9vtm/gqkc3dcfmfpe5p85?singleDoc#X0GpS<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a><br>直接读取php代码环境下有的文件内容，然后传递参数即可</p>
+<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><p>还是评论区大神，不需要扫目录就可以做出来题，原文链接：<a class="link" target="_blank" rel="noopener" href="https://www.yuque.com/u21437924/ap9vtm/gqkc3dcfmfpe5p85?singleDoc#X0GpS">https://www.yuque.com/u21437924/ap9vtm/gqkc3dcfmfpe5p85?singleDoc#X0GpS<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a><br>直接读取php代码环境下有的文件内容，然后传递参数即可</p>
 <div class="code-container" data-rel="Text"><figure class="iseeu highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?ac=hello&amp;fn=data://text/plain,hello</span><br></pre></td></tr></table></figure></div>
 
-<p>这个内容的知识点是<a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/pursue-security/p/15374168.html" >data伪协议<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<p>这个内容的知识点是<a class="link" target="_blank" rel="noopener" href="https://www.cnblogs.com/pursue-security/p/15374168.html">data伪协议<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
 
 		</div>
 
@@ -1019,7 +994,7 @@ mjx-container[display="true"] + br {
               <span>2025</span>
               -
             
-            2025&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
+            2026&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
             
                 
                 <p class="post-count space-x-0.5">
@@ -1028,7 +1003,7 @@ mjx-container[display="true"] + br {
                     </span>
                     
                         <span>
-                            共 26.4k 字
+                            共 25.6k 字
                         </span>
                     
                 </p>

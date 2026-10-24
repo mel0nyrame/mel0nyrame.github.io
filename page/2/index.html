@@ -954,7 +954,7 @@ mjx-container[display="true"] + br {
                             
                             CTFshow-_Web应用安全与防护-反弹shell构造题目
 思路题目提示输入whoami可以看到显示执行成功，再尝试输入phpinfo()，可以看到不管输入什么都会显示执行成功，但是不会返回输出的结果
-待续……09&#x2F;11
+待续……09/11
 
                         
                     </div>
@@ -1119,7 +1119,7 @@ mjx-container[display="true"] + br {
 
 在f12的cookie中把role中的guest改成admin然后刷新就可以获得flag了
 
-Flag1CTF&#123;cookie_injection_is_fun&#125;
+Flag1CTF{cookie_injection_is_fun}
 
                         
                     </div>
@@ -1198,10 +1198,10 @@ Flag1CTF&#123;cookie_injection_is_fun&#125;
                             
                             CTFshow-_Web应用安全与防护-HTTPS中间人攻击题目
 思路可以先看看参考资料
-用wireshark打开发现数据都是加密的，但是我们已经获得了SSL&#x2F;TLS密钥，可以直接解密数据包在首选项的Protocols配置TLS密钥，发现多了两条数据
+用wireshark打开发现数据都是加密的，但是我们已经获得了SSL/TLS密钥，可以直接解密数据包在首选项的Protocols配置TLS密钥，发现多了两条数据
 追踪HTTP流就可以发现flag
 
-Flag1CTF&#123;https_secret_data&#125;
+Flag1CTF{https_secret_data}
 
                         
                     </div>
@@ -1280,7 +1280,7 @@ Flag1CTF&#123;https_secret_data&#125;
                             
                             CTFshow-_Web应用安全与防护-Base64多层嵌套解码题目
 思路打开f12，发现密码被操作了很多次
-12345678910111213 &lt;script&gt;        document.getElementById(&#x27;loginForm&#x27;).addEventListener(&#x27;submit&#x27;, function(e) &#123;...
+12345678910111213 &lt;script&gt;        document.getElementById('loginForm').addEventListener('submit', function(e) {            const correct...
                         
                     </div>
 
@@ -1363,7 +1363,7 @@ Flag1CTF&#123;https_secret_data&#125;
 
 结合题目，这下大致是清楚了，使用hackbar修改请求头就可以了
 
-Flag1CTF&#123;user_agent_inject_success&#125;
+Flag1CTF{user_agent_inject_success}
 
                         
                     </div>
@@ -1444,7 +1444,7 @@ Flag1CTF&#123;user_agent_inject_success&#125;
 思路打开f12看源代码，发现一串脚本
 
 简单审计一下就可以发现他已经规定了密码是什么，结合题目就可以把这串base64解密然后获得密码
-Flag1CTF&#123;easy_base64&#125;
+Flag1CTF{easy_base64}
 
                         
                     </div>
@@ -1523,7 +1523,7 @@ Flag1CTF&#123;easy_base64&#125;
                             
                             BugKu-WEB-file_get_contents题目
 思路打开网页看到php代码，先打开f12看了一遍发现没什么问题，再开始代码审计
-123456789101112131415&lt;?phpextract($_GET);if (!empty($ac))&#123;$f = trim(file_get_contents($fn));if ($ac === $f)&#123;echo &...
+123456789101112131415&lt;?phpextract($_GET);if (!empty($ac)){$f = trim(file_get_contents($fn));if ($ac === $f){echo "&lt;p&gt;T...
                         
                     </div>
 
@@ -1688,7 +1688,7 @@ Flag1CTF&#123;easy_base64&#125;
               <span>2025</span>
               -
             
-            2025&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
+            2026&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
             
                 
                 <p class="post-count space-x-0.5">
@@ -1697,7 +1697,7 @@ Flag1CTF&#123;easy_base64&#125;
                     </span>
                     
                         <span>
-                            共 26.4k 字
+                            共 25.6k 字
                         </span>
                     
                 </p>

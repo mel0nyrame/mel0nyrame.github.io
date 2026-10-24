@@ -789,7 +789,7 @@ mjx-container[display="true"] + br {
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>216 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>206 字</span>
         </span>
     
     
@@ -813,32 +813,17 @@ mjx-container[display="true"] + br {
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="BugKu-WEB-秋名山车神"><a href="#BugKu-WEB-秋名山车神" class="headerlink" title="BugKu-WEB-秋名山车神"></a>BugKu-WEB-秋名山车神</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-04-BugKu-WEB-%E7%A7%8B%E5%90%8D%E5%B1%B1%E8%BD%A6%E7%A5%9E/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png"
-                      alt="Question"
-                ><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-04-BugKu-WEB-%E7%A7%8B%E5%90%8D%E5%B1%B1%E8%BD%A6%E7%A5%9E/%E9%A2%98%E7%9B%AE%E7%BD%91%E9%A1%B5.png"
-                      alt="Question"
-                ></p>
+			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="BugKu-WEB-秋名山车神"><a href="#BugKu-WEB-秋名山车神" class="headerlink" title="BugKu-WEB-秋名山车神"></a>BugKu-WEB-秋名山车神</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-04-BugKu-WEB-%E7%A7%8B%E5%90%8D%E5%B1%B1%E8%BD%A6%E7%A5%9E/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png" alt="Question"><br><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-04-BugKu-WEB-%E7%A7%8B%E5%90%8D%E5%B1%B1%E8%BD%A6%E7%A5%9E/%E9%A2%98%E7%9B%AE%E7%BD%91%E9%A1%B5.png" alt="Question"></p>
 <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>可以看到每次刷新题目的数字都会不同，但是如果在两秒内再刷新就会提示Give me value post about，可以猜测值是通过POST方式传递的，先试试burpsuite抓包，发现怎么样都不行，大概率两秒的计时是在服务器本地算的，只能跑个脚本</p>
 <blockquote>
 <p>ps：看了评论区思路只有写py脚本之类的，奈何本人目前还没开始学python，学的java不涉及这一块，只能拾人牙慧</p>
 </blockquote>
-<p>脚本来源：<a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/qq_46540840/article/details/113877495" >https://blog.csdn.net/qq_46540840/article/details/113877495<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a><br>侵删</p>
-<div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"></span><br><span class="line">url= <span class="string">&#x27;http://117.72.52.127:15533/&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">s = requests.session()</span><br><span class="line">retuen = s.get(url)</span><br><span class="line"><span class="built_in">print</span>(retuen)</span><br><span class="line">eql=re.search(<span class="string">r&#x27;(\d+[*\-+])+(\d+)&#x27;</span>,retuen.text).group()</span><br><span class="line">result =<span class="built_in">eval</span>(eql)</span><br><span class="line"><span class="built_in">print</span>(result)</span><br><span class="line">key=&#123;<span class="string">&#x27;value&#x27;</span>:result&#125;</span><br><span class="line"><span class="built_in">print</span>(s.post(url,data=key).text)</span><br></pre></td></tr></table></figure></div>
+<p>脚本来源：<a class="link" target="_blank" rel="noopener" href="https://blog.csdn.net/qq_46540840/article/details/113877495">https://blog.csdn.net/qq_46540840/article/details/113877495<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a><br>侵删</p>
+<div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"></span><br><span class="line">url= <span class="string">'http://117.72.52.127:15533/'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">s = requests.session()</span><br><span class="line">retuen = s.get(url)</span><br><span class="line"><span class="built_in">print</span>(retuen)</span><br><span class="line">eql=re.search(<span class="string">r'(\d+[*\-+])+(\d+)'</span>,retuen.text).group()</span><br><span class="line">result =<span class="built_in">eval</span>(eql)</span><br><span class="line"><span class="built_in">print</span>(result)</span><br><span class="line">key={<span class="string">'value'</span>:result}</span><br><span class="line"><span class="built_in">print</span>(s.post(url,data=key).text)</span><br></pre></td></tr></table></figure></div>
 
 <p>获得flag</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-04-BugKu-WEB-%E7%A7%8B%E5%90%8D%E5%B1%B1%E8%BD%A6%E7%A5%9E/flag.png"
-                      alt="Question"
-                ></p>
-<h3 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;0016f4fdb6a7b05ca397da386da09527&#125;</span><br></pre></td></tr></table></figure></div>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-04-BugKu-WEB-%E7%A7%8B%E5%90%8D%E5%B1%B1%E8%BD%A6%E7%A5%9E/flag.png" alt="Question"></p>
+<h3 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag{0016f4fdb6a7b05ca397da386da09527}</span><br></pre></td></tr></table></figure></div>
 
 		</div>
 
@@ -1004,7 +989,7 @@ mjx-container[display="true"] + br {
               <span>2025</span>
               -
             
-            2025&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
+            2026&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
             
                 
                 <p class="post-count space-x-0.5">
@@ -1013,7 +998,7 @@ mjx-container[display="true"] + br {
                     </span>
                     
                         <span>
-                            共 26.4k 字
+                            共 25.6k 字
                         </span>
                     
                 </p>

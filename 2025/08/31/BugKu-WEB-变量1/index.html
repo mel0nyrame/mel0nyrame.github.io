@@ -794,7 +794,7 @@ mjx-container[display="true"] + br {
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>428 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>406 字</span>
         </span>
     
     
@@ -818,31 +818,16 @@ mjx-container[display="true"] + br {
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="BugKu-WEB-变量1"><a href="#BugKu-WEB-变量1" class="headerlink" title="BugKu-WEB-变量1"></a>BugKu-WEB-变量1</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-31-BugKu-WEB-%E5%8F%98%E9%87%8F1/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png"
-                      alt="Question"
-                ><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-31-BugKu-WEB-%E5%8F%98%E9%87%8F1/%E9%A2%98%E7%9B%AE%E7%BD%91%E9%A1%B5.png"
-                      alt="Question"
-                ></p>
+			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="BugKu-WEB-变量1"><a href="#BugKu-WEB-变量1" class="headerlink" title="BugKu-WEB-变量1"></a>BugKu-WEB-变量1</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-31-BugKu-WEB-%E5%8F%98%E9%87%8F1/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png" alt="Question"><br><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-31-BugKu-WEB-%E5%8F%98%E9%87%8F1/%E9%A2%98%E7%9B%AE%E7%BD%91%E9%A1%B5.png" alt="Question"></p>
 <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>打开可以看到是一份php代码，估计就是在考察代码审计</p>
-<div class="code-container" data-rel="Php"><figure class="iseeu highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span>  </span><br><span class="line"><span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);</span><br><span class="line"><span class="keyword">include</span> <span class="string">&quot;flag1.php&quot;</span>;</span><br><span class="line"><span class="title function_ invoke__">highlight_file</span>(__file__);</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;args&#x27;</span>]))&#123;</span><br><span class="line">    <span class="variable">$args</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;args&#x27;</span>];</span><br><span class="line">    <span class="keyword">if</span>(!<span class="title function_ invoke__">preg_match</span>(<span class="string">&quot;/^\w+$/&quot;</span>,<span class="variable">$args</span>))&#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&quot;args error!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">eval</span>(<span class="string">&quot;var_dump($<span class="subst">$args</span>);&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Php"><figure class="iseeu highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span>  </span><br><span class="line"><span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);</span><br><span class="line"><span class="keyword">include</span> <span class="string">"flag1.php"</span>;</span><br><span class="line"><span class="title function_ invoke__">highlight_file</span>(__file__);</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">'args'</span>])){</span><br><span class="line">    <span class="variable">$args</span> = <span class="variable">$_GET</span>[<span class="string">'args'</span>];</span><br><span class="line">    <span class="keyword">if</span>(!<span class="title function_ invoke__">preg_match</span>(<span class="string">"/^\w+$/"</span>,<span class="variable">$args</span>)){</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">"args error!"</span>);</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">eval</span>(<span class="string">"var_dump($<span class="subst">$args</span>);"</span>);</span><br><span class="line">}</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></div>
 
-<p>这个代码大概的意思就是：<br>1.删除错误信息<br>2.引用<em>flag1.php</em>文件<br>3.显示目前文件的源代码<br>4.检测args这个变量有没有从GET方法那里定义，如果有就执行下面的语句<br>5.先定义args为从GET方法获得的args的值，然后根据”&#x2F;^\w+$&#x2F;“这个正则表达式（大概意思是只能是数字，字母和下划线组成）来执行下面的<code>exit()</code>方法，也就是说不满足条件的就直接终止程序然后输出”args error!”<br>6.最重要的一步，通过<code>eval()</code>来执行字符串中的php代码，字符串中的大概意思是返回$$args变量的信息，比如说我输入?args&#x3D;flag，那么下面就会返回$flag的变量信息<br>加上题目说的<strong>flag In the variable !</strong>，说明我们要输入一个特定的字符串，那个字符串就是藏着flag的变量，如果在<em>flag1.php</em>中没有定义的，那就会返回<strong>NULL</strong><br>php中有普通人为规定的变量，也有系统变量，在这个系统变量用有一个<strong>GLOBALS</strong>超级全局变量，可以看到全部的变量，此时我们传入数据?args&#x3D;GLOBALS，就可以看到全部的变量了</p>
+<p>这个代码大概的意思就是：<br>1.删除错误信息<br>2.引用<em>flag1.php</em>文件<br>3.显示目前文件的源代码<br>4.检测args这个变量有没有从GET方法那里定义，如果有就执行下面的语句<br>5.先定义args为从GET方法获得的args的值，然后根据”/^\w+$/“这个正则表达式（大概意思是只能是数字，字母和下划线组成）来执行下面的<code>exit()</code>方法，也就是说不满足条件的就直接终止程序然后输出”args error!”<br>6.最重要的一步，通过<code>eval()</code>来执行字符串中的php代码，字符串中的大概意思是返回$$args变量的信息，比如说我输入?args=flag，那么下面就会返回$flag的变量信息<br>加上题目说的<strong>flag In the variable !</strong>，说明我们要输入一个特定的字符串，那个字符串就是藏着flag的变量，如果在<em>flag1.php</em>中没有定义的，那就会返回<strong>NULL</strong><br>php中有普通人为规定的变量，也有系统变量，在这个系统变量用有一个<strong>GLOBALS</strong>超级全局变量，可以看到全部的变量，此时我们传入数据?args=GLOBALS，就可以看到全部的变量了</p>
 <blockquote>
 <p>这个变量名应该也是为了防止爆破之类的，只能靠php基础</p>
 </blockquote>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-08-31-BugKu-WEB-%E5%8F%98%E9%87%8F1/flag.png"
-                      alt="Question"
-                ></p>
-<h3 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;3107a288e375d11375f622c2729382d5&#125;</span><br></pre></td></tr></table></figure></div>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-08-31-BugKu-WEB-%E5%8F%98%E9%87%8F1/flag.png" alt="Question"></p>
+<h3 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag{3107a288e375d11375f622c2729382d5}</span><br></pre></td></tr></table></figure></div>
 
 		</div>
 
@@ -1012,7 +997,7 @@ mjx-container[display="true"] + br {
               <span>2025</span>
               -
             
-            2025&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
+            2026&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
             
                 
                 <p class="post-count space-x-0.5">
@@ -1021,7 +1006,7 @@ mjx-container[display="true"] + br {
                     </span>
                     
                         <span>
-                            共 26.4k 字
+                            共 25.6k 字
                         </span>
                     
                 </p>

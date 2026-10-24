@@ -789,7 +789,7 @@ mjx-container[display="true"] + br {
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>459 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>437 字</span>
         </span>
     
     
@@ -813,42 +813,17 @@ mjx-container[display="true"] + br {
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="BugKu-WEB-源代码"><a href="#BugKu-WEB-源代码" class="headerlink" title="BugKu-WEB-源代码"></a>BugKu-WEB-源代码</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-01-BugKu-WEB-%E6%BA%90%E4%BB%A3%E7%A0%81/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png"
-                      alt="Question"
-                ><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-01-BugKu-WEB-%E6%BA%90%E4%BB%A3%E7%A0%81/%E9%A2%98%E7%9B%AE%E7%BD%91%E9%A1%B5.png"
-                      alt="Question"
-                ></p>
+			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="BugKu-WEB-源代码"><a href="#BugKu-WEB-源代码" class="headerlink" title="BugKu-WEB-源代码"></a>BugKu-WEB-源代码</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-01-BugKu-WEB-%E6%BA%90%E4%BB%A3%E7%A0%81/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png" alt="Question"><br><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-01-BugKu-WEB-%E6%BA%90%E4%BB%A3%E7%A0%81/%E9%A2%98%E7%9B%AE%E7%BD%91%E9%A1%B5.png" alt="Question"></p>
 <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>题目提示看源代码，看源代码，发现传递方式是POST，而且有一段编码，也有一段脚本，考察代码审计</p>
-<div class="code-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">var</span> p1 = <span class="string">&#x27;%66%75%6e%63%74%69%6f%6e%20%63%68%65%63%6b%53%75%62%6d%69%74%28%29%7b%76%61%72%20%61%3d%64%6f%63%75%6d%65%6e%74%2e%67%65%74%45%6c%65%6d%65%6e%74%42%79%49%64%28%22%70%61%73%73%77%6f%72%64%22%29%3b%69%66%28%22%75%6e%64%65%66%69%6e%65%64%22%21%3d%74%79%70%65%6f%66%20%61%29%7b%69%66%28%22%36%37%64%37%30%39%62%32%62&#x27;</span>;</span></span><br><span class="line"><span class="language-javascript"><span class="keyword">var</span> p2 = <span class="string">&#x27;%61%61%36%34%38%63%66%36%65%38%37%61%37%31%31%34%66%31%22%3d%3d%61%2e%76%61%6c%75%65%29%72%65%74%75%72%6e%21%30%3b%61%6c%65%72%74%28%22%45%72%72%6f%72%22%29%3b%61%2e%66%6f%63%75%73%28%29%3b%72%65%74%75%72%6e%21%31%7d%7d%64%6f%63%75%6d%65%6e%74%2e%67%65%74%45%6c%65%6d%65%6e%74%42%79%49%64%28%22%6c%65%76%65%6c%51%75%65%73%74%22%29%2e%6f%6e%73%75%62%6d%69%74%3d%63%68%65%63%6b%53%75%62%6d%69%74%3b&#x27;</span>;</span></span><br><span class="line"><span class="language-javascript"><span class="built_in">eval</span>(<span class="built_in">unescape</span>(p1) + <span class="built_in">unescape</span>(<span class="string">&#x27;%35%34%61%61%32&#x27;</span> + p2));</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">var</span> p1 = <span class="string">'%66%75%6e%63%74%69%6f%6e%20%63%68%65%63%6b%53%75%62%6d%69%74%28%29%7b%76%61%72%20%61%3d%64%6f%63%75%6d%65%6e%74%2e%67%65%74%45%6c%65%6d%65%6e%74%42%79%49%64%28%22%70%61%73%73%77%6f%72%64%22%29%3b%69%66%28%22%75%6e%64%65%66%69%6e%65%64%22%21%3d%74%79%70%65%6f%66%20%61%29%7b%69%66%28%22%36%37%64%37%30%39%62%32%62'</span>;</span></span><br><span class="line"><span class="language-javascript"><span class="keyword">var</span> p2 = <span class="string">'%61%61%36%34%38%63%66%36%65%38%37%61%37%31%31%34%66%31%22%3d%3d%61%2e%76%61%6c%75%65%29%72%65%74%75%72%6e%21%30%3b%61%6c%65%72%74%28%22%45%72%72%6f%72%22%29%3b%61%2e%66%6f%63%75%73%28%29%3b%72%65%74%75%72%6e%21%31%7d%7d%64%6f%63%75%6d%65%6e%74%2e%67%65%74%45%6c%65%6d%65%6e%74%42%79%49%64%28%22%6c%65%76%65%6c%51%75%65%73%74%22%29%2e%6f%6e%73%75%62%6d%69%74%3d%63%68%65%63%6b%53%75%62%6d%69%74%3b'</span>;</span></span><br><span class="line"><span class="language-javascript"><span class="built_in">eval</span>(<span class="built_in">unescape</span>(p1) + <span class="built_in">unescape</span>(<span class="string">'%35%34%61%61%32'</span> + p2));</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
 
 <p>这个代码一眼过去就像html的编码，打开赛博大厨解密一下，发现几段脚本</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-01-BugKu-WEB-%E6%BA%90%E4%BB%A3%E7%A0%81/html1.png"
-                      alt="Question"
-                ><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-01-BugKu-WEB-%E6%BA%90%E4%BB%A3%E7%A0%81/html2.png"
-                      alt="Question"
-                ><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-01-BugKu-WEB-%E6%BA%90%E4%BB%A3%E7%A0%81/html3.png"
-                      alt="Question"
-                ></p>
-<div class="code-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">checkSubmit</span>(<span class="params"></span>)&#123;<span class="keyword">var</span> a=<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;password&quot;</span>);<span class="keyword">if</span>(<span class="string">&quot;undefined&quot;</span>!=<span class="keyword">typeof</span> a)&#123;<span class="keyword">if</span>(<span class="string">&quot;67d709b2b54aa2aa648cf6e87a7114f1&quot;</span>==a.<span class="property">value</span>)<span class="keyword">return</span>!<span class="number">0</span>;<span class="title function_">alert</span>(<span class="string">&quot;Error&quot;</span>);a.<span class="title function_">focus</span>();<span class="keyword">return</span>!<span class="number">1</span>&#125;&#125;<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;levelQuest&quot;</span>).<span class="property">onsubmit</span>=checkSubmit;</span><br></pre></td></tr></table></figure></div>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-01-BugKu-WEB-%E6%BA%90%E4%BB%A3%E7%A0%81/html1.png" alt="Question"><br><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-01-BugKu-WEB-%E6%BA%90%E4%BB%A3%E7%A0%81/html2.png" alt="Question"><br><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-01-BugKu-WEB-%E6%BA%90%E4%BB%A3%E7%A0%81/html3.png" alt="Question"></p>
+<div class="code-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">checkSubmit</span>(<span class="params"></span>){<span class="keyword">var</span> a=<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">"password"</span>);<span class="keyword">if</span>(<span class="string">"undefined"</span>!=<span class="keyword">typeof</span> a){<span class="keyword">if</span>(<span class="string">"67d709b2b54aa2aa648cf6e87a7114f1"</span>==a.<span class="property">value</span>)<span class="keyword">return</span>!<span class="number">0</span>;<span class="title function_">alert</span>(<span class="string">"Error"</span>);a.<span class="title function_">focus</span>();<span class="keyword">return</span>!<span class="number">1</span>}}<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">"levelQuest"</span>).<span class="property">onsubmit</span>=checkSubmit;</span><br></pre></td></tr></table></figure></div>
 
 <p>javascript中的<code>eval()</code>函数代表着把字符串当代码来执行，也就是上面的代码<br>现在来分析这个javascript<br>大概意思就是密码框输入的是”67d709b2b54aa2aa648cf6e87a7114f1”这个字符串，就返回true，提交表单</p>
 <p>输入字符串，发现返回了flag</p>
-<h3 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;8aeb80c7baa47ed2e5a4e91d995b9b72&#125;</span><br></pre></td></tr></table></figure></div>
+<h3 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag{8aeb80c7baa47ed2e5a4e91d995b9b72}</span><br></pre></td></tr></table></figure></div>
 
 		</div>
 
@@ -1014,7 +989,7 @@ mjx-container[display="true"] + br {
               <span>2025</span>
               -
             
-            2025&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
+            2026&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
             
                 
                 <p class="post-count space-x-0.5">
@@ -1023,7 +998,7 @@ mjx-container[display="true"] + br {
                     </span>
                     
                         <span>
-                            共 26.4k 字
+                            共 25.6k 字
                         </span>
                     
                 </p>

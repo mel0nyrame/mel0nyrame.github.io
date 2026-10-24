@@ -818,7 +818,7 @@ mjx-container[display="true"] + br {
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="yolov5模型训练复现报告及遇到的问题"><a href="#yolov5模型训练复现报告及遇到的问题" class="headerlink" title="yolov5模型训练复现报告及遇到的问题"></a>yolov5模型训练复现报告及遇到的问题</h2><h3 id="原文地址"><a href="#原文地址" class="headerlink" title="原文地址"></a>原文地址</h3><a class="button center large" target="_blank" rel="noopener" href='https://blog.csdn.net/qq_45701791/article/details/113992622' title='原文地址'><i class='fa-solid fa-download'></i> 原文地址</a>
+			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="yolov5模型训练复现报告及遇到的问题"><a href="#yolov5模型训练复现报告及遇到的问题" class="headerlink" title="yolov5模型训练复现报告及遇到的问题"></a>yolov5模型训练复现报告及遇到的问题</h2><h3 id="原文地址"><a href="#原文地址" class="headerlink" title="原文地址"></a>原文地址</h3><a class="button center large" target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45701791/article/details/113992622" title="原文地址"><i class="fa-solid fa-download"></i> 原文地址</a>
 
 <h3 id="复现环境"><a href="#复现环境" class="headerlink" title="复现环境"></a>复现环境</h3>
   <div class="note-large blue">
@@ -832,25 +832,15 @@ mjx-container[display="true"] + br {
     </div>
   </div>
 
-<h3 id="复现过程"><a href="#复现过程" class="headerlink" title="复现过程"></a>复现过程</h3><h4 id="Anconda环境搭建"><a href="#Anconda环境搭建" class="headerlink" title="Anconda环境搭建"></a>Anconda环境搭建</h4><p>首先先从<a class="link"   target="_blank" rel="noopener" href="https://www.anaconda.com/download#Downloads" >官网<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>把Anconda程序下载下来，如果没有账号的需要注册或者用Google账号登录。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-10-06-yolov5%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E5%A4%8D%E7%8E%B0%E6%8A%A5%E5%91%8A%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/ana.png"
-                      alt="1"
-                ></p>
-<p>关于下载哪个版本可以去看他们的<a class="link"   target="_blank" rel="noopener" href="https://www.anaconda.com/docs/main" >Documentation<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<h3 id="复现过程"><a href="#复现过程" class="headerlink" title="复现过程"></a>复现过程</h3><h4 id="Anconda环境搭建"><a href="#Anconda环境搭建" class="headerlink" title="Anconda环境搭建"></a>Anconda环境搭建</h4><p>首先先从<a class="link" target="_blank" rel="noopener" href="https://www.anaconda.com/download#Downloads">官网<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>把Anconda程序下载下来，如果没有账号的需要注册或者用Google账号登录。</p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-10-06-yolov5%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E5%A4%8D%E7%8E%B0%E6%8A%A5%E5%91%8A%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/ana.png" alt="1"></p>
+<p>关于下载哪个版本可以去看他们的<a class="link" target="_blank" rel="noopener" href="https://www.anaconda.com/docs/main">Documentation<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
 <p>安装过程一路Next就可以了</p>
 <p>此时打开cmd，输入conda发现并没有找到这个命令，这说明Anconda的安装文件夹并没有添加到环境变量中。<br>打开Anconda的安装文件夹（默认是<strong>C:\Users\Admin\miniconda3</strong>），发现conda程序的名字叫做*_conda.exe*，不过没关系，在文件夹路径上输入cmd打开输入下列代码</p>
 <div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_conda create -n yolo python=3.13    //原文中的python版本是3.8，不过现在版本的Anconda需要的是3.13</span><br></pre></td></tr></table></figure></div>
 
 <p>等待获得安装包信息，然后输入y，等待下载和安装</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-10-06-yolov5%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E5%A4%8D%E7%8E%B0%E6%8A%A5%E5%91%8A%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/dow.png"
-                      alt="1"
-                ></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-10-06-yolov5%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E5%A4%8D%E7%8E%B0%E6%8A%A5%E5%91%8A%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/dow.png" alt="1"></p>
 <p>当看到下列命令就代表安装成功了</p>
 <div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Preparing transaction: <span class="keyword">done</span></span><br><span class="line">Verifying transaction: <span class="keyword">done</span></span><br><span class="line">Executing transaction: <span class="keyword">done</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># To activate this environment, use</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#     $ conda activate yolo</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># To deactivate an active environment, use</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#     $ conda deactivate</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">C:\Users\Admin\miniconda3&gt;</span><br></pre></td></tr></table></figure></div>
 
@@ -862,31 +852,16 @@ mjx-container[display="true"] + br {
 <p>输入下列命令，提示我们要先初始化才能使用<em>activate</em>命令</p>
 <div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_conda activate yolo    //原文中是直接activate yolo，但是我们没加入系统变量所以只能这样子</span><br></pre></td></tr></table></figure></div>
 
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\Admin\miniconda3&gt;_conda activate yolo</span><br><span class="line"></span><br><span class="line">CondaError: Run <span class="string">&#x27;conda init&#x27;</span> before <span class="string">&#x27;conda activate&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">C:\Users\Admin\miniconda3&gt;</span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\Admin\miniconda3&gt;_conda activate yolo</span><br><span class="line"></span><br><span class="line">CondaError: Run <span class="string">'conda init'</span> before <span class="string">'conda activate'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">C:\Users\Admin\miniconda3&gt;</span><br></pre></td></tr></table></figure></div>
 
 <p>但是输入之后显示操作失败(Operation failed.)并且上面显示<em>need sudo</em>，可以先把这段报错信息丢给ai看看<br>ai解释这个报错意味着我们运行的目录不是真正的Conda环境，<strong>C:\Users\Admin\miniconda3\Scripts</strong>文件夹中的才是真正的环境，打开那个文件夹并在此打开cmd，发现之前的命令都能使用，输入激活命令，成功运行yolo环境</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-10-06-yolov5%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E5%A4%8D%E7%8E%B0%E6%8A%A5%E5%91%8A%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/cmd1.png"
-                      alt="1"
-                ></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-10-06-yolov5%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E5%A4%8D%E7%8E%B0%E6%8A%A5%E5%91%8A%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/cmd1.png" alt="1"></p>
 <p>按照教程，运行下列命令下载jupyter notebook，并成功打开notebook界面</p>
 <div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda install jupyter notebook</span><br><span class="line">jupyter notebook</span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-10-06-yolov5%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E5%A4%8D%E7%8E%B0%E6%8A%A5%E5%91%8A%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/cmd2.png"
-                      alt="1"
-                ><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-10-06-yolov5%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E5%A4%8D%E7%8E%B0%E6%8A%A5%E5%91%8A%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/cmd3.png"
-                      alt="1"
-                ></p>
-<h4 id="yolov5下载"><a href="#yolov5下载" class="headerlink" title="yolov5下载"></a>yolov5下载</h4><p>前往<a class="link"   target="_blank" rel="noopener" href="https://github.com/ultralytics/yolov5" >https://github.com/ultralytics/yolov5<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> 下载yolov5源码，若打不开可以使用<a class="link"   target="_blank" rel="noopener" href="https://steampp.net/" >Steam++<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>或者科学上网</p>
-<p>若下载实在缓慢，可以转用Git搭配<a class="link"   target="_blank" rel="noopener" href="https://gh-proxy.com/" >Github文件加速<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>网站下载</p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-10-06-yolov5%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E5%A4%8D%E7%8E%B0%E6%8A%A5%E5%91%8A%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/cmd2.png" alt="1"><br><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-10-06-yolov5%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E5%A4%8D%E7%8E%B0%E6%8A%A5%E5%91%8A%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/cmd3.png" alt="1"></p>
+<h4 id="yolov5下载"><a href="#yolov5下载" class="headerlink" title="yolov5下载"></a>yolov5下载</h4><p>前往<a class="link" target="_blank" rel="noopener" href="https://github.com/ultralytics/yolov5">https://github.com/ultralytics/yolov5<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> 下载yolov5源码，若打不开可以使用<a class="link" target="_blank" rel="noopener" href="https://steampp.net/">Steam++<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>或者科学上网</p>
+<p>若下载实在缓慢，可以转用Git搭配<a class="link" target="_blank" rel="noopener" href="https://gh-proxy.com/">Github文件加速<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>网站下载</p>
 <div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://hk.gh-proxy.com/https://github.com/ultralytics/yolov5.git</span><br></pre></td></tr></table></figure></div>
 
 <p>按照教程，在yolov5文件夹打开cmd，先<strong>激活yolo环境</strong>，在输入下列命令</p>
@@ -895,24 +870,14 @@ mjx-container[display="true"] + br {
 <p>若下载速度缓慢还失败，就需要考虑一下切换pip的下载源，下列命令就是永久切换清华的pip下载源</p>
 <div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip config <span class="built_in">set</span> global.index-url https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-10-06-yolov5%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E5%A4%8D%E7%8E%B0%E6%8A%A5%E5%91%8A%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/cmd4.png"
-                      alt="1"
-                ></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-10-06-yolov5%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E5%A4%8D%E7%8E%B0%E6%8A%A5%E5%91%8A%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/cmd4.png" alt="1"></p>
 <p>可以看到下载速度飞快<br>下载完之后就可以耐心等待安装了</p>
 <h4 id="整理yolov5模型"><a href="#整理yolov5模型" class="headerlink" title="整理yolov5模型"></a>整理yolov5模型</h4><p>先按照教程创建几个文件夹和文件</p>
 <div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-yolo_A</span><br><span class="line">  -images</span><br><span class="line">  -labels</span><br><span class="line">  -A.yaml</span><br></pre></td></tr></table></figure></div>
 
 <p>然后去找哆啦A梦的图，推荐用Bing图片或者Google图片，建议越多越好。。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-10-06-yolov5%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E5%A4%8D%E7%8E%B0%E6%8A%A5%E5%91%8A%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/img.png"
-                      alt="1"
-                ></p>
-<p>按照教程去<a class="link"   target="_blank" rel="noopener" href="https://github.com/tzutalin/labelImg" >https://github.com/tzutalin/labelImg<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> 下载labelimg工具，还是推荐用Git搭配<a class="link"   target="_blank" rel="noopener" href="https://gh-proxy.com/" >Github文件加速<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>网站下载</p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-10-06-yolov5%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E5%A4%8D%E7%8E%B0%E6%8A%A5%E5%91%8A%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/img.png" alt="1"></p>
+<p>按照教程去<a class="link" target="_blank" rel="noopener" href="https://github.com/tzutalin/labelImg">https://github.com/tzutalin/labelImg<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> 下载labelimg工具，还是推荐用Git搭配<a class="link" target="_blank" rel="noopener" href="https://gh-proxy.com/">Github文件加速<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>网站下载</p>
 <div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://hk.gh-proxy.com/https://github.com/HumanSignal/labelImg.git</span><br></pre></td></tr></table></figure></div>
 
 <p>按照教程进入labelimg目录，删除<em>labelImg-master\data\predefined_classes.txt</em>文件，<strong>激活yolo环境</strong>，安装依赖</p>
@@ -921,38 +886,18 @@ mjx-container[display="true"] + br {
 <p>然后输入下列命令打开打表程序</p>
 <div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python labelimg.py</span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-10-06-yolov5%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E5%A4%8D%E7%8E%B0%E6%8A%A5%E5%91%8A%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/lab.png"
-                      alt="1"
-                ></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-10-06-yolov5%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E5%A4%8D%E7%8E%B0%E6%8A%A5%E5%91%8A%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/lab.png" alt="1"></p>
 <p>按照教程把该勾选的勾选上，在教程中这个程序是没有中文的，不过现在有了，但是位置都是不变的按照教程的位置勾选就好<br>但在勾选第二个框的时候程序突然崩溃</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-10-06-yolov5%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E5%A4%8D%E7%8E%B0%E6%8A%A5%E5%91%8A%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/crash.png"
-                      alt="1"
-                ></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-10-06-yolov5%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E5%A4%8D%E7%8E%B0%E6%8A%A5%E5%91%8A%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/crash.png" alt="1"></p>
 <p>用ai搜索得知，self.default_label这个变量没有初始化，也就是由于我们之前删去<em>predefined_classes.txt</em>文件导致程序出错<br>解决方法就是自己创建一个<em>predefined_classes.txt</em>文件，然后输入A，这样我们就有了默认标签，程序也不会崩溃</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-10-06-yolov5%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E5%A4%8D%E7%8E%B0%E6%8A%A5%E5%91%8A%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/sol.png"
-                      alt="1"
-                ></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-10-06-yolov5%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E5%A4%8D%E7%8E%B0%E6%8A%A5%E5%91%8A%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/sol.png" alt="1"></p>
 <p>然后就是疯狂打标</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-10-06-yolov5%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E5%A4%8D%E7%8E%B0%E6%8A%A5%E5%91%8A%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/res.png"
-                      alt="1"
-                ></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-10-06-yolov5%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E5%A4%8D%E7%8E%B0%E6%8A%A5%E5%91%8A%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/res.png" alt="1"></p>
 <p>然后再编辑一下<em>A.yaml</em>文件</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># train and val data as 1) directory: path/images/, 2) file: path/images.txt, or 3) list: [path1/images/, path2/images/]</span><br><span class="line">train: ../yolo_A/images/</span><br><span class="line">val: ../yolo_A/images/</span><br><span class="line"># number of classes</span><br><span class="line">nc: 1</span><br><span class="line"></span><br><span class="line"># class names</span><br><span class="line">names: [&#x27;A meng&#x27;]</span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># train and val data as 1) directory: path/images/, 2) file: path/images.txt, or 3) list: [path1/images/, path2/images/]</span><br><span class="line">train: ../yolo_A/images/</span><br><span class="line">val: ../yolo_A/images/</span><br><span class="line"># number of classes</span><br><span class="line">nc: 1</span><br><span class="line"></span><br><span class="line"># class names</span><br><span class="line">names: ['A meng']</span><br></pre></td></tr></table></figure></div>
 
 <h4 id="yolov5模型训练"><a href="#yolov5模型训练" class="headerlink" title="yolov5模型训练"></a>yolov5模型训练</h4><p>先在yolo环境中打开python(在cmd中输入python)，依次输入以下命令</p>
-<div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> IPython.display <span class="keyword">import</span> Image, clear_output  <span class="comment"># to display images</span></span><br><span class="line"></span><br><span class="line">clear_output()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Setup complete. Using torch %s %s&#x27;</span> % (torch.__version__, torch.cuda.get_device_properties(<span class="number">0</span>) <span class="keyword">if</span> torch.cuda.is_available() <span class="keyword">else</span> <span class="string">&#x27;CPU&#x27;</span>))</span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> IPython.display <span class="keyword">import</span> Image, clear_output  <span class="comment"># to display images</span></span><br><span class="line"></span><br><span class="line">clear_output()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">'Setup complete. Using torch %s %s'</span> % (torch.__version__, torch.cuda.get_device_properties(<span class="number">0</span>) <span class="keyword">if</span> torch.cuda.is_available() <span class="keyword">else</span> <span class="string">'CPU'</span>))</span><br></pre></td></tr></table></figure></div>
 
 <p>然后测试脚本是不是跑得动</p>
 <div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python detect.py --weights yolov5s.pt --img 640 --conf 0.25 --<span class="built_in">source</span> data/images/</span><br></pre></td></tr></table></figure></div>
@@ -963,19 +908,9 @@ mjx-container[display="true"] + br {
 </blockquote>
 </blockquote>
 <p>发现再次报错，没有找到<em>yolov5s.pt</em>文件</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-10-06-yolov5%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E5%A4%8D%E7%8E%B0%E6%8A%A5%E5%91%8A%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/err.png"
-                      alt="1"
-                ></p>
-<p>往上翻一翻发现还是github的锅，使用<a class="link"   target="_blank" rel="noopener" href="https://steampp.net/" >Steam++<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>或者科学上网，再或者自己手动下载丢到yolov5-master下，这里我是本体机下了文件之后丢到根目录(虚拟机不知道为什么跑不了梯子)<br>再次运行，发现成功，结果保留在<strong>runs\detect\exp7</strong>目录下</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-10-06-yolov5%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E5%A4%8D%E7%8E%B0%E6%8A%A5%E5%91%8A%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/run.png"
-                      alt="1"
-                ></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-10-06-yolov5%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E5%A4%8D%E7%8E%B0%E6%8A%A5%E5%91%8A%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/err.png" alt="1"></p>
+<p>往上翻一翻发现还是github的锅，使用<a class="link" target="_blank" rel="noopener" href="https://steampp.net/">Steam++<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>或者科学上网，再或者自己手动下载丢到yolov5-master下，这里我是本体机下了文件之后丢到根目录(虚拟机不知道为什么跑不了梯子)<br>再次运行，发现成功，结果保留在<strong>runs\detect\exp7</strong>目录下</p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-10-06-yolov5%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E5%A4%8D%E7%8E%B0%E6%8A%A5%E5%91%8A%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/run.png" alt="1"></p>
 <p>可以开始训练了，输入以下命令开始训练（注意，虚拟机内存要设置得足够大，不然会爆内存）</p>
 <div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python train.py --img 640 --batch 50 --epochs 100 --data ../yolo_A/A.yaml --weights yolov5s.pt --nosave --cache</span><br></pre></td></tr></table></figure></div>
 
@@ -987,27 +922,12 @@ mjx-container[display="true"] + br {
 <div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python train.py --img 416 --batch 16 --epochs 100 --data yolo_A/A.yaml --weights yolov5s.pt --noval --cache disk --optimizer AdamW</span><br></pre></td></tr></table></figure></div>
 
 <p>经过了漫长的训练，最终得到了<em>best.pt</em>，并且保存在<strong>runs\train\exp2\weights</strong>目录下</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-10-06-yolov5%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E5%A4%8D%E7%8E%B0%E6%8A%A5%E5%91%8A%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/fin.png"
-                      alt="1"
-                ><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-10-06-yolov5%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E5%A4%8D%E7%8E%B0%E6%8A%A5%E5%91%8A%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/las.png"
-                      alt="1"
-                ></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-10-06-yolov5%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E5%A4%8D%E7%8E%B0%E6%8A%A5%E5%91%8A%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/fin.png" alt="1"><br><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-10-06-yolov5%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E5%A4%8D%E7%8E%B0%E6%8A%A5%E5%91%8A%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/las.png" alt="1"></p>
 <h4 id="yolov5模型测试"><a href="#yolov5模型测试" class="headerlink" title="yolov5模型测试"></a>yolov5模型测试</h4><p>随便找一张网图做测试，成功了</p>
 <div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python detect.py --weights runs/train/exp2/weights/best.pt --img 416 --conf 0.25 --<span class="built_in">source</span> test.webp</span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-10-06-yolov5%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E5%A4%8D%E7%8E%B0%E6%8A%A5%E5%91%8A%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/sucess.png"
-                      alt="1"
-                ></p>
-<h3 id="相关资料收集"><a href="#相关资料收集" class="headerlink" title="相关资料收集"></a>相关资料收集</h3><p>在跑模型的时候发现这种视觉识别的模型居然没用到我的gpu（占用率1%）。。。于是去搜了搜相关的文章发现这篇文章居然用的是cpu来跑。。<br>于是我搜到了另外一篇文章：<a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/2401_85556416/article/details/141495837" >https://blog.csdn.net/2401_85556416/article/details/141495837<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> 这篇文章里便是yolov5的GPU训练版本<br>有时间去试一试</p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-10-06-yolov5%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E5%A4%8D%E7%8E%B0%E6%8A%A5%E5%91%8A%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/sucess.png" alt="1"></p>
+<h3 id="相关资料收集"><a href="#相关资料收集" class="headerlink" title="相关资料收集"></a>相关资料收集</h3><p>在跑模型的时候发现这种视觉识别的模型居然没用到我的gpu（占用率1%）。。。于是去搜了搜相关的文章发现这篇文章居然用的是cpu来跑。。<br>于是我搜到了另外一篇文章：<a class="link" target="_blank" rel="noopener" href="https://blog.csdn.net/2401_85556416/article/details/141495837">https://blog.csdn.net/2401_85556416/article/details/141495837<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> 这篇文章里便是yolov5的GPU训练版本<br>有时间去试一试</p>
 
 		</div>
 
@@ -1177,7 +1097,7 @@ mjx-container[display="true"] + br {
               <span>2025</span>
               -
             
-            2025&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
+            2026&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
             
                 
                 <p class="post-count space-x-0.5">
@@ -1186,7 +1106,7 @@ mjx-container[display="true"] + br {
                     </span>
                     
                         <span>
-                            共 26.4k 字
+                            共 25.6k 字
                         </span>
                     
                 </p>

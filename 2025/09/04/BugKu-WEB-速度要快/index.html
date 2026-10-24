@@ -789,7 +789,7 @@ mjx-container[display="true"] + br {
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>342 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>326 字</span>
         </span>
     
     
@@ -813,74 +813,24 @@ mjx-container[display="true"] + br {
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="BugKu-WEB-速度要快"><a href="#BugKu-WEB-速度要快" class="headerlink" title="BugKu-WEB-速度要快"></a>BugKu-WEB-速度要快</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-04-BugKu-WEB-%E9%80%9F%E5%BA%A6%E8%A6%81%E5%BF%AB/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png"
-                      alt="Question"
-                ><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-04-BugKu-WEB-%E9%80%9F%E5%BA%A6%E8%A6%81%E5%BF%AB/%E9%A2%98%E7%9B%AE%E7%BD%91%E9%A1%B5.png"
-                      alt="Question"
-                ></p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>打开f12看到这么一句话： OK ,now you have to post the margin what you find<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-04-BugKu-WEB-%E9%80%9F%E5%BA%A6%E8%A6%81%E5%BF%AB/f12.png"
-                      alt="Question"
-                ></p>
+			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="BugKu-WEB-速度要快"><a href="#BugKu-WEB-速度要快" class="headerlink" title="BugKu-WEB-速度要快"></a>BugKu-WEB-速度要快</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-04-BugKu-WEB-%E9%80%9F%E5%BA%A6%E8%A6%81%E5%BF%AB/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png" alt="Question"><br><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-04-BugKu-WEB-%E9%80%9F%E5%BA%A6%E8%A6%81%E5%BF%AB/%E9%A2%98%E7%9B%AE%E7%BD%91%E9%A1%B5.png" alt="Question"></p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>打开f12看到这么一句话： OK ,now you have to post the margin what you find<br><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-04-BugKu-WEB-%E9%80%9F%E5%BA%A6%E8%A6%81%E5%BF%AB/f12.png" alt="Question"></p>
 <p>抓包看看，果然在响应头发现了些东西</p>
 <div class="code-container" data-rel="Text"><figure class="iseeu highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag: 6LeR55qE6L+Y5LiN6ZSZ77yM57uZ5L2gZmxhZ+WQpzogTWpJd01UQXk=</span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-04-BugKu-WEB-%E9%80%9F%E5%BA%A6%E8%A6%81%E5%BF%AB/wtf.png"
-                      alt="Question"
-                ></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-04-BugKu-WEB-%E9%80%9F%E5%BA%A6%E8%A6%81%E5%BF%AB/wtf.png" alt="Question"></p>
 <p>用赛博大厨解码发现有点奇怪</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-04-BugKu-WEB-%E9%80%9F%E5%BA%A6%E8%A6%81%E5%BF%AB/cyber1.png"
-                      alt="Question"
-                ><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-04-BugKu-WEB-%E9%80%9F%E5%BA%A6%E8%A6%81%E5%BF%AB/cyber2.png"
-                      alt="Question"
-                ></p>
-<p>最后是一串数字，但是题目又说吧找到的东西贴在那里，尝试用GET方法传递参数margin，没有反应，在尝试用hackbar传递POST参数margin，发现也没出现flag<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-04-BugKu-WEB-%E9%80%9F%E5%BA%A6%E8%A6%81%E5%BF%AB/wtf1.png"
-                      alt="Question"
-                ></p>
-<p>按照题目的提示，难道二号上题一样又要用脚本吗？<br>重现访问了一下网站，发现响应头每次出现的flag都是不一样的<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-04-BugKu-WEB-%E9%80%9F%E5%BA%A6%E8%A6%81%E5%BF%AB/resp1.png"
-                      alt="Question"
-                ><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-04-BugKu-WEB-%E9%80%9F%E5%BA%A6%E8%A6%81%E5%BF%AB/resp2.png"
-                      alt="Question"
-                ><br>大概率是要用脚本跑，不得已只能拾人牙慧了</p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-04-BugKu-WEB-%E9%80%9F%E5%BA%A6%E8%A6%81%E5%BF%AB/cyber1.png" alt="Question"><br><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-04-BugKu-WEB-%E9%80%9F%E5%BA%A6%E8%A6%81%E5%BF%AB/cyber2.png" alt="Question"></p>
+<p>最后是一串数字，但是题目又说吧找到的东西贴在那里，尝试用GET方法传递参数margin，没有反应，在尝试用hackbar传递POST参数margin，发现也没出现flag<br><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-04-BugKu-WEB-%E9%80%9F%E5%BA%A6%E8%A6%81%E5%BF%AB/wtf1.png" alt="Question"></p>
+<p>按照题目的提示，难道二号上题一样又要用脚本吗？<br>重现访问了一下网站，发现响应头每次出现的flag都是不一样的<br><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-04-BugKu-WEB-%E9%80%9F%E5%BA%A6%E8%A6%81%E5%BF%AB/resp1.png" alt="Question"><br><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-04-BugKu-WEB-%E9%80%9F%E5%BA%A6%E8%A6%81%E5%BF%AB/resp2.png" alt="Question"><br>大概率是要用脚本跑，不得已只能拾人牙慧了</p>
 <blockquote>
-<p>脚本来源于评论区大神，虽然他说是小白但是我感觉还是很厉害的<br>脚本来源：<a class="link"   target="_blank" rel="noopener" href="https://www.yuque.com/u21437924/ap9vtm/gqkc3dcfmfpe5p85?singleDoc#zvD3s" >https://www.yuque.com/u21437924/ap9vtm/gqkc3dcfmfpe5p85?singleDoc#zvD3s<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a><br>侵删</p>
+<p>脚本来源于评论区大神，虽然他说是小白但是我感觉还是很厉害的<br>脚本来源：<a class="link" target="_blank" rel="noopener" href="https://www.yuque.com/u21437924/ap9vtm/gqkc3dcfmfpe5p85?singleDoc#zvD3s">https://www.yuque.com/u21437924/ap9vtm/gqkc3dcfmfpe5p85?singleDoc#zvD3s<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a><br>侵删</p>
 </blockquote>
-<div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line">session = requests.Session() </span><br><span class="line">response = session.get(<span class="string">&quot;http://117.72.52.127:15377/&quot;</span>)</span><br><span class="line">headers = response.headers</span><br><span class="line">flagBase64Str = headers[<span class="string">&quot;flag&quot;</span>]</span><br><span class="line">flagStr = base64.b64decode(flagBase64Str)</span><br><span class="line">flagStr = flagStr.decode(<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line">flagStr = flagStr.split(<span class="string">&quot;: &quot;</span>)[<span class="number">1</span>]</span><br><span class="line"><span class="comment"># 一定要在这里写，因为上一步才是把那串英文数字组合的字符串赋予给 flagStr（就是 MzAwNjq3 这个格式内容）</span></span><br><span class="line">flagStr = base64.b64decode(flagStr) </span><br><span class="line">res = session.post(<span class="string">&quot;http://117.72.52.127:15377/&quot;</span>, data=&#123;<span class="string">&quot;margin&quot;</span>: flagStr&#125;)</span><br><span class="line"><span class="built_in">print</span>(res.text)</span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line">session = requests.Session() </span><br><span class="line">response = session.get(<span class="string">"http://117.72.52.127:15377/"</span>)</span><br><span class="line">headers = response.headers</span><br><span class="line">flagBase64Str = headers[<span class="string">"flag"</span>]</span><br><span class="line">flagStr = base64.b64decode(flagBase64Str)</span><br><span class="line">flagStr = flagStr.decode(<span class="string">"utf-8"</span>)</span><br><span class="line">flagStr = flagStr.split(<span class="string">": "</span>)[<span class="number">1</span>]</span><br><span class="line"><span class="comment"># 一定要在这里写，因为上一步才是把那串英文数字组合的字符串赋予给 flagStr（就是 MzAwNjq3 这个格式内容）</span></span><br><span class="line">flagStr = base64.b64decode(flagStr) </span><br><span class="line">res = session.post(<span class="string">"http://117.72.52.127:15377/"</span>, data={<span class="string">"margin"</span>: flagStr})</span><br><span class="line"><span class="built_in">print</span>(res.text)</span><br></pre></td></tr></table></figure></div>
 
 <p>跑完之后得到flag</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../img-posts/2025-09-04-BugKu-WEB-%E9%80%9F%E5%BA%A6%E8%A6%81%E5%BF%AB/flag.png"
-                      alt="Question"
-                ></p>
-<h3 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;1c0fa2b99d67f5ef0f12ba1ae7e60e31&#125;</span><br></pre></td></tr></table></figure></div>
+<p><img lazyload="" src="/images/loading.svg" data-src="/../img-posts/2025-09-04-BugKu-WEB-%E9%80%9F%E5%BA%A6%E8%A6%81%E5%BF%AB/flag.png" alt="Question"></p>
+<h3 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag{1c0fa2b99d67f5ef0f12ba1ae7e60e31}</span><br></pre></td></tr></table></figure></div>
 
 		</div>
 
@@ -1046,7 +996,7 @@ mjx-container[display="true"] + br {
               <span>2025</span>
               -
             
-            2025&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
+            2026&nbsp;&nbsp;<i class="fa-duotone fa-solid fa-display-code"></i>&nbsp;&nbsp;<a href="/">Mel0ny</a>
             
                 
                 <p class="post-count space-x-0.5">
@@ -1055,7 +1005,7 @@ mjx-container[display="true"] + br {
                     </span>
                     
                         <span>
-                            共 26.4k 字
+                            共 25.6k 字
                         </span>
                     
                 </p>
